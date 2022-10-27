@@ -1,10 +1,11 @@
 version: "3.7"
 services:
   orthanc:
-    image: osimis/orthanc
-    ports:
-      - 4242:4242
-      - 8042:8042
+    build: orthanc
+    depends_on: [ orthanc-index ]
+    restart: unless-stopped
+    ports: [ "4242:4242", "8042:8042" ]
+    volumes: [ "orthanc-storage:/var/lib/orthanc/db:Z" ]
     environment:
       ORTHANC_WEB_VIEWER_PLUGIN_ENABLED: "true"
       STONE_WEB_VIEWER_PLUGIN_ENABLED=true: "true"
@@ -67,7 +68,7 @@ services:
       ## postgres database to store Hasura metadata
       HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://postgres:postgres@orthanc-index:5432/postgres
       ## this env var can be used to add the above postgres database to Hasura as a data source. this can be removed/updated based on your needs
-      PG_DATABASE_URL: postgres://postgres:postgres@postgres:5432/postgres
+      HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:postgres@orthanc-index:5432/postgres
       ## enable the console served by server
       HASURA_GRAPHQL_ENABLE_CONSOLE: "true" # set to "false" to disable console
       ## enable debugging mode. It is recommended to disable this in production
