@@ -13,7 +13,67 @@ services:
       VERBOSE_STARTUP: "true"
       ORTHANC__REGISTERED_USERS: |
         {"demo": "demo"}
-    # network_mode: host
-    volumes:
-      # - /orthanc.json:/etc/orthanc/orthanc.json:ro
-      - ./tmp/orthanc-db/:/var/lib/orthanc/db/
+      ORTHANC__EXTRA_MAIN_DICOM_TAGS: |+
+        {
+          "Instance" : [
+              "Rows",
+              "Columns",
+              "ImageType",
+              "SOPClassUID",
+              "ContentDate",
+              "ContentTime",
+              "FrameOfReferenceUID",
+              "PixelSpacing",
+              "SpecificCharacterSet",
+              "BitsAllocated",
+              "BitsStored",
+
+              "RescaleSlope",
+              "RescaleIntercept",
+              "SliceThickness",
+              "WindowCenter",
+              "WindowWidth",
+              "PhotometricInterpretation",
+              "PixelRepresentation"
+          ],
+          "Series" : [
+              "TimezoneOffsetFromUTC",
+              "PerformedProcedureStepStartDate",
+              "PerformedProcedureStepStartTime",
+              "RequestAttributesSequence"
+          ],
+          "Study": [
+              "TimezoneOffsetFromUTC"
+          ],
+          "Patient": []
+          }
+          
+  orthanc-index:
+    image: postgres
+    restart: unless-stopped
+    ports: [ "5442:5432" ]
+    volumes: [ "orthanc-index:/var/lib/postgresql/data:Z" ]
+    environment:
+      POSTGRES_PASSWORD: "postgres"
+
+  graphql-engine:
+    image: hasura/graphql-engine:v2.13.0
+    ports:
+      - "8080:8080"
+    depends_on:
+      - "orthanc-index"
+    restart: always
+    environment:
+      ## postgres database to store Hasura metadata
+      HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://postgres:postgres@orthanc-index:5432/postgres
+      ## this env var can be used to add the above postgres database to Hasura as a data source. this can be removed/updated based on your needs
+      PG_DATABASE_URL: postgres://postgres:postgres@postgres:5432/postgres
+      ## enable the console served by server
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "true" # set to "false" to disable console
+      ## enable debugging mode. It is recommended to disable this in production
+      HASURA_GRAPHQL_DEV_MODE: "true"
+      HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
+
+volumes:
+  orthanc-storage:
+  orthanc-index:
