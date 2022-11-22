@@ -13,7 +13,7 @@ class _RestClient implements RestClient {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://localhost:8042';
+    baseUrl ??= 'http://localhost:8042';
   }
 
   final Dio _dio;
@@ -21,13 +21,13 @@ class _RestClient implements RestClient {
   String? baseUrl;
 
   @override
-  Future<List<PatientsList>> getPatients() async {
+  Future<List<String>> getPatients() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio
-        .fetch<List<dynamic>>(_setStreamType<List<PatientsList>>(Options(
+    final _result =
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<String>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -39,9 +39,7 @@ class _RestClient implements RestClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    var value = _result.data!
-        .map((dynamic i) => PatientsList.fromJson(i as Map<String, dynamic>))
-        .toList();
+    final value = _result.data!.cast<String>();
     return value;
   }
 

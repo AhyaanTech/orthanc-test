@@ -7,7 +7,11 @@ part of 'patient_list.dart';
 // **************************************************************************
 
 _$_PatientsList _$$_PatientsListFromJson(Map<String, dynamic> json) =>
-    _$_PatientsList();
+    _$_PatientsList(
+      patientUUID: json['patientUUID'] as String,
+    );
 
 Map<String, dynamic> _$$_PatientsListToJson(_$_PatientsList instance) =>
-    <String, dynamic>{};
+    <String, dynamic>{
+      'patientUUID': instance.patientUUID,
+    };

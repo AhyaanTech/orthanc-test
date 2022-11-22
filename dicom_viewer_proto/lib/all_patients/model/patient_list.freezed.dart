@@ -20,7 +20,12 @@ PatientsList _$PatientsListFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PatientsList {
+  String get patientUUID => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PatientsListCopyWith<PatientsList> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -28,6 +33,8 @@ abstract class $PatientsListCopyWith<$Res> {
   factory $PatientsListCopyWith(
           PatientsList value, $Res Function(PatientsList) then) =
       _$PatientsListCopyWithImpl<$Res, PatientsList>;
+  @useResult
+  $Res call({String patientUUID});
 }
 
 /// @nodoc
@@ -39,13 +46,30 @@ class _$PatientsListCopyWithImpl<$Res, $Val extends PatientsList>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? patientUUID = null,
+  }) {
+    return _then(_value.copyWith(
+      patientUUID: null == patientUUID
+          ? _value.patientUUID
+          : patientUUID // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$_PatientsListCopyWith<$Res> {
+abstract class _$$_PatientsListCopyWith<$Res>
+    implements $PatientsListCopyWith<$Res> {
   factory _$$_PatientsListCopyWith(
           _$_PatientsList value, $Res Function(_$_PatientsList) then) =
       __$$_PatientsListCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String patientUUID});
 }
 
 /// @nodoc
@@ -55,30 +79,55 @@ class __$$_PatientsListCopyWithImpl<$Res>
   __$$_PatientsListCopyWithImpl(
       _$_PatientsList _value, $Res Function(_$_PatientsList) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? patientUUID = null,
+  }) {
+    return _then(_$_PatientsList(
+      patientUUID: null == patientUUID
+          ? _value.patientUUID
+          : patientUUID // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$_PatientsList extends _PatientsList {
-  const _$_PatientsList() : super._();
+  const _$_PatientsList({required this.patientUUID}) : super._();
 
   factory _$_PatientsList.fromJson(Map<String, dynamic> json) =>
       _$$_PatientsListFromJson(json);
 
   @override
+  final String patientUUID;
+
+  @override
   String toString() {
-    return 'PatientsList()';
+    return 'PatientsList(patientUUID: $patientUUID)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_PatientsList);
+        (other.runtimeType == runtimeType &&
+            other is _$_PatientsList &&
+            (identical(other.patientUUID, patientUUID) ||
+                other.patientUUID == patientUUID));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, patientUUID);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PatientsListCopyWith<_$_PatientsList> get copyWith =>
+      __$$_PatientsListCopyWithImpl<_$_PatientsList>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -89,9 +138,17 @@ class _$_PatientsList extends _PatientsList {
 }
 
 abstract class _PatientsList extends PatientsList {
-  const factory _PatientsList() = _$_PatientsList;
+  const factory _PatientsList({required final String patientUUID}) =
+      _$_PatientsList;
   const _PatientsList._() : super._();
 
   factory _PatientsList.fromJson(Map<String, dynamic> json) =
       _$_PatientsList.fromJson;
+
+  @override
+  String get patientUUID;
+  @override
+  @JsonKey(ignore: true)
+  _$$_PatientsListCopyWith<_$_PatientsList> get copyWith =>
+      throw _privateConstructorUsedError;
 }

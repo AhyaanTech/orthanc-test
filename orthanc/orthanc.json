@@ -9,7 +9,7 @@
         ]
     },
     "RemoteAccessAllowed": true,
-    "AuthenticationEnabled": true,
+    "AuthenticationEnabled": false,
     "RegisteredUsers": {
         "demo": "demo"
     },
