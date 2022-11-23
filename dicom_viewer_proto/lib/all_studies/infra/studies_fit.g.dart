@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'all_patients_fit.dart';
+part of 'studies_fit.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'all_patients_fit.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _RestClient implements RestClient {
-  _RestClient(
+class _StudiesClient implements StudiesClient {
+  _StudiesClient(
     this._dio, {
     this.baseUrl,
   }) {
@@ -21,25 +21,37 @@ class _RestClient implements RestClient {
   String? baseUrl;
 
   @override
-  Future<List<String>> getPatients() async {
+  Future<List<AllStudiesResponse>> getStudies(
+    expand,
+    limit,
+    since,
+  ) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'expand': expand,
+      r'limit': limit,
+      r'since': since,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result =
-        await _dio.fetch<List<dynamic>>(_setStreamType<List<String>>(Options(
+    final _result = await _dio
+        .fetch<List<dynamic>>(_setStreamType<List<AllStudiesResponse>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/patients',
+              '/studies',
               queryParameters: queryParameters,
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = _result.data!.cast<String>();
+    var value = _result.data!
+        .map((dynamic i) =>
+            AllStudiesResponse.fromJson(i as Map<String, dynamic>))
+        .toList();
     return value;
   }
 

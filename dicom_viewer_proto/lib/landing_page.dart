@@ -1,7 +1,8 @@
-import 'package:dicom_viewer_proto/all_patients/shared/all_patients_state_notifier_provider.dart';
-import 'package:dicom_viewer_proto/all_patients/view/patient_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'all_studies/shared/all_patients_state_notifier_provider.dart';
+import 'all_studies/view/series_list_item.dart';
 
 class LandingPage extends ConsumerStatefulWidget {
   @override
@@ -11,7 +12,7 @@ class LandingPage extends ConsumerStatefulWidget {
 class _LandingPageState extends ConsumerState<LandingPage> {
   @override
   void initState() {
-    ref.read(allPatientsStateNotifierProvider.notifier).getPatients();
+    ref.read(allStudiesStateNotifierProvider.notifier).getPatients();
     super.initState();
   }
 
@@ -28,14 +29,14 @@ class _LandingPageState extends ConsumerState<LandingPage> {
           child: FractionallySizedBox(
             heightFactor: 0.25,
             widthFactor: 0.75,
-            child: ref.watch(allPatientsStateNotifierProvider).when(
+            child: ref.watch(allStudiesStateNotifierProvider).when(
               data: (data) {
                 return ListView.builder(
                   shrinkWrap: true,
                   itemCount: data.length,
                   itemBuilder: (context, index) {
-                    return PatientListItem(
-                      patientItem: data[index],
+                    return SeriesListItem(
+                      seriesItem: data[index],
                     );
                   },
                 );
