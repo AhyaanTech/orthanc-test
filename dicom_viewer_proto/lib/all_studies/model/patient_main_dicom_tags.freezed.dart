@@ -144,10 +144,10 @@ class __$$_PatientMainDicomTagsCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_PatientMainDicomTags extends _PatientMainDicomTags {
   const _$_PatientMainDicomTags(
-      {@JsonKey(name: "PatientBirthDate") this.patientBirthDate,
-      @JsonKey(name: "PatientID") this.patientID,
-      @JsonKey(name: "PatientName") this.patientName,
-      @JsonKey(name: "PatientSex") this.patientSex})
+      {@JsonKey(name: "PatientBirthDate") this.patientBirthDate = "Not Found",
+      @JsonKey(name: "PatientID") this.patientID = "Patient Id not found",
+      @JsonKey(name: "PatientName") this.patientName = "John Smith",
+      @JsonKey(name: "PatientSex") this.patientSex = "Not Mentioned"})
       : super._();
 
   factory _$_PatientMainDicomTags.fromJson(Map<String, dynamic> json) =>

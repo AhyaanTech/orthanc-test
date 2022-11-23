@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/infra/studies_fit.dart';
-import '../model/all_studies_response.dart';
+import '../model/study.dart';
 
 class AllStudiesListStateNotifier
     extends StateNotifier<AsyncValue<List<Study>>> {

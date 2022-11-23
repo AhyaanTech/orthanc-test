@@ -9,10 +9,10 @@ part of 'patient_main_dicom_tags.dart';
 _$_PatientMainDicomTags _$$_PatientMainDicomTagsFromJson(
         Map<String, dynamic> json) =>
     _$_PatientMainDicomTags(
-      patientBirthDate: json['PatientBirthDate'] as String?,
-      patientID: json['PatientID'] as String?,
-      patientName: json['PatientName'] as String?,
-      patientSex: json['PatientSex'] as String?,
+      patientBirthDate: json['PatientBirthDate'] as String? ?? "Not Found",
+      patientID: json['PatientID'] as String? ?? "Patient Id not found",
+      patientName: json['PatientName'] as String? ?? "John Smith",
+      patientSex: json['PatientSex'] as String? ?? "Not Mentioned",
     );
 
 Map<String, dynamic> _$$_PatientMainDicomTagsToJson(

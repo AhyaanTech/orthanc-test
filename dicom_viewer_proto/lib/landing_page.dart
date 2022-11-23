@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'all_studies/shared/all_patients_state_notifier_provider.dart';
-import 'all_studies/view/series_list_item.dart';
+import 'all_studies/view/study_list_item.dart';
 
 class LandingPage extends ConsumerStatefulWidget {
   @override

@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:dicom_viewer_proto/core/app_widget.dart';
 import 'package:dicom_viewer_proto/core/routes/app_router.gr.dart';
 
-import '../model/all_studies_response.dart';
+import '../model/study.dart';
 
 class SeriesListItem extends ConsumerWidget {
   final Study seriesItem;

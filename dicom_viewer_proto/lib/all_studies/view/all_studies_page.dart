@@ -1,4 +1,4 @@
-import 'package:dicom_viewer_proto/all_studies/view/series_list_item.dart';
+import 'package:dicom_viewer_proto/all_studies/view/study_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'all_studies_response.dart';
+part of 'study.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

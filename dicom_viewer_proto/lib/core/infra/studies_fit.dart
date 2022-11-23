@@ -2,7 +2,7 @@ import 'package:fpdart/fpdart.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 
-import '../../all_studies/model/all_studies_response.dart';
+import '../../all_studies/model/study.dart';
 
 part 'studies_fit.g.dart';
 
