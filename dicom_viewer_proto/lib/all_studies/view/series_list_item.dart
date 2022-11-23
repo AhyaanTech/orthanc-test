@@ -7,7 +7,7 @@ import 'package:dicom_viewer_proto/core/routes/app_router.gr.dart';
 import '../model/all_studies_response.dart';
 
 class SeriesListItem extends ConsumerWidget {
-  final AllStudiesResponse seriesItem;
+  final Study seriesItem;
   const SeriesListItem({
     Key? key,
     required this.seriesItem,
@@ -21,7 +21,7 @@ class SeriesListItem extends ConsumerWidget {
         onTap: () => {
               ref
                   .read(appRouterProvider)
-                  .popAndPush(StudyDetailRoute(seriesList: seriesItem))
+                  .push(StudyDetailRoute(study: seriesItem))
             });
   }
 }

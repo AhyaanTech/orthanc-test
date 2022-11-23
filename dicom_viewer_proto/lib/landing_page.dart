@@ -1,3 +1,5 @@
+import 'package:dicom_viewer_proto/core/app_widget.dart';
+import 'package:dicom_viewer_proto/core/routes/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -11,10 +13,7 @@ class LandingPage extends ConsumerStatefulWidget {
 
 class _LandingPageState extends ConsumerState<LandingPage> {
   @override
-  void initState() {
-    ref.read(allStudiesStateNotifierProvider.notifier).getPatients();
-    super.initState();
-  }
+  void initState() {}
 
   @override
   void dispose() {
@@ -26,28 +25,11 @@ class _LandingPageState extends ConsumerState<LandingPage> {
     return SafeArea(
       child: Scaffold(
         body: Center(
-          child: FractionallySizedBox(
-            heightFactor: 0.25,
-            widthFactor: 0.75,
-            child: ref.watch(allStudiesStateNotifierProvider).when(
-              data: (data) {
-                return ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: data.length,
-                  itemBuilder: (context, index) {
-                    return SeriesListItem(
-                      seriesItem: data[index],
-                    );
-                  },
-                );
-              },
-              error: (error, trace) {
-                return const Text("Something went wrong");
-              },
-              loading: () {
-                return const CircularProgressIndicator();
-              },
-            ),
+          child: ElevatedButton(
+            onPressed: () {
+              ref.read(appRouterProvider).push(const AllStudiesRoute());
+            },
+            child: const Text("Initiate"),
           ),
         ),
       ),

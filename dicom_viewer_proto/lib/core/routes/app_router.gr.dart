@@ -11,53 +11,64 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i3;
-import 'package:flutter/material.dart' as _i4;
+import 'package:auto_route/auto_route.dart' as _i4;
+import 'package:flutter/material.dart' as _i5;
 
-import '../../all_studies/model/all_studies_response.dart' as _i5;
+import '../../all_studies/model/all_studies_response.dart' as _i6;
+import '../../all_studies/view/all_studies_page.dart' as _i3;
 import '../../landing_page.dart' as _i1;
 import '../../study_detail/view/study_detail_page.dart' as _i2;
 
-class AppRouter extends _i3.RootStackRouter {
-  AppRouter([_i4.GlobalKey<_i4.NavigatorState>? navigatorKey])
+class AppRouter extends _i4.RootStackRouter {
+  AppRouter([_i5.GlobalKey<_i5.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i3.PageFactory> pagesMap = {
+  final Map<String, _i4.PageFactory> pagesMap = {
     LandingRoute.name: (routeData) {
-      return _i3.MaterialPageX<dynamic>(
+      return _i4.MaterialPageX<dynamic>(
         routeData: routeData,
         child: _i1.LandingPage(),
       );
     },
     StudyDetailRoute.name: (routeData) {
       final args = routeData.argsAs<StudyDetailRouteArgs>();
-      return _i3.MaterialPageX<dynamic>(
+      return _i4.MaterialPageX<dynamic>(
         routeData: routeData,
         child: _i2.StudyDetailPage(
-          args.seriesList,
+          args.study,
           key: args.key,
         ),
+      );
+    },
+    AllStudiesRoute.name: (routeData) {
+      return _i4.MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const _i3.AllStudiesPage(),
       );
     },
   };
 
   @override
-  List<_i3.RouteConfig> get routes => [
-        _i3.RouteConfig(
+  List<_i4.RouteConfig> get routes => [
+        _i4.RouteConfig(
           LandingRoute.name,
           path: '/',
         ),
-        _i3.RouteConfig(
+        _i4.RouteConfig(
           StudyDetailRoute.name,
           path: '/study-detail-page',
+        ),
+        _i4.RouteConfig(
+          AllStudiesRoute.name,
+          path: '/all-studies-page',
         ),
       ];
 }
 
 /// generated route for
 /// [_i1.LandingPage]
-class LandingRoute extends _i3.PageRouteInfo<void> {
+class LandingRoute extends _i4.PageRouteInfo<void> {
   const LandingRoute()
       : super(
           LandingRoute.name,
@@ -69,15 +80,15 @@ class LandingRoute extends _i3.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.StudyDetailPage]
-class StudyDetailRoute extends _i3.PageRouteInfo<StudyDetailRouteArgs> {
+class StudyDetailRoute extends _i4.PageRouteInfo<StudyDetailRouteArgs> {
   StudyDetailRoute({
-    required _i5.AllStudiesResponse seriesList,
-    _i4.Key? key,
+    required _i6.Study study,
+    _i5.Key? key,
   }) : super(
           StudyDetailRoute.name,
           path: '/study-detail-page',
           args: StudyDetailRouteArgs(
-            seriesList: seriesList,
+            study: study,
             key: key,
           ),
         );
@@ -87,16 +98,28 @@ class StudyDetailRoute extends _i3.PageRouteInfo<StudyDetailRouteArgs> {
 
 class StudyDetailRouteArgs {
   const StudyDetailRouteArgs({
-    required this.seriesList,
+    required this.study,
     this.key,
   });
 
-  final _i5.AllStudiesResponse seriesList;
+  final _i6.Study study;
 
-  final _i4.Key? key;
+  final _i5.Key? key;
 
   @override
   String toString() {
-    return 'StudyDetailRouteArgs{seriesList: $seriesList, key: $key}';
+    return 'StudyDetailRouteArgs{study: $study, key: $key}';
   }
+}
+
+/// generated route for
+/// [_i3.AllStudiesPage]
+class AllStudiesRoute extends _i4.PageRouteInfo<void> {
+  const AllStudiesRoute()
+      : super(
+          AllStudiesRoute.name,
+          path: '/all-studies-page',
+        );
+
+  static const String name = 'AllStudiesRoute';
 }

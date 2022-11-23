@@ -7,9 +7,9 @@ part 'all_series_response.freezed.dart';
 part 'all_series_response.g.dart';
 
 @freezed
-class AllStudiesResponse with _$AllStudiesResponse {
-  const AllStudiesResponse._();
-  const factory AllStudiesResponse({
+class Study with _$Study {
+  const Study._();
+  const factory Study({
     @JsonKey(name: "ID") required String id,
     @JsonKey(name: "IsStable") required bool isStable,
     @JsonKey(name: "LastUpdate") required String lastUpdate,
@@ -21,6 +21,5 @@ class AllStudiesResponse with _$AllStudiesResponse {
         required PatientMainDicomTags patientMainDicomTags,
   }) = _AllSeriesResponse;
 
-  factory AllStudiesResponse.fromJson(Map<String, dynamic> json) =>
-      _$AllStudiesResponseFromJson(json);
+  factory Study.fromJson(Map<String, dynamic> json) => _$StudyFromJson(json);
 }

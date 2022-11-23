@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class StudyDetailPage extends ConsumerWidget {
-  final AllStudiesResponse seriesList;
-  const StudyDetailPage(this.seriesList, {Key? key}) : super(key: key);
+  final Study study;
+  const StudyDetailPage(this.study, {Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(),
-      body: Center(child: Text(seriesList.id)),
+      body: Center(child: Text(study.id)),
     ));
   }
 }

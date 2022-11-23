@@ -21,7 +21,7 @@ class _StudiesClient implements StudiesClient {
   String? baseUrl;
 
   @override
-  Future<List<AllStudiesResponse>> getStudies(
+  Future<List<Study>> getStudies(
     expand,
     limit,
     since,
@@ -35,8 +35,8 @@ class _StudiesClient implements StudiesClient {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio
-        .fetch<List<dynamic>>(_setStreamType<List<AllStudiesResponse>>(Options(
+    final _result =
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<Study>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -49,9 +49,34 @@ class _StudiesClient implements StudiesClient {
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
-        .map((dynamic i) =>
-            AllStudiesResponse.fromJson(i as Map<String, dynamic>))
+        .map((dynamic i) => Study.fromJson(i as Map<String, dynamic>))
         .toList();
+    return value;
+  }
+
+  @override
+  Future<Study> getStudyDetail(
+    id,
+    full,
+  ) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'full': full};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result =
+        await _dio.fetch<Map<String, dynamic>>(_setStreamType<Study>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/studies/${id}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = Study.fromJson(_result.data!);
     return value;
   }
 

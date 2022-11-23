@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-AllStudiesResponse _$AllStudiesResponseFromJson(Map<String, dynamic> json) {
+Study _$StudyFromJson(Map<String, dynamic> json) {
   return _AllSeriesResponse.fromJson(json);
 }
 
 /// @nodoc
-mixin _$AllStudiesResponse {
+mixin _$Study {
   @JsonKey(name: "ID")
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: "IsStable")
@@ -40,15 +40,14 @@ mixin _$AllStudiesResponse {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $AllStudiesResponseCopyWith<AllStudiesResponse> get copyWith =>
+  $AllStudiesResponseCopyWith<Study> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $AllStudiesResponseCopyWith<$Res> {
-  factory $AllStudiesResponseCopyWith(
-          AllStudiesResponse value, $Res Function(AllStudiesResponse) then) =
-      _$AllStudiesResponseCopyWithImpl<$Res, AllStudiesResponse>;
+  factory $AllStudiesResponseCopyWith(Study value, $Res Function(Study) then) =
+      _$AllStudiesResponseCopyWithImpl<$Res, Study>;
   @useResult
   $Res call(
       {@JsonKey(name: "ID")
@@ -73,7 +72,7 @@ abstract class $AllStudiesResponseCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AllStudiesResponseCopyWithImpl<$Res, $Val extends AllStudiesResponse>
+class _$AllStudiesResponseCopyWithImpl<$Res, $Val extends Study>
     implements $AllStudiesResponseCopyWith<$Res> {
   _$AllStudiesResponseCopyWithImpl(this._value, this._then);
 
@@ -346,7 +345,7 @@ class _$_AllSeriesResponse extends _AllSeriesResponse {
   }
 }
 
-abstract class _AllSeriesResponse extends AllStudiesResponse {
+abstract class _AllSeriesResponse extends Study {
   const factory _AllSeriesResponse(
           {@JsonKey(name: "ID")
               required final String id,
