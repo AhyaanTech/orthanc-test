@@ -14,10 +14,10 @@
 import 'package:auto_route/auto_route.dart' as _i4;
 import 'package:flutter/material.dart' as _i5;
 
-import '../../all_studies/model/study.dart' as _i6;
-import '../../all_studies/view/all_studies_page.dart' as _i3;
 import '../../landing_page.dart' as _i1;
-import '../../study_detail/view/study_detail_page.dart' as _i2;
+import '../../study/all_studies/model/study.dart' as _i6;
+import '../../study/all_studies/view/all_studies_page.dart' as _i3;
+import '../../study/study_detail/view/study_detail_page.dart' as _i2;
 
 class AppRouter extends _i4.RootStackRouter {
   AppRouter([_i5.GlobalKey<_i5.NavigatorState>? navigatorKey])
