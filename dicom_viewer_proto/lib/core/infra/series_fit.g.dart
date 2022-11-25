@@ -21,7 +21,7 @@ class _SeriesClient implements SeriesClient {
   String? baseUrl;
 
   @override
-  Future<List<Series>> getSeriesDetails(
+  Future<Series> getSeriesDetails(
     id,
     full,
   ) async {
@@ -30,7 +30,7 @@ class _SeriesClient implements SeriesClient {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result =
-        await _dio.fetch<List<dynamic>>(_setStreamType<List<Series>>(Options(
+        await _dio.fetch<Map<String, dynamic>>(_setStreamType<Series>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -42,9 +42,7 @@ class _SeriesClient implements SeriesClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    var value = _result.data!
-        .map((dynamic i) => Series.fromJson(i as Map<String, dynamic>))
-        .toList();
+    final value = Series.fromJson(_result.data!);
     return value;
   }
 

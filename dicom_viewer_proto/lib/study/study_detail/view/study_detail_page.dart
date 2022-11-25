@@ -1,3 +1,5 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:dicom_viewer_proto/core/routes/app_router.gr.dart';
 import 'package:dicom_viewer_proto/study/study_detail/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -63,21 +65,27 @@ class ShowStudyDetailCard extends StatelessWidget {
             child: Column(
               children: [
                 IntrinsicHeight(
-                  child: Row(
-                    children: [
-                      const Text("Study ID"),
-                      // ignore: sized_box_for_whitespace
-                      Container(
-                        height: 10,
-                        child: const VerticalDivider(
-                          thickness: 10,
-                          color: Colors.black,
-                          endIndent: 2,
-                          indent: 5,
+                  child: InkWell(
+                    onTap: () => {
+                      AutoRouter.of(context)
+                          .push(SeriesDetailRoute(seriesId: study.Series.first))
+                    },
+                    child: Row(
+                      children: [
+                        const Text("Study ID"),
+                        // ignore: sized_box_for_whitespace
+                        Container(
+                          height: 10,
+                          child: const VerticalDivider(
+                            thickness: 10,
+                            color: Colors.black,
+                            endIndent: 2,
+                            indent: 5,
+                          ),
                         ),
-                      ),
-                      Text(study.id),
-                    ],
+                        Text(study.id),
+                      ],
+                    ),
                   ),
                 ),
                 Text(study.patientMainDicomTags.patientID.toString())

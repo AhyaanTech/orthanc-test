@@ -1,4 +1,4 @@
-import 'package:dicom_viewer_proto/core/studies_fit_client.dart';
+import 'package:dicom_viewer_proto/core/clients.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../model/study.dart';
