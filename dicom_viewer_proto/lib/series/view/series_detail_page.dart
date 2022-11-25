@@ -2,10 +2,12 @@ import 'package:dicom_viewer_proto/series/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'instance_list_view.dart';
+
 class SeriesDetailPage extends ConsumerStatefulWidget {
   final String seriesId;
 
-  SeriesDetailPage(this.seriesId, {super.key});
+  const SeriesDetailPage(this.seriesId, {super.key});
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
       _SeriesDetailPageState();
@@ -25,22 +27,18 @@ class _SeriesDetailPageState extends ConsumerState<SeriesDetailPage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(),
-        body: Center(
-          child: ref.watch(seriesDetailPageStateNotifierProvider).when(
-                data: (data) {
-                  return ListView.builder(
-                    itemBuilder: (context, index) {
-                      return ListTile(
-                        leading: Text(data.instances![index]),
-                      );
-                    },
-                  );
-                },
-                error: (error, stackTrace) =>
-                    const Text("Something went wrong"),
-                loading: () => const CircularProgressIndicator(),
-              ),
+        drawer: Container(
+          height: double.maxFinite,
+          width: 500,
+          color: Colors.white,
+          child: ref
+              .watch(seriesDetailPageStateNotifierProvider)
+              .whenData((value) => InstanceListView(
+                    data: value,
+                  ))
+              .value,
         ),
+        body: const Center(child: Text("Image to be rendered here")),
       ),
     );
   }
