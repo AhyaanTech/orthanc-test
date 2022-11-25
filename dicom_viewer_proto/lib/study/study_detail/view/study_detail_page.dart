@@ -1,6 +1,5 @@
-import 'package:dicom_viewer_proto/all_studies/model/study.dart';
-import 'package:dicom_viewer_proto/study_detail/application/study_detail_state_notifiler.dart';
-import 'package:dicom_viewer_proto/study_detail/shared/providers.dart';
+import 'package:dicom_viewer_proto/study/all_studies/model/study.dart';
+import 'package:dicom_viewer_proto/study/study_detail/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

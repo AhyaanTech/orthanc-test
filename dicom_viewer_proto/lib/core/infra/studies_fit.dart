@@ -1,8 +1,6 @@
-import 'package:fpdart/fpdart.dart';
+import 'package:dicom_viewer_proto/study/all_studies/model/study.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
-
-import '../../all_studies/model/study.dart';
 
 part 'studies_fit.g.dart';
 

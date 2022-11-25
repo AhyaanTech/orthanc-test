@@ -1,4 +1,4 @@
-import 'package:dicom_viewer_proto/all_studies/model/patient_main_dicom_tags.dart';
+import 'package:dicom_viewer_proto/study/all_studies/model/patient_main_dicom_tags.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'main_dicom_tags.dart';

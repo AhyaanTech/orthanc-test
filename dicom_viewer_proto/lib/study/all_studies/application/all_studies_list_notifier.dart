@@ -1,6 +1,6 @@
+import 'package:dicom_viewer_proto/core/infra/studies_fit.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../core/infra/studies_fit.dart';
 import '../model/study.dart';
 
 class AllStudiesListStateNotifier
