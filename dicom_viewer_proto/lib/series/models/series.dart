@@ -1,5 +1,6 @@
-import 'package:dicom_viewer_proto/study/all_studies/model/main_dicom_tags.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../../study/model/main_dicom_tags.dart';
 
 part 'series.freezed.dart';
 part 'series.g.dart';

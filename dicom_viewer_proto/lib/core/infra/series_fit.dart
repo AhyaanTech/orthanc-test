@@ -1,4 +1,4 @@
-import 'package:dicom_viewer_proto/study/all_studies/model/study.dart';
+import 'package:dicom_viewer_proto/series/models/series.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 
@@ -9,7 +9,7 @@ abstract class SeriesClient {
   factory SeriesClient(Dio dio, {String baseUrl}) = _SeriesClient;
 
   @GET("/series/{id}")
-  Future<List<Study>> getSeriesDetails(
+  Future<List<Series>> getSeriesDetails(
     @Path("id") String id,
     @Query("full") bool full,
   );

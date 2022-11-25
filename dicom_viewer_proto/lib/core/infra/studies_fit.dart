@@ -1,4 +1,4 @@
-import 'package:dicom_viewer_proto/study/all_studies/model/study.dart';
+import 'package:dicom_viewer_proto/study/model/study.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 

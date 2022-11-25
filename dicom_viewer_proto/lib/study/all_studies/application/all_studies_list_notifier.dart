@@ -1,7 +1,7 @@
 import 'package:dicom_viewer_proto/core/infra/studies_fit.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../model/study.dart';
+import '../../model/study.dart';
 
 class AllStudiesListStateNotifier
     extends StateNotifier<AsyncValue<List<Study>>> {
