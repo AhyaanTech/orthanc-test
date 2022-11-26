@@ -22,10 +22,9 @@ class InstanceViewStateNotifier extends StateNotifier<AsyncValue<Uint8List>> {
 
   Future<void> getImageAsync({required String instanceId}) async {
     state = const AsyncLoading();
-    imageData = await instanceClient.getInstanceImageRenderedAsJpeg(
-        id: instanceId, quality: 90);
     try {
-      _logger.i(imageData);
+      imageData = await instanceClient.getInstanceImageRenderedAsJpeg(
+          id: instanceId, quality: 90);
       var convertedData = await convertParallel(data: imageData);
       state = AsyncData(convertedData);
     } catch (e) {

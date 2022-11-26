@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'dart:async';
 
 import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
@@ -23,6 +23,8 @@ abstract class InstanceClient {
     @Query("window-center") int? windowCenter,
     @Query("window-width") int? windowWidth,
   });
+
+  // FutureOr<dynamic> serializeTaskList(List<int> objects);
 
   @GET("/instances/{id}/frames")
   Future<List<int>> getInstanceFramesCount(
