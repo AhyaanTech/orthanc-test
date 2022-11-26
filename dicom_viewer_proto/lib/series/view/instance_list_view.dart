@@ -1,3 +1,4 @@
+import 'package:dicom_viewer_proto/instance/instance_state_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
@@ -22,6 +23,9 @@ class InstanceListView extends ConsumerWidget {
           leading: SelectableText(data.instances![index]),
           onTap: () {
             _logger.d(data.id);
+            ref
+                .read(instanceViewStateNotifierProvider.notifier)
+                .getImageAsync(instanceId: data.instances![index]);
           },
         );
       },

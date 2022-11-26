@@ -33,41 +33,12 @@ class _InstanceClient implements InstanceClient {
     )
         .compose(
           _dio.options,
-          '/instance/${id}',
+          '/instances/${id}',
           queryParameters: queryParameters,
           data: _data,
         )
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = _result.data!;
-    return value;
-  }
-
-  @override
-  Future<List<int>> getInstanceImageAsJpeg(
-    id,
-    quality,
-  ) async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'quality': quality};
-    final _headers = <String, dynamic>{r'Content-Type': 'image/jpeg'};
-    _headers.removeWhere((k, v) => v == null);
-    final _data = <String, dynamic>{};
-    final _result =
-        await _dio.fetch<List<dynamic>>(_setStreamType<List<int>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-      contentType: 'image/jpeg',
-      responseType: ResponseType.bytes,
-    )
-            .compose(
-              _dio.options,
-              '/instance/${id}',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = _result.data!.cast<int>();
     return value;
   }
 
@@ -89,7 +60,7 @@ class _InstanceClient implements InstanceClient {
       r'window-width': windowWidth,
     };
     queryParameters.removeWhere((k, v) => v == null);
-    final _headers = <String, dynamic>{r'Content-Type': 'image/jpeg'};
+    final _headers = <String, dynamic>{r'Accept': 'image/jpeg'};
     _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     final _result =
@@ -97,12 +68,11 @@ class _InstanceClient implements InstanceClient {
       method: 'GET',
       headers: _headers,
       extra: _extra,
-      contentType: 'image/jpeg',
       responseType: ResponseType.bytes,
     )
             .compose(
               _dio.options,
-              '/instance/${id}/rendered',
+              '/instances/${id}/rendered',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -125,7 +95,7 @@ class _InstanceClient implements InstanceClient {
     )
             .compose(
               _dio.options,
-              '/instance/${id}/frames',
+              '/instances/${id}/frames',
               queryParameters: queryParameters,
               data: _data,
             )

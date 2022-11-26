@@ -1,0 +1,2 @@
+GET http://localhost:8042/instances/12849c1b-ba8e56f2-f0f8aa83-d4fa929e-e56dc8a4/rendered
+Accept: image/jpeg

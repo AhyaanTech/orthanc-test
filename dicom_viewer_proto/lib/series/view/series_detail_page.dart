@@ -1,3 +1,4 @@
+import 'package:dicom_viewer_proto/instance/instance_view.dart';
 import 'package:dicom_viewer_proto/series/shared/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -38,7 +39,7 @@ class _SeriesDetailPageState extends ConsumerState<SeriesDetailPage> {
                   ))
               .value,
         ),
-        body: const Center(child: Text("Image to be rendered here")),
+        body: const InstanceView(),
       ),
     );
   }
