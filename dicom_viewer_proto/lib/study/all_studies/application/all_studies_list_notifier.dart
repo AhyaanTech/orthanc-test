@@ -9,7 +9,7 @@ class AllStudiesListStateNotifier
   AllStudiesListStateNotifier(this.client) : super(const AsyncLoading());
 
   Future<void> getAllStudies() async {
-    var list = await client.getStudies("expand", 10, 0);
+    var list = await client.getStudies(expand: "expand", limit: 10, since: 0);
 
     state = AsyncData(list);
   }

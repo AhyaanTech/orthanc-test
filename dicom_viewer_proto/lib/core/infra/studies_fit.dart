@@ -9,15 +9,15 @@ abstract class StudiesClient {
   factory StudiesClient(Dio dio, {String baseUrl}) = _StudiesClient;
 
   @GET("/studies")
-  Future<List<Study>> getStudies(
+  Future<List<Study>> getStudies({
     @Query("expand") String? expand,
     @Query("limit") int? limit,
     @Query("since") int? since,
-  );
+  });
 
   @GET("/studies/{id}")
-  Future<Study> getStudyDetail(
-    @Path("id") String id,
-    @Query("full") bool full,
-  );
+  Future<Study> getStudyDetail({
+    @Path("id") required String id,
+    @Query("full") required bool full,
+  });
 }

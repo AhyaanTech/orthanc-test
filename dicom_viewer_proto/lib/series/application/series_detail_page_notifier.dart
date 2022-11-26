@@ -9,7 +9,7 @@ class SeriesDetailPageNotifier extends StateNotifier<AsyncValue<Series>> {
   SeriesDetailPageNotifier(this.seriesClient) : super(const AsyncLoading());
 
   Future<void> getSeriesDetails(String seriesId) async {
-    var data = await seriesClient.getSeriesDetails(seriesId, false);
+    var data = await seriesClient.getSeriesDetails(id: seriesId, full: false);
     logger.d(data.toJson());
     state = AsyncData(data);
   }

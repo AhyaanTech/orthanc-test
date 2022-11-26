@@ -21,10 +21,10 @@ class _SeriesClient implements SeriesClient {
   String? baseUrl;
 
   @override
-  Future<Series> getSeriesDetails(
-    id,
-    full,
-  ) async {
+  Future<Series> getSeriesDetails({
+    required id,
+    required full,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'full': full};
     final _headers = <String, dynamic>{};

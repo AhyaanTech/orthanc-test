@@ -21,19 +21,44 @@ class _InstanceClient implements InstanceClient {
   String? baseUrl;
 
   @override
-  Future<Series> getInstanceDetails(
-    id,
-    full,
-  ) async {
+  Future<String> getInstanceDetails(id) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'full': full};
+    final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result =
-        await _dio.fetch<Map<String, dynamic>>(_setStreamType<Series>(Options(
+    final _result = await _dio.fetch<String>(_setStreamType<String>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/instance/${id}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = _result.data!;
+    return value;
+  }
+
+  @override
+  Future<List<int>> getInstanceImageAsJpeg(
+    id,
+    quality,
+  ) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'quality': quality};
+    final _headers = <String, dynamic>{r'Content-Type': 'image/jpeg'};
+    _headers.removeWhere((k, v) => v == null);
+    final _data = <String, dynamic>{};
+    final _result =
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<int>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+      contentType: 'image/jpeg',
+      responseType: ResponseType.bytes,
     )
             .compose(
               _dio.options,
@@ -42,7 +67,70 @@ class _InstanceClient implements InstanceClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = Series.fromJson(_result.data!);
+    final value = _result.data!.cast<int>();
+    return value;
+  }
+
+  @override
+  Future<List<int>> getInstanceImageRenderedAsJpeg({
+    required id,
+    required quality,
+    smooth,
+    width,
+    windowCenter,
+    windowWidth,
+  }) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'quality': quality,
+      r'smooth': smooth,
+      r'width': width,
+      r'window-center': windowCenter,
+      r'window-width': windowWidth,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{r'Content-Type': 'image/jpeg'};
+    _headers.removeWhere((k, v) => v == null);
+    final _data = <String, dynamic>{};
+    final _result =
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<int>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+      contentType: 'image/jpeg',
+      responseType: ResponseType.bytes,
+    )
+            .compose(
+              _dio.options,
+              '/instance/${id}/rendered',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = _result.data!.cast<int>();
+    return value;
+  }
+
+  @override
+  Future<List<int>> getInstanceFramesCount(id) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result =
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<int>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/instance/${id}/frames',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = _result.data!.cast<int>();
     return value;
   }
 

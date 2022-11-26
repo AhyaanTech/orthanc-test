@@ -9,8 +9,8 @@ abstract class SeriesClient {
   factory SeriesClient(Dio dio, {String baseUrl}) = _SeriesClient;
 
   @GET("/series/{id}")
-  Future<Series> getSeriesDetails(
-    @Path("id") String id,
-    @Query("full") bool full,
-  );
+  Future<Series> getSeriesDetails({
+    @Path("id") required String id,
+    @Query("full") required bool full,
+  });
 }

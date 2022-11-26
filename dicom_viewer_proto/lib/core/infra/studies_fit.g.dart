@@ -21,11 +21,11 @@ class _StudiesClient implements StudiesClient {
   String? baseUrl;
 
   @override
-  Future<List<Study>> getStudies(
+  Future<List<Study>> getStudies({
     expand,
     limit,
     since,
-  ) async {
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'expand': expand,
@@ -55,10 +55,10 @@ class _StudiesClient implements StudiesClient {
   }
 
   @override
-  Future<Study> getStudyDetail(
-    id,
-    full,
-  ) async {
+  Future<Study> getStudyDetail({
+    required id,
+    required full,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'full': full};
     final _headers = <String, dynamic>{};
