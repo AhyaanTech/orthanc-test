@@ -32,7 +32,7 @@ class _SeriesDetailPageState extends ConsumerState<SeriesDetailPage> {
           children: [
             SizedBox(
               height: double.maxFinite,
-              width: 500,
+              width: 375,
               child: ref
                   .watch(seriesDetailPageStateNotifierProvider)
                   .whenData((value) => InstanceListView(
