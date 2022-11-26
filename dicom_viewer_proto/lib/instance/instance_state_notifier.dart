@@ -5,13 +5,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 
 final instanceViewStateNotifierProvider =
-    StateNotifierProvider<InstanceViewStateNotifier, AsyncValue<List<int>>>(
+    StateNotifierProvider<InstanceViewStateNotifier, AsyncValue<Uint8List>>(
         (ref) {
   return InstanceViewStateNotifier(
       instanceClient: ref.watch(instanceFitClientProvider));
 });
 
-class InstanceViewStateNotifier extends StateNotifier<AsyncValue<List<int>>> {
+class InstanceViewStateNotifier extends StateNotifier<AsyncValue<Uint8List>> {
   final InstanceClient instanceClient;
   final Logger _logger = Logger();
   late List<int> imageData;
@@ -26,8 +26,8 @@ class InstanceViewStateNotifier extends StateNotifier<AsyncValue<List<int>>> {
         id: instanceId, quality: 90);
     try {
       _logger.i(imageData);
-
-      state = AsyncData(imageData);
+      var convertedData = await convertParallel(data: imageData);
+      state = AsyncData(convertedData);
     } catch (e) {
       _logger.e(e);
       state = AsyncError(e, StackTrace.current);

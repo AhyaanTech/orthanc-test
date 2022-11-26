@@ -13,7 +13,7 @@ class _StudiesClient implements StudiesClient {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'http://localhost:8042';
+    baseUrl ??= 'http://10.0.2.2:8042';
   }
 
   final Dio _dio;

@@ -11,7 +11,7 @@ class InstanceView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
         child: ref.watch(instanceViewStateNotifierProvider).when(
-            data: (data) => Image.memory(Uint8List.fromList(data)),
+            data: (data) => Image.memory(data),
             error: (error, stackTrace) => const Text("Something went wrong"),
             loading: () => const CircularProgressIndicator()));
   }
