@@ -4,12 +4,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 
 final instanceViewStateNotifierProvider =
-    StateNotifierProvider<InstanceViewStateNotifier, AsyncValue>((ref) {
+    StateNotifierProvider<InstanceViewStateNotifier, AsyncValue<List<int>>>(
+        (ref) {
   return InstanceViewStateNotifier(
       instanceClient: ref.watch(instanceFitClientProvider));
 });
 
-class InstanceViewStateNotifier extends StateNotifier<AsyncValue> {
+class InstanceViewStateNotifier extends StateNotifier<AsyncValue<List<int>>> {
   final InstanceClient instanceClient;
   final Logger _logger = Logger();
 

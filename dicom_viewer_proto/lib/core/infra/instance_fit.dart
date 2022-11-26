@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
 
@@ -10,7 +12,7 @@ abstract class InstanceClient {
   @GET("/instances/{id}")
   Future<String> getInstanceDetails(@Path("id") String id);
 
-  @GET("/instances/{id}/rendered")
+  @GET("/instances/{id}/image-unit16")
   @Headers(<String, String>{"Accept": "image/jpeg"})
   @DioResponseType(ResponseType.bytes)
   Future<List<int>> getInstanceImageRenderedAsJpeg({

@@ -72,7 +72,7 @@ class _InstanceClient implements InstanceClient {
     )
             .compose(
               _dio.options,
-              '/instances/${id}/rendered',
+              '/instances/${id}/image-unit16',
               queryParameters: queryParameters,
               data: _data,
             )

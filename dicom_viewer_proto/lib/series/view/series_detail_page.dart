@@ -28,18 +28,27 @@ class _SeriesDetailPageState extends ConsumerState<SeriesDetailPage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(),
-        drawer: Container(
-          height: double.maxFinite,
-          width: 500,
-          color: Colors.white,
-          child: ref
-              .watch(seriesDetailPageStateNotifierProvider)
-              .whenData((value) => InstanceListView(
-                    data: value,
-                  ))
-              .value,
+        body: Row(
+          children: [
+            Expanded(
+              flex: 1,
+              child: SizedBox(
+                height: double.maxFinite,
+                width: 500,
+                child: ref
+                    .watch(seriesDetailPageStateNotifierProvider)
+                    .whenData((value) => InstanceListView(
+                          data: value,
+                        ))
+                    .value,
+              ),
+            ),
+            Expanded(
+              flex: 3,
+              child: InstanceView(),
+            )
+          ],
         ),
-        body: const InstanceView(),
       ),
     );
   }
