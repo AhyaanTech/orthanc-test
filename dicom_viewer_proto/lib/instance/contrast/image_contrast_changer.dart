@@ -12,13 +12,9 @@ class ImageContrastChanger extends ConsumerWidget {
       height: 500,
       child: FlutterSlider(
         axis: Axis.vertical,
-        values: () {
-          var negative = List<double>.generate(
-              100, (index) => index.toDouble() + 1.toDouble());
-          return negative;
-        }(),
-        min: 0,
-        max: 100,
+        values: const [100],
+        min: 50,
+        max: 150,
         trackBar: FlutterSliderTrackBar(
           centralWidget: Container(
             decoration: BoxDecoration(
@@ -37,6 +33,7 @@ class ImageContrastChanger extends ConsumerWidget {
         ),
         onDragging: (handlerIndex, lowerValue, upperValue) {
           ref.read(contrastProvider.notifier).state = lowerValue;
+          ref.read(instanceViewStateNotifierProvider.notifier).changeContrast();
         },
       ),
     );
