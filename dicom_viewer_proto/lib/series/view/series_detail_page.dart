@@ -30,23 +30,20 @@ class _SeriesDetailPageState extends ConsumerState<SeriesDetailPage> {
         appBar: AppBar(),
         body: Row(
           children: [
-            Expanded(
-              flex: 1,
-              child: SizedBox(
-                height: double.maxFinite,
-                width: 500,
-                child: ref
-                    .watch(seriesDetailPageStateNotifierProvider)
-                    .whenData((value) => InstanceListView(
-                          data: value,
-                        ))
-                    .value,
-              ),
+            SizedBox(
+              height: double.maxFinite,
+              width: 500,
+              child: ref
+                  .watch(seriesDetailPageStateNotifierProvider)
+                  .whenData((value) => InstanceListView(
+                        data: value,
+                      ))
+                  .value,
             ),
-            Expanded(
-              flex: 3,
-              child: InstanceView(),
-            )
+            const SizedBox(
+              width: 14,
+            ),
+            const InstanceView()
           ],
         ),
       ),

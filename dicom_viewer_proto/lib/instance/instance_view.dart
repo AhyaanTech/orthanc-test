@@ -1,5 +1,6 @@
+import 'dart:typed_data';
+
 import 'package:dicom_viewer_proto/instance/instance_state_notifier.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

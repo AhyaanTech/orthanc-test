@@ -19,8 +19,19 @@ class InstanceListView extends ConsumerWidget {
       itemCount: data.instances!.length,
       shrinkWrap: true,
       itemBuilder: (context, index) {
-        return ListTile(
-          leading: SelectableText(data.instances![index]),
+        return GestureDetector(
+          child: SizedBox(
+            width: 200,
+            child: Card(
+              child: Row(
+                children: [
+                  Text(index.toString()),
+                  const Text(" : "),
+                  Text(data.instances![index])
+                ],
+              ),
+            ),
+          ),
           onTap: () {
             _logger.d(data.id);
             ref

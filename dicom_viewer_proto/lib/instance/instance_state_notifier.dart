@@ -1,5 +1,6 @@
 import 'package:dicom_viewer_proto/core/clients.dart';
 import 'package:dicom_viewer_proto/core/infra/instance_fit.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 
@@ -13,23 +14,31 @@ final instanceViewStateNotifierProvider =
 class InstanceViewStateNotifier extends StateNotifier<AsyncValue<List<int>>> {
   final InstanceClient instanceClient;
   final Logger _logger = Logger();
+  late List<int> imageData;
 
   InstanceViewStateNotifier({
     required this.instanceClient,
   }) : super(const AsyncLoading());
 
   Future<void> getImageAsync({required String instanceId}) async {
-    // var data = await instanceClient.getInstanceImageRenderedAsJpeg(
-    //     id: instanceId, quality: 90);
-    // _logger.i(data);
+    state = const AsyncLoading();
+    imageData = await instanceClient.getInstanceImageRenderedAsJpeg(
+        id: instanceId, quality: 90);
     try {
-      var data = await instanceClient.getInstanceImageRenderedAsJpeg(
-          id: instanceId, quality: 90);
-      _logger.i(data);
-      state = AsyncData(data);
+      _logger.i(imageData);
+
+      state = AsyncData(imageData);
     } catch (e) {
       _logger.e(e);
       state = AsyncError(e, StackTrace.current);
     }
+  }
+
+  Future<Uint8List> convertParallel({required List<int> data}) async {
+    return await compute(Uint8List.fromList, data);
+  }
+
+  Uint8List convert({required List<int> data}) {
+    return Uint8List.fromList(data);
   }
 }

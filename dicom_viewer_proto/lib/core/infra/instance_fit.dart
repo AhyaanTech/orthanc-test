@@ -12,7 +12,7 @@ abstract class InstanceClient {
   @GET("/instances/{id}")
   Future<String> getInstanceDetails(@Path("id") String id);
 
-  @GET("/instances/{id}/image-unit16")
+  @GET("/instances/{id}/rendered")
   @Headers(<String, String>{"Accept": "image/jpeg"})
   @DioResponseType(ResponseType.bytes)
   Future<List<int>> getInstanceImageRenderedAsJpeg({
