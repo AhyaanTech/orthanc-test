@@ -1,4 +1,5 @@
 import 'package:another_xlider/another_xlider.dart';
+import 'package:dicom_viewer_proto/instance/instance_state_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -34,7 +35,14 @@ class ImageContrastChanger extends ConsumerWidget {
               borderRadius: BorderRadius.circular(4),
               color: Colors.blue.withOpacity(0.5)),
         ),
+        onDragging: (handlerIndex, lowerValue, upperValue) {
+          ref.read(contrastProvider.notifier).state = lowerValue;
+        },
       ),
     );
   }
 }
+
+final contrastProvider = StateProvider<double>((ref) {
+  return 100.0;
+});
