@@ -5,7 +5,8 @@ import 'package:retrofit/retrofit.dart';
 
 part 'instance_fit.g.dart';
 
-@RestApi(baseUrl: "http://10.0.2.2:8042")
+// @RestApi(baseUrl: "http://10.0.2.2:8042")
+@RestApi(baseUrl: "http://localhost:8042")
 abstract class InstanceClient {
   factory InstanceClient(Dio dio, {String baseUrl}) = _InstanceClient;
 

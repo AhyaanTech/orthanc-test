@@ -15,7 +15,7 @@ class InstanceView extends ConsumerStatefulWidget {
 class _InstanceViewState extends ConsumerState<InstanceView> {
   @override
   void initState() {
-    Future.microtask(() => ref
+    Future.microtask(() async => await ref
         .read(instanceViewStateNotifierProvider.notifier)
         .getImageAsync(instanceId: widget.instanceId));
     super.initState();

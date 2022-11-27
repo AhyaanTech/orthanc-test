@@ -4,7 +4,8 @@ import 'package:dio/dio.dart';
 
 part 'studies_fit.g.dart';
 
-@RestApi(baseUrl: "http://10.0.2.2:8042")
+// @RestApi(baseUrl: "http://10.0.2.2:8042")
+@RestApi(baseUrl: "http://localhost:8042")
 abstract class StudiesClient {
   factory StudiesClient(Dio dio, {String baseUrl}) = _StudiesClient;
 

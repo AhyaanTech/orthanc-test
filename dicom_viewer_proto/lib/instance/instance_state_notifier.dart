@@ -46,7 +46,7 @@ class InstanceViewStateNotifier extends StateNotifier<AsyncValue<Uint8List>> {
   }
 
   void changeContrast() {
-    _logger.i(imageData);
+    _logger.i(imageData.length);
     // try {
     //   imglib.Image? image = imglib.decodeImage(imageData!);
     //   imglib.adjustColor(image!, contrast: contrastData);
@@ -59,9 +59,5 @@ class InstanceViewStateNotifier extends StateNotifier<AsyncValue<Uint8List>> {
 
   Future<Uint8List> convertParallel({required List<int> data}) async {
     return await compute(Uint8List.fromList, data);
-  }
-
-  Uint8List convert({required List<int> data}) {
-    return Uint8List.fromList(data);
   }
 }

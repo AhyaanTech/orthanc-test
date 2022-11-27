@@ -8,6 +8,21 @@ class ImageContrastChanger extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return SizedBox(
+        child: ref
+            .watch(instanceViewStateNotifierProvider)
+            .whenData((value) => ContrastChangerWidget())
+            .value);
+  }
+}
+
+class ContrastChangerWidget extends ConsumerWidget {
+  const ContrastChangerWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return SizedBox(
       width: 300,
       height: 500,
       child: FlutterSlider(
@@ -33,7 +48,6 @@ class ImageContrastChanger extends ConsumerWidget {
         ),
         onDragging: (handlerIndex, lowerValue, upperValue) {
           ref.read(contrastProvider.notifier).state = lowerValue;
-          ref.read(instanceViewStateNotifierProvider.notifier).changeContrast();
         },
       ),
     );
