@@ -48,8 +48,7 @@ class _SeriesDetailPageState extends ConsumerState<SeriesDetailPage> {
             ),
             InstanceView(ref
                 .watch(seriesDetailPageStateNotifierProvider)
-                .whenData((value) => value.instances!.first)
-                .value
+                .whenData((value) => value.instances![2])
                 .toString()),
             const SizedBox(width: 5),
             const ImageContrastChanger(),

@@ -10,54 +10,52 @@ final instanceViewStateNotifierProvider =
     StateNotifierProvider<InstanceViewStateNotifier, AsyncValue<Uint8List>>(
         (ref) {
   return InstanceViewStateNotifier(
-    ref.watch(imageDataProviderProvider),
+    ref,
     instanceClient: ref.watch(instanceFitClientProvider),
-    contrastData: ref.watch(contrastProvider),
   );
-});
-
-final imageDataProviderProvider = Provider<List<int>>((ref) {
-  return <int>[];
 });
 
 class InstanceViewStateNotifier extends StateNotifier<AsyncValue<Uint8List>> {
   final InstanceClient instanceClient;
   final Logger _logger = Logger();
-  List<int> imageData;
-  final double contrastData;
+  late Uint8List imageData;
+  late List<int> rawImageData;
+
+  final Ref ref;
 
   InstanceViewStateNotifier(
-    this.imageData, {
-    required this.contrastData,
+    this.ref, {
     required this.instanceClient,
   }) : super(const AsyncLoading());
 
   Future<void> getImageAsync({required String instanceId}) async {
     state = const AsyncLoading();
     try {
-      imageData = await instanceClient.getInstanceImageRenderedAsJpeg(
+      rawImageData = await instanceClient.getInstanceImageRenderedAsJpeg(
           id: instanceId, quality: 90);
-      var convertedData = await convertParallel(data: imageData!);
-      state = AsyncData(convertedData);
+      imageData = await convertParallel(data: rawImageData);
+      state = AsyncData(imageData);
     } catch (e) {
       _logger.e(e);
       state = AsyncError(e, StackTrace.current);
     }
   }
 
-  void changeContrast() {
-    _logger.i(imageData.length);
-    // try {
-    //   imglib.Image? image = imglib.decodeImage(imageData!);
-    //   imglib.adjustColor(image!, contrast: contrastData);
-    //   Uint8List data = image.getBytes();
-    //   state = AsyncData(data);
-    // } on Exception catch (e) {
-    //   _logger.e("error");
-    // }
+  void changeContrast() async {
+    try {
+      _logger.i("decoding image");
+      imglib.Image? image = imglib.decodeImage(rawImageData);
+
+      imglib.adjustColor(image!, contrast: ref.read(contrastProvider));
+      var processedRawImageData = imglib.encodeJpg(image);
+      imageData = await convertParallel(data: processedRawImageData);
+      state = AsyncData(imageData);
+    } on Exception catch (e) {
+      _logger.e("error");
+    }
   }
 
-  Future<Uint8List> convertParallel({required List<int> data}) async {
-    return await compute(Uint8List.fromList, data);
+  Future<Uint8List> convertParallel({required List<int> data}) {
+    return compute(Uint8List.fromList, data);
   }
 }

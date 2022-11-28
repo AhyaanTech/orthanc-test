@@ -10,7 +10,31 @@ class ImageContrastChanger extends ConsumerWidget {
     return SizedBox(
         child: ref
             .watch(instanceViewStateNotifierProvider)
-            .whenData((value) => ContrastChangerWidget())
+            .whenData((value) => Column(
+                  children: [
+                    ElevatedButton(
+                        onPressed: () {
+                          ref
+                              .read(contrastProvider.notifier)
+                              .update((state) => state + 0.1);
+                          ref
+                              .read(instanceViewStateNotifierProvider.notifier)
+                              .changeContrast();
+                        },
+                        child: Text("+")),
+                    Divider(),
+                    ElevatedButton(
+                        onPressed: () {
+                          ref
+                              .read(contrastProvider.notifier)
+                              .update((state) => state - 0.1);
+                          ref
+                              .read(instanceViewStateNotifierProvider.notifier)
+                              .changeContrast();
+                        },
+                        child: Text("-"))
+                  ],
+                ))
             .value);
   }
 }
@@ -48,6 +72,7 @@ class ContrastChangerWidget extends ConsumerWidget {
         ),
         onDragging: (handlerIndex, lowerValue, upperValue) {
           ref.read(contrastProvider.notifier).state = lowerValue;
+          ref.read(instanceViewStateNotifierProvider.notifier).changeContrast();
         },
       ),
     );
@@ -55,5 +80,5 @@ class ContrastChangerWidget extends ConsumerWidget {
 }
 
 final contrastProvider = StateProvider<double>((ref) {
-  return 100.0;
+  return 1.0;
 });
