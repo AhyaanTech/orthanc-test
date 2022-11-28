@@ -13,7 +13,7 @@ class _SeriesClient implements SeriesClient {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'http://10.0.2.2:8042';
+    baseUrl ??= 'http://localhost:8042';
   }
 
   final Dio _dio;

@@ -1,3 +1,6 @@
+import 'package:another_xlider/another_xlider.dart';
+import 'package:dicom_viewer_proto/instance/contrast/image_contrast_changer.dart';
+import 'package:dicom_viewer_proto/instance/instance_state_notifier.dart';
 import 'package:dicom_viewer_proto/instance/instance_view.dart';
 import 'package:dicom_viewer_proto/series/shared/providers.dart';
 import 'package:flutter/material.dart';
@@ -41,9 +44,15 @@ class _SeriesDetailPageState extends ConsumerState<SeriesDetailPage> {
                   .value,
             ),
             const SizedBox(
-              width: 14,
+              width: 5,
             ),
-            const InstanceView()
+            InstanceView(ref
+                .watch(seriesDetailPageStateNotifierProvider)
+                .whenData((value) => value.instances![2])
+                .toString()),
+            const SizedBox(width: 5),
+            const ImageContrastChanger(),
+            Text(ref.watch(contrastProvider).toString())
           ],
         ),
       ),

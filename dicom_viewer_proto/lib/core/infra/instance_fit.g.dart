@@ -13,7 +13,7 @@ class _InstanceClient implements InstanceClient {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'http://10.0.2.2:8042';
+    baseUrl ??= 'http://localhost:8042';
   }
 
   final Dio _dio;
