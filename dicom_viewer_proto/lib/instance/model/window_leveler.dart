@@ -1,4 +1,3 @@
-import 'package:flutter/services.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:image/image.dart';
@@ -46,11 +45,11 @@ class InstanceWindowData with _$InstanceWindowData {
     }
   }
 
-  double wMin() {
+  double get wMin {
     return (windowCenter - 0.5 - (windowWidth - 1) / 2);
   }
 
-  double wMax() {
+  double get wMax {
     var wMax = windowCenter - 0.5 + (windowWidth - 1) / 2;
     return wMax;
   }
@@ -60,9 +59,9 @@ class InstanceWindowData with _$InstanceWindowData {
   }
 
   int calculateColor(int c, double winCenter, double winWidth) {
-    if (c <= wMin()) {
+    if (c <= wMin) {
       return 0;
-    } else if (c > wMax()) {
+    } else if (c > wMax) {
       return 255;
     } else {
       return (((c - (winCenter - 0.5)) / (winWidth - 1) + 0.5) * 255).toInt();

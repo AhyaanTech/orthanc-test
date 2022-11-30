@@ -33,7 +33,7 @@ class InstanceListView extends ConsumerWidget {
             ),
           ),
           onTap: () {
-            _logger.d(data.id);
+            _logger.d(data.instances![index]);
             ref
                 .read(instanceViewStateNotifierProvider.notifier)
                 .getImageAsync(instanceId: data.instances![index]);

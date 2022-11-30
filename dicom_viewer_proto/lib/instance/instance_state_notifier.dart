@@ -34,12 +34,12 @@ class InstanceViewStateNotifier extends StateNotifier<AsyncValue<Uint8List>> {
     try {
       rawImageData = await instanceClient.getInstanceImageRenderedAsJpeg(
           id: instanceId, quality: 90);
-      imageData = await convertParallel(data: rawImageData);
-      state = AsyncData(imageData);
     } catch (e) {
       _logger.e(e);
       state = AsyncError(e, StackTrace.current);
     }
+    imageData = await convertParallel(data: rawImageData);
+    state = AsyncData(imageData);
   }
 
   void changeContrast() async {
