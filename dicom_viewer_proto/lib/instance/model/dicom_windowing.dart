@@ -2,12 +2,12 @@ import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:image/image.dart';
 
-part 'instance_window_data.freezed.dart';
+part 'dicom_windowing.freezed.dart';
 
 @freezed
-class InstanceWindowData with _$InstanceWindowData {
-  const InstanceWindowData._();
-  const factory InstanceWindowData({
+class DicomWindowing with _$DicomWindowing {
+  const DicomWindowing._();
+  const factory DicomWindowing({
     /// This window center data comes from the api. if the api doesnt have
     /// it we have to look at VOI and LUT tags/functions and slope and intercepts
     @Default(500) int windowCenter,
@@ -32,7 +32,7 @@ class InstanceWindowData with _$InstanceWindowData {
     /// the multiplication of value with slope.
     /// check [multiplySlopeAndIntercept] function
     required Option<int> intercept,
-  }) = _InstanceWindowData;
+  }) = _DicomWindowing;
 
   void processImageLevelingAndCentering(Image decodedImage) {
     var decodedBytes = decodedImage.getBytes(format: Format.rgba);

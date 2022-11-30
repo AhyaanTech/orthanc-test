@@ -21,7 +21,7 @@ class InstanceViewStateNotifier extends StateNotifier<AsyncValue<Uint8List>> {
   final InstanceClient instanceClient;
   final Logger _logger = Logger();
   late Uint8List imageData;
-  late List<int> rawImageData;
+  List<int> rawImageData = List<int>.filled(1, 0, growable: true);
   late InstanceDetailsDto instanceDetails;
 
   final Ref ref;
@@ -37,6 +37,7 @@ class InstanceViewStateNotifier extends StateNotifier<AsyncValue<Uint8List>> {
   }
 
   Future<void> getImageAsync({required String instanceId}) async {
+    _logger.i(instanceId);
     state = const AsyncLoading();
     try {
       rawImageData = await instanceClient.getInstanceImageRenderedAsJpeg(
@@ -59,7 +60,7 @@ class InstanceViewStateNotifier extends StateNotifier<AsyncValue<Uint8List>> {
       imageData = await convertParallel(data: processedRawImageData);
       state = AsyncData(imageData);
     } on Exception catch (e) {
-      _logger.e("error");
+      _logger.e(e.toString());
     }
   }
 

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'instance_window_data.dart';
+part of 'dicom_windowing.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$InstanceWindowData {
+mixin _$DicomWindowing {
   /// This window center data comes from the api. if the api doesnt have
   /// it we have to look at VOI and LUT tags/functions and slope and intercepts
   int get windowCenter => throw _privateConstructorUsedError;
@@ -42,15 +42,15 @@ mixin _$InstanceWindowData {
   Option<int> get intercept => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $InstanceWindowDataCopyWith<InstanceWindowData> get copyWith =>
+  $DicomWindowingCopyWith<DicomWindowing> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $InstanceWindowDataCopyWith<$Res> {
-  factory $InstanceWindowDataCopyWith(
-          InstanceWindowData value, $Res Function(InstanceWindowData) then) =
-      _$InstanceWindowDataCopyWithImpl<$Res, InstanceWindowData>;
+abstract class $DicomWindowingCopyWith<$Res> {
+  factory $DicomWindowingCopyWith(
+          DicomWindowing value, $Res Function(DicomWindowing) then) =
+      _$DicomWindowingCopyWithImpl<$Res, DicomWindowing>;
   @useResult
   $Res call(
       {int windowCenter,
@@ -62,9 +62,9 @@ abstract class $InstanceWindowDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$InstanceWindowDataCopyWithImpl<$Res, $Val extends InstanceWindowData>
-    implements $InstanceWindowDataCopyWith<$Res> {
-  _$InstanceWindowDataCopyWithImpl(this._value, this._then);
+class _$DicomWindowingCopyWithImpl<$Res, $Val extends DicomWindowing>
+    implements $DicomWindowingCopyWith<$Res> {
+  _$DicomWindowingCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -111,11 +111,11 @@ class _$InstanceWindowDataCopyWithImpl<$Res, $Val extends InstanceWindowData>
 }
 
 /// @nodoc
-abstract class _$$_InstanceWindowDataCopyWith<$Res>
-    implements $InstanceWindowDataCopyWith<$Res> {
-  factory _$$_InstanceWindowDataCopyWith(_$_InstanceWindowData value,
-          $Res Function(_$_InstanceWindowData) then) =
-      __$$_InstanceWindowDataCopyWithImpl<$Res>;
+abstract class _$$_DicomWindowingCopyWith<$Res>
+    implements $DicomWindowingCopyWith<$Res> {
+  factory _$$_DicomWindowingCopyWith(
+          _$_DicomWindowing value, $Res Function(_$_DicomWindowing) then) =
+      __$$_DicomWindowingCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -128,11 +128,11 @@ abstract class _$$_InstanceWindowDataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_InstanceWindowDataCopyWithImpl<$Res>
-    extends _$InstanceWindowDataCopyWithImpl<$Res, _$_InstanceWindowData>
-    implements _$$_InstanceWindowDataCopyWith<$Res> {
-  __$$_InstanceWindowDataCopyWithImpl(
-      _$_InstanceWindowData _value, $Res Function(_$_InstanceWindowData) _then)
+class __$$_DicomWindowingCopyWithImpl<$Res>
+    extends _$DicomWindowingCopyWithImpl<$Res, _$_DicomWindowing>
+    implements _$$_DicomWindowingCopyWith<$Res> {
+  __$$_DicomWindowingCopyWithImpl(
+      _$_DicomWindowing _value, $Res Function(_$_DicomWindowing) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -145,7 +145,7 @@ class __$$_InstanceWindowDataCopyWithImpl<$Res>
     Object? slope = null,
     Object? intercept = null,
   }) {
-    return _then(_$_InstanceWindowData(
+    return _then(_$_DicomWindowing(
       windowCenter: null == windowCenter
           ? _value.windowCenter
           : windowCenter // ignore: cast_nullable_to_non_nullable
@@ -176,8 +176,8 @@ class __$$_InstanceWindowDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_InstanceWindowData extends _InstanceWindowData {
-  const _$_InstanceWindowData(
+class _$_DicomWindowing extends _DicomWindowing {
+  const _$_DicomWindowing(
       {this.windowCenter = 500,
       this.windowWidth = 2500,
       this.yMin = 0,
@@ -223,14 +223,14 @@ class _$_InstanceWindowData extends _InstanceWindowData {
 
   @override
   String toString() {
-    return 'InstanceWindowData(windowCenter: $windowCenter, windowWidth: $windowWidth, yMin: $yMin, yMax: $yMax, slope: $slope, intercept: $intercept)';
+    return 'DicomWindowing(windowCenter: $windowCenter, windowWidth: $windowWidth, yMin: $yMin, yMax: $yMax, slope: $slope, intercept: $intercept)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_InstanceWindowData &&
+            other is _$_DicomWindowing &&
             (identical(other.windowCenter, windowCenter) ||
                 other.windowCenter == windowCenter) &&
             (identical(other.windowWidth, windowWidth) ||
@@ -249,20 +249,19 @@ class _$_InstanceWindowData extends _InstanceWindowData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InstanceWindowDataCopyWith<_$_InstanceWindowData> get copyWith =>
-      __$$_InstanceWindowDataCopyWithImpl<_$_InstanceWindowData>(
-          this, _$identity);
+  _$$_DicomWindowingCopyWith<_$_DicomWindowing> get copyWith =>
+      __$$_DicomWindowingCopyWithImpl<_$_DicomWindowing>(this, _$identity);
 }
 
-abstract class _InstanceWindowData extends InstanceWindowData {
-  const factory _InstanceWindowData(
+abstract class _DicomWindowing extends DicomWindowing {
+  const factory _DicomWindowing(
       {final int windowCenter,
       final int windowWidth,
       final int yMin,
       final int yMax,
       required final Option<int> slope,
-      required final Option<int> intercept}) = _$_InstanceWindowData;
-  const _InstanceWindowData._() : super._();
+      required final Option<int> intercept}) = _$_DicomWindowing;
+  const _DicomWindowing._() : super._();
 
   @override
 
@@ -297,6 +296,6 @@ abstract class _InstanceWindowData extends InstanceWindowData {
   Option<int> get intercept;
   @override
   @JsonKey(ignore: true)
-  _$$_InstanceWindowDataCopyWith<_$_InstanceWindowData> get copyWith =>
+  _$$_DicomWindowingCopyWith<_$_DicomWindowing> get copyWith =>
       throw _privateConstructorUsedError;
 }
