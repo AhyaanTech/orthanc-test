@@ -7,8 +7,8 @@ part of 'series.dart';
 // **************************************************************************
 
 _$_Series _$$_SeriesFromJson(Map<String, dynamic> json) => _$_Series(
-      mainDicomTags:
-          MainDicomTags.fromJson(json['MainDicomTags'] as Map<String, dynamic>),
+      mainDicomTags: SeriesMainDicomTags.fromJson(
+          json['MainDicomTags'] as Map<String, dynamic>),
       expectedNumberOfInstances: json['ExpectedNumberOfInstances'] as int?,
       id: json['ID'] as String?,
       instances: (json['Instances'] as List<dynamic>?)

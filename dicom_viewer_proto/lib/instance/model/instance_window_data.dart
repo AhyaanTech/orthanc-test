@@ -2,7 +2,7 @@ import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:image/image.dart';
 
-part 'window_leveler.freezed.dart';
+part 'instance_window_data.freezed.dart';
 
 @freezed
 class InstanceWindowData with _$InstanceWindowData {

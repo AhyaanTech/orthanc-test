@@ -14,50 +14,45 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-MainDicomTags _$MainDicomTagsFromJson(Map<String, dynamic> json) {
+SeriesMainDicomTags _$SeriesMainDicomTagsFromJson(Map<String, dynamic> json) {
   return _MainDicomTags.fromJson(json);
 }
 
 /// @nodoc
-mixin _$MainDicomTags {
-  @JsonKey(name: "AccessionNumber")
-  String? get AccessionNumber => throw _privateConstructorUsedError;
-  @JsonKey(name: "ReferringPhysicianName")
-  String? get referringPhysicianName => throw _privateConstructorUsedError;
-  @JsonKey(name: "StudyDate")
-  String? get studyDate => throw _privateConstructorUsedError;
-  @JsonKey(name: "StudyId")
-  String? get studyID => throw _privateConstructorUsedError;
-  @JsonKey(name: "StudyInstanceId")
-  String? get studyInstanceUID => throw _privateConstructorUsedError;
-  @JsonKey(name: "StudyTime")
-  String? get studyTime => throw _privateConstructorUsedError;
+mixin _$SeriesMainDicomTags {
+  Option<String> get accessionNumber => throw _privateConstructorUsedError;
+  Option<String> get referringPhysicianName =>
+      throw _privateConstructorUsedError;
+  Option<String> get studyDate => throw _privateConstructorUsedError;
+  Option<String> get studyID => throw _privateConstructorUsedError;
+  Option<String> get studyInstanceUID => throw _privateConstructorUsedError;
+  Option<String> get studyTime => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $MainDicomTagsCopyWith<MainDicomTags> get copyWith =>
+  $SeriesMainDicomTagsCopyWith<SeriesMainDicomTags> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MainDicomTagsCopyWith<$Res> {
-  factory $MainDicomTagsCopyWith(
-          MainDicomTags value, $Res Function(MainDicomTags) then) =
-      _$MainDicomTagsCopyWithImpl<$Res, MainDicomTags>;
+abstract class $SeriesMainDicomTagsCopyWith<$Res> {
+  factory $SeriesMainDicomTagsCopyWith(
+          SeriesMainDicomTags value, $Res Function(SeriesMainDicomTags) then) =
+      _$SeriesMainDicomTagsCopyWithImpl<$Res, SeriesMainDicomTags>;
   @useResult
   $Res call(
-      {@JsonKey(name: "AccessionNumber") String? AccessionNumber,
-      @JsonKey(name: "ReferringPhysicianName") String? referringPhysicianName,
-      @JsonKey(name: "StudyDate") String? studyDate,
-      @JsonKey(name: "StudyId") String? studyID,
-      @JsonKey(name: "StudyInstanceId") String? studyInstanceUID,
-      @JsonKey(name: "StudyTime") String? studyTime});
+      {Option<String> accessionNumber,
+      Option<String> referringPhysicianName,
+      Option<String> studyDate,
+      Option<String> studyID,
+      Option<String> studyInstanceUID,
+      Option<String> studyTime});
 }
 
 /// @nodoc
-class _$MainDicomTagsCopyWithImpl<$Res, $Val extends MainDicomTags>
-    implements $MainDicomTagsCopyWith<$Res> {
-  _$MainDicomTagsCopyWithImpl(this._value, this._then);
+class _$SeriesMainDicomTagsCopyWithImpl<$Res, $Val extends SeriesMainDicomTags>
+    implements $SeriesMainDicomTagsCopyWith<$Res> {
+  _$SeriesMainDicomTagsCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -67,62 +62,62 @@ class _$MainDicomTagsCopyWithImpl<$Res, $Val extends MainDicomTags>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? AccessionNumber = freezed,
-    Object? referringPhysicianName = freezed,
-    Object? studyDate = freezed,
-    Object? studyID = freezed,
-    Object? studyInstanceUID = freezed,
-    Object? studyTime = freezed,
+    Object? accessionNumber = null,
+    Object? referringPhysicianName = null,
+    Object? studyDate = null,
+    Object? studyID = null,
+    Object? studyInstanceUID = null,
+    Object? studyTime = null,
   }) {
     return _then(_value.copyWith(
-      AccessionNumber: freezed == AccessionNumber
-          ? _value.AccessionNumber
-          : AccessionNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-      referringPhysicianName: freezed == referringPhysicianName
+      accessionNumber: null == accessionNumber
+          ? _value.accessionNumber
+          : accessionNumber // ignore: cast_nullable_to_non_nullable
+              as Option<String>,
+      referringPhysicianName: null == referringPhysicianName
           ? _value.referringPhysicianName
           : referringPhysicianName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      studyDate: freezed == studyDate
+              as Option<String>,
+      studyDate: null == studyDate
           ? _value.studyDate
           : studyDate // ignore: cast_nullable_to_non_nullable
-              as String?,
-      studyID: freezed == studyID
+              as Option<String>,
+      studyID: null == studyID
           ? _value.studyID
           : studyID // ignore: cast_nullable_to_non_nullable
-              as String?,
-      studyInstanceUID: freezed == studyInstanceUID
+              as Option<String>,
+      studyInstanceUID: null == studyInstanceUID
           ? _value.studyInstanceUID
           : studyInstanceUID // ignore: cast_nullable_to_non_nullable
-              as String?,
-      studyTime: freezed == studyTime
+              as Option<String>,
+      studyTime: null == studyTime
           ? _value.studyTime
           : studyTime // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Option<String>,
     ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$_MainDicomTagsCopyWith<$Res>
-    implements $MainDicomTagsCopyWith<$Res> {
+    implements $SeriesMainDicomTagsCopyWith<$Res> {
   factory _$$_MainDicomTagsCopyWith(
           _$_MainDicomTags value, $Res Function(_$_MainDicomTags) then) =
       __$$_MainDicomTagsCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "AccessionNumber") String? AccessionNumber,
-      @JsonKey(name: "ReferringPhysicianName") String? referringPhysicianName,
-      @JsonKey(name: "StudyDate") String? studyDate,
-      @JsonKey(name: "StudyId") String? studyID,
-      @JsonKey(name: "StudyInstanceId") String? studyInstanceUID,
-      @JsonKey(name: "StudyTime") String? studyTime});
+      {Option<String> accessionNumber,
+      Option<String> referringPhysicianName,
+      Option<String> studyDate,
+      Option<String> studyID,
+      Option<String> studyInstanceUID,
+      Option<String> studyTime});
 }
 
 /// @nodoc
 class __$$_MainDicomTagsCopyWithImpl<$Res>
-    extends _$MainDicomTagsCopyWithImpl<$Res, _$_MainDicomTags>
+    extends _$SeriesMainDicomTagsCopyWithImpl<$Res, _$_MainDicomTags>
     implements _$$_MainDicomTagsCopyWith<$Res> {
   __$$_MainDicomTagsCopyWithImpl(
       _$_MainDicomTags _value, $Res Function(_$_MainDicomTags) _then)
@@ -131,79 +126,74 @@ class __$$_MainDicomTagsCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? AccessionNumber = freezed,
-    Object? referringPhysicianName = freezed,
-    Object? studyDate = freezed,
-    Object? studyID = freezed,
-    Object? studyInstanceUID = freezed,
-    Object? studyTime = freezed,
+    Object? accessionNumber = null,
+    Object? referringPhysicianName = null,
+    Object? studyDate = null,
+    Object? studyID = null,
+    Object? studyInstanceUID = null,
+    Object? studyTime = null,
   }) {
     return _then(_$_MainDicomTags(
-      AccessionNumber: freezed == AccessionNumber
-          ? _value.AccessionNumber
-          : AccessionNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-      referringPhysicianName: freezed == referringPhysicianName
+      accessionNumber: null == accessionNumber
+          ? _value.accessionNumber
+          : accessionNumber // ignore: cast_nullable_to_non_nullable
+              as Option<String>,
+      referringPhysicianName: null == referringPhysicianName
           ? _value.referringPhysicianName
           : referringPhysicianName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      studyDate: freezed == studyDate
+              as Option<String>,
+      studyDate: null == studyDate
           ? _value.studyDate
           : studyDate // ignore: cast_nullable_to_non_nullable
-              as String?,
-      studyID: freezed == studyID
+              as Option<String>,
+      studyID: null == studyID
           ? _value.studyID
           : studyID // ignore: cast_nullable_to_non_nullable
-              as String?,
-      studyInstanceUID: freezed == studyInstanceUID
+              as Option<String>,
+      studyInstanceUID: null == studyInstanceUID
           ? _value.studyInstanceUID
           : studyInstanceUID // ignore: cast_nullable_to_non_nullable
-              as String?,
-      studyTime: freezed == studyTime
+              as Option<String>,
+      studyTime: null == studyTime
           ? _value.studyTime
           : studyTime // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Option<String>,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(fieldRename: FieldRename.pascal)
 class _$_MainDicomTags extends _MainDicomTags {
   const _$_MainDicomTags(
-      {@JsonKey(name: "AccessionNumber") this.AccessionNumber,
-      @JsonKey(name: "ReferringPhysicianName") this.referringPhysicianName,
-      @JsonKey(name: "StudyDate") this.studyDate,
-      @JsonKey(name: "StudyId") this.studyID,
-      @JsonKey(name: "StudyInstanceId") this.studyInstanceUID,
-      @JsonKey(name: "StudyTime") this.studyTime})
+      {required this.accessionNumber,
+      required this.referringPhysicianName,
+      required this.studyDate,
+      required this.studyID,
+      required this.studyInstanceUID,
+      required this.studyTime})
       : super._();
 
   factory _$_MainDicomTags.fromJson(Map<String, dynamic> json) =>
       _$$_MainDicomTagsFromJson(json);
 
   @override
-  @JsonKey(name: "AccessionNumber")
-  final String? AccessionNumber;
+  final Option<String> accessionNumber;
   @override
-  @JsonKey(name: "ReferringPhysicianName")
-  final String? referringPhysicianName;
+  final Option<String> referringPhysicianName;
   @override
-  @JsonKey(name: "StudyDate")
-  final String? studyDate;
+  final Option<String> studyDate;
   @override
-  @JsonKey(name: "StudyId")
-  final String? studyID;
+  final Option<String> studyID;
   @override
-  @JsonKey(name: "StudyInstanceId")
-  final String? studyInstanceUID;
+  final Option<String> studyInstanceUID;
   @override
-  @JsonKey(name: "StudyTime")
-  final String? studyTime;
+  final Option<String> studyTime;
 
   @override
   String toString() {
-    return 'MainDicomTags(AccessionNumber: $AccessionNumber, referringPhysicianName: $referringPhysicianName, studyDate: $studyDate, studyID: $studyID, studyInstanceUID: $studyInstanceUID, studyTime: $studyTime)';
+    return 'SeriesMainDicomTags(accessionNumber: $accessionNumber, referringPhysicianName: $referringPhysicianName, studyDate: $studyDate, studyID: $studyID, studyInstanceUID: $studyInstanceUID, studyTime: $studyTime)';
   }
 
   @override
@@ -211,8 +201,8 @@ class _$_MainDicomTags extends _MainDicomTags {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MainDicomTags &&
-            (identical(other.AccessionNumber, AccessionNumber) ||
-                other.AccessionNumber == AccessionNumber) &&
+            (identical(other.accessionNumber, accessionNumber) ||
+                other.accessionNumber == accessionNumber) &&
             (identical(other.referringPhysicianName, referringPhysicianName) ||
                 other.referringPhysicianName == referringPhysicianName) &&
             (identical(other.studyDate, studyDate) ||
@@ -226,7 +216,7 @@ class _$_MainDicomTags extends _MainDicomTags {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, AccessionNumber,
+  int get hashCode => Object.hash(runtimeType, accessionNumber,
       referringPhysicianName, studyDate, studyID, studyInstanceUID, studyTime);
 
   @JsonKey(ignore: true)
@@ -243,43 +233,31 @@ class _$_MainDicomTags extends _MainDicomTags {
   }
 }
 
-abstract class _MainDicomTags extends MainDicomTags {
+abstract class _MainDicomTags extends SeriesMainDicomTags {
   const factory _MainDicomTags(
-      {@JsonKey(name: "AccessionNumber")
-          final String? AccessionNumber,
-      @JsonKey(name: "ReferringPhysicianName")
-          final String? referringPhysicianName,
-      @JsonKey(name: "StudyDate")
-          final String? studyDate,
-      @JsonKey(name: "StudyId")
-          final String? studyID,
-      @JsonKey(name: "StudyInstanceId")
-          final String? studyInstanceUID,
-      @JsonKey(name: "StudyTime")
-          final String? studyTime}) = _$_MainDicomTags;
+      {required final Option<String> accessionNumber,
+      required final Option<String> referringPhysicianName,
+      required final Option<String> studyDate,
+      required final Option<String> studyID,
+      required final Option<String> studyInstanceUID,
+      required final Option<String> studyTime}) = _$_MainDicomTags;
   const _MainDicomTags._() : super._();
 
   factory _MainDicomTags.fromJson(Map<String, dynamic> json) =
       _$_MainDicomTags.fromJson;
 
   @override
-  @JsonKey(name: "AccessionNumber")
-  String? get AccessionNumber;
+  Option<String> get accessionNumber;
   @override
-  @JsonKey(name: "ReferringPhysicianName")
-  String? get referringPhysicianName;
+  Option<String> get referringPhysicianName;
   @override
-  @JsonKey(name: "StudyDate")
-  String? get studyDate;
+  Option<String> get studyDate;
   @override
-  @JsonKey(name: "StudyId")
-  String? get studyID;
+  Option<String> get studyID;
   @override
-  @JsonKey(name: "StudyInstanceId")
-  String? get studyInstanceUID;
+  Option<String> get studyInstanceUID;
   @override
-  @JsonKey(name: "StudyTime")
-  String? get studyTime;
+  Option<String> get studyTime;
   @override
   @JsonKey(ignore: true)
   _$$_MainDicomTagsCopyWith<_$_MainDicomTags> get copyWith =>

@@ -21,7 +21,7 @@ Series _$SeriesFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Series {
   @JsonKey(name: "MainDicomTags")
-  MainDicomTags get mainDicomTags => throw _privateConstructorUsedError;
+  SeriesMainDicomTags get mainDicomTags => throw _privateConstructorUsedError;
   @JsonKey(name: "ExpectedNumberOfInstances")
   int? get expectedNumberOfInstances => throw _privateConstructorUsedError;
   @JsonKey(name: "ID")
@@ -51,7 +51,7 @@ abstract class $SeriesCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "MainDicomTags")
-          MainDicomTags mainDicomTags,
+          SeriesMainDicomTags mainDicomTags,
       @JsonKey(name: "ExpectedNumberOfInstances")
           int? expectedNumberOfInstances,
       @JsonKey(name: "ID")
@@ -69,7 +69,7 @@ abstract class $SeriesCopyWith<$Res> {
       @JsonKey(name: "Type")
           String? instanceType});
 
-  $MainDicomTagsCopyWith<$Res> get mainDicomTags;
+  $SeriesMainDicomTagsCopyWith<$Res> get mainDicomTags;
 }
 
 /// @nodoc
@@ -99,7 +99,7 @@ class _$SeriesCopyWithImpl<$Res, $Val extends Series>
       mainDicomTags: null == mainDicomTags
           ? _value.mainDicomTags
           : mainDicomTags // ignore: cast_nullable_to_non_nullable
-              as MainDicomTags,
+              as SeriesMainDicomTags,
       expectedNumberOfInstances: freezed == expectedNumberOfInstances
           ? _value.expectedNumberOfInstances
           : expectedNumberOfInstances // ignore: cast_nullable_to_non_nullable
@@ -137,8 +137,8 @@ class _$SeriesCopyWithImpl<$Res, $Val extends Series>
 
   @override
   @pragma('vm:prefer-inline')
-  $MainDicomTagsCopyWith<$Res> get mainDicomTags {
-    return $MainDicomTagsCopyWith<$Res>(_value.mainDicomTags, (value) {
+  $SeriesMainDicomTagsCopyWith<$Res> get mainDicomTags {
+    return $SeriesMainDicomTagsCopyWith<$Res>(_value.mainDicomTags, (value) {
       return _then(_value.copyWith(mainDicomTags: value) as $Val);
     });
   }
@@ -152,7 +152,7 @@ abstract class _$$_SeriesCopyWith<$Res> implements $SeriesCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "MainDicomTags")
-          MainDicomTags mainDicomTags,
+          SeriesMainDicomTags mainDicomTags,
       @JsonKey(name: "ExpectedNumberOfInstances")
           int? expectedNumberOfInstances,
       @JsonKey(name: "ID")
@@ -171,7 +171,7 @@ abstract class _$$_SeriesCopyWith<$Res> implements $SeriesCopyWith<$Res> {
           String? instanceType});
 
   @override
-  $MainDicomTagsCopyWith<$Res> get mainDicomTags;
+  $SeriesMainDicomTagsCopyWith<$Res> get mainDicomTags;
 }
 
 /// @nodoc
@@ -198,7 +198,7 @@ class __$$_SeriesCopyWithImpl<$Res>
       mainDicomTags: null == mainDicomTags
           ? _value.mainDicomTags
           : mainDicomTags // ignore: cast_nullable_to_non_nullable
-              as MainDicomTags,
+              as SeriesMainDicomTags,
       expectedNumberOfInstances: freezed == expectedNumberOfInstances
           ? _value.expectedNumberOfInstances
           : expectedNumberOfInstances // ignore: cast_nullable_to_non_nullable
@@ -265,7 +265,7 @@ class _$_Series extends _Series {
 
   @override
   @JsonKey(name: "MainDicomTags")
-  final MainDicomTags mainDicomTags;
+  final SeriesMainDicomTags mainDicomTags;
   @override
   @JsonKey(name: "ExpectedNumberOfInstances")
   final int? expectedNumberOfInstances;
@@ -358,7 +358,7 @@ class _$_Series extends _Series {
 abstract class _Series extends Series {
   const factory _Series(
       {@JsonKey(name: "MainDicomTags")
-          required final MainDicomTags mainDicomTags,
+          required final SeriesMainDicomTags mainDicomTags,
       @JsonKey(name: "ExpectedNumberOfInstances")
           final int? expectedNumberOfInstances,
       @JsonKey(name: "ID")
@@ -381,7 +381,7 @@ abstract class _Series extends Series {
 
   @override
   @JsonKey(name: "MainDicomTags")
-  MainDicomTags get mainDicomTags;
+  SeriesMainDicomTags get mainDicomTags;
   @override
   @JsonKey(name: "ExpectedNumberOfInstances")
   int? get expectedNumberOfInstances;

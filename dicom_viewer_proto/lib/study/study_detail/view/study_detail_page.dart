@@ -68,7 +68,7 @@ class ShowStudyDetailCard extends StatelessWidget {
                   child: InkWell(
                     onTap: () => {
                       AutoRouter.of(context)
-                          .push(SeriesDetailRoute(seriesId: study.Series.first))
+                          .push(SeriesDetailRoute(seriesId: study.series.first))
                     },
                     child: Row(
                       children: [

@@ -15,66 +15,53 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Study _$StudyFromJson(Map<String, dynamic> json) {
-  return _AllSeriesResponse.fromJson(json);
+  return _Study.fromJson(json);
 }
 
 /// @nodoc
 mixin _$Study {
   @JsonKey(name: "ID")
   String get id => throw _privateConstructorUsedError;
-  @JsonKey(name: "IsStable")
   bool get isStable => throw _privateConstructorUsedError;
-  @JsonKey(name: "LastUpdate")
   String get lastUpdate => throw _privateConstructorUsedError;
-  @JsonKey(name: "MainDicomTags")
-  MainDicomTags get mainDicomTags => throw _privateConstructorUsedError;
-  @JsonKey(name: "ParentPatient")
+  PatientMainDicomTags get mainDicomTags => throw _privateConstructorUsedError;
   String get parentPatient => throw _privateConstructorUsedError;
-  @JsonKey(name: "Type")
   String get type => throw _privateConstructorUsedError;
-  @JsonKey(name: "Series")
-  List<String> get Series => throw _privateConstructorUsedError;
+  List<String> get series => throw _privateConstructorUsedError;
   @JsonKey(name: "PatientMainDicomTags")
   PatientMainDicomTags get patientMainDicomTags =>
       throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $AllStudiesResponseCopyWith<Study> get copyWith =>
-      throw _privateConstructorUsedError;
+  $StudyCopyWith<Study> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AllStudiesResponseCopyWith<$Res> {
-  factory $AllStudiesResponseCopyWith(Study value, $Res Function(Study) then) =
-      _$AllStudiesResponseCopyWithImpl<$Res, Study>;
+abstract class $StudyCopyWith<$Res> {
+  factory $StudyCopyWith(Study value, $Res Function(Study) then) =
+      _$StudyCopyWithImpl<$Res, Study>;
   @useResult
   $Res call(
       {@JsonKey(name: "ID")
           String id,
-      @JsonKey(name: "IsStable")
-          bool isStable,
-      @JsonKey(name: "LastUpdate")
-          String lastUpdate,
-      @JsonKey(name: "MainDicomTags")
-          MainDicomTags mainDicomTags,
-      @JsonKey(name: "ParentPatient")
-          String parentPatient,
-      @JsonKey(name: "Type")
-          String type,
-      @JsonKey(name: "Series")
-          List<String> Series,
+      bool isStable,
+      String lastUpdate,
+      PatientMainDicomTags mainDicomTags,
+      String parentPatient,
+      String type,
+      List<String> series,
       @JsonKey(name: "PatientMainDicomTags")
           PatientMainDicomTags patientMainDicomTags});
 
-  $MainDicomTagsCopyWith<$Res> get mainDicomTags;
+  $PatientMainDicomTagsCopyWith<$Res> get mainDicomTags;
   $PatientMainDicomTagsCopyWith<$Res> get patientMainDicomTags;
 }
 
 /// @nodoc
-class _$AllStudiesResponseCopyWithImpl<$Res, $Val extends Study>
-    implements $AllStudiesResponseCopyWith<$Res> {
-  _$AllStudiesResponseCopyWithImpl(this._value, this._then);
+class _$StudyCopyWithImpl<$Res, $Val extends Study>
+    implements $StudyCopyWith<$Res> {
+  _$StudyCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -90,7 +77,7 @@ class _$AllStudiesResponseCopyWithImpl<$Res, $Val extends Study>
     Object? mainDicomTags = null,
     Object? parentPatient = null,
     Object? type = null,
-    Object? Series = null,
+    Object? series = null,
     Object? patientMainDicomTags = null,
   }) {
     return _then(_value.copyWith(
@@ -109,7 +96,7 @@ class _$AllStudiesResponseCopyWithImpl<$Res, $Val extends Study>
       mainDicomTags: null == mainDicomTags
           ? _value.mainDicomTags
           : mainDicomTags // ignore: cast_nullable_to_non_nullable
-              as MainDicomTags,
+              as PatientMainDicomTags,
       parentPatient: null == parentPatient
           ? _value.parentPatient
           : parentPatient // ignore: cast_nullable_to_non_nullable
@@ -118,9 +105,9 @@ class _$AllStudiesResponseCopyWithImpl<$Res, $Val extends Study>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      Series: null == Series
-          ? _value.Series
-          : Series // ignore: cast_nullable_to_non_nullable
+      series: null == series
+          ? _value.series
+          : series // ignore: cast_nullable_to_non_nullable
               as List<String>,
       patientMainDicomTags: null == patientMainDicomTags
           ? _value.patientMainDicomTags
@@ -131,8 +118,8 @@ class _$AllStudiesResponseCopyWithImpl<$Res, $Val extends Study>
 
   @override
   @pragma('vm:prefer-inline')
-  $MainDicomTagsCopyWith<$Res> get mainDicomTags {
-    return $MainDicomTagsCopyWith<$Res>(_value.mainDicomTags, (value) {
+  $PatientMainDicomTagsCopyWith<$Res> get mainDicomTags {
+    return $PatientMainDicomTagsCopyWith<$Res>(_value.mainDicomTags, (value) {
       return _then(_value.copyWith(mainDicomTags: value) as $Val);
     });
   }
@@ -148,43 +135,33 @@ class _$AllStudiesResponseCopyWithImpl<$Res, $Val extends Study>
 }
 
 /// @nodoc
-abstract class _$$_AllSeriesResponseCopyWith<$Res>
-    implements $AllStudiesResponseCopyWith<$Res> {
-  factory _$$_AllSeriesResponseCopyWith(_$_AllSeriesResponse value,
-          $Res Function(_$_AllSeriesResponse) then) =
-      __$$_AllSeriesResponseCopyWithImpl<$Res>;
+abstract class _$$_StudyCopyWith<$Res> implements $StudyCopyWith<$Res> {
+  factory _$$_StudyCopyWith(_$_Study value, $Res Function(_$_Study) then) =
+      __$$_StudyCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {@JsonKey(name: "ID")
           String id,
-      @JsonKey(name: "IsStable")
-          bool isStable,
-      @JsonKey(name: "LastUpdate")
-          String lastUpdate,
-      @JsonKey(name: "MainDicomTags")
-          MainDicomTags mainDicomTags,
-      @JsonKey(name: "ParentPatient")
-          String parentPatient,
-      @JsonKey(name: "Type")
-          String type,
-      @JsonKey(name: "Series")
-          List<String> Series,
+      bool isStable,
+      String lastUpdate,
+      PatientMainDicomTags mainDicomTags,
+      String parentPatient,
+      String type,
+      List<String> series,
       @JsonKey(name: "PatientMainDicomTags")
           PatientMainDicomTags patientMainDicomTags});
 
   @override
-  $MainDicomTagsCopyWith<$Res> get mainDicomTags;
+  $PatientMainDicomTagsCopyWith<$Res> get mainDicomTags;
   @override
   $PatientMainDicomTagsCopyWith<$Res> get patientMainDicomTags;
 }
 
 /// @nodoc
-class __$$_AllSeriesResponseCopyWithImpl<$Res>
-    extends _$AllStudiesResponseCopyWithImpl<$Res, _$_AllSeriesResponse>
-    implements _$$_AllSeriesResponseCopyWith<$Res> {
-  __$$_AllSeriesResponseCopyWithImpl(
-      _$_AllSeriesResponse _value, $Res Function(_$_AllSeriesResponse) _then)
+class __$$_StudyCopyWithImpl<$Res> extends _$StudyCopyWithImpl<$Res, _$_Study>
+    implements _$$_StudyCopyWith<$Res> {
+  __$$_StudyCopyWithImpl(_$_Study _value, $Res Function(_$_Study) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -196,10 +173,10 @@ class __$$_AllSeriesResponseCopyWithImpl<$Res>
     Object? mainDicomTags = null,
     Object? parentPatient = null,
     Object? type = null,
-    Object? Series = null,
+    Object? series = null,
     Object? patientMainDicomTags = null,
   }) {
-    return _then(_$_AllSeriesResponse(
+    return _then(_$_Study(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -215,7 +192,7 @@ class __$$_AllSeriesResponseCopyWithImpl<$Res>
       mainDicomTags: null == mainDicomTags
           ? _value.mainDicomTags
           : mainDicomTags // ignore: cast_nullable_to_non_nullable
-              as MainDicomTags,
+              as PatientMainDicomTags,
       parentPatient: null == parentPatient
           ? _value.parentPatient
           : parentPatient // ignore: cast_nullable_to_non_nullable
@@ -224,9 +201,9 @@ class __$$_AllSeriesResponseCopyWithImpl<$Res>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      Series: null == Series
-          ? _value._Series
-          : Series // ignore: cast_nullable_to_non_nullable
+      series: null == series
+          ? _value._series
+          : series // ignore: cast_nullable_to_non_nullable
               as List<String>,
       patientMainDicomTags: null == patientMainDicomTags
           ? _value.patientMainDicomTags
@@ -237,55 +214,44 @@ class __$$_AllSeriesResponseCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$_AllSeriesResponse extends _AllSeriesResponse {
-  const _$_AllSeriesResponse(
+
+@JsonSerializable(fieldRename: FieldRename.pascal)
+class _$_Study extends _Study {
+  const _$_Study(
       {@JsonKey(name: "ID")
           required this.id,
-      @JsonKey(name: "IsStable")
-          required this.isStable,
-      @JsonKey(name: "LastUpdate")
-          required this.lastUpdate,
-      @JsonKey(name: "MainDicomTags")
-          required this.mainDicomTags,
-      @JsonKey(name: "ParentPatient")
-          required this.parentPatient,
-      @JsonKey(name: "Type")
-          required this.type,
-      @JsonKey(name: "Series")
-          required final List<String> Series,
+      required this.isStable,
+      required this.lastUpdate,
+      required this.mainDicomTags,
+      required this.parentPatient,
+      required this.type,
+      required final List<String> series,
       @JsonKey(name: "PatientMainDicomTags")
           required this.patientMainDicomTags})
-      : _Series = Series,
+      : _series = series,
         super._();
 
-  factory _$_AllSeriesResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_AllSeriesResponseFromJson(json);
+  factory _$_Study.fromJson(Map<String, dynamic> json) =>
+      _$$_StudyFromJson(json);
 
   @override
   @JsonKey(name: "ID")
   final String id;
   @override
-  @JsonKey(name: "IsStable")
   final bool isStable;
   @override
-  @JsonKey(name: "LastUpdate")
   final String lastUpdate;
   @override
-  @JsonKey(name: "MainDicomTags")
-  final MainDicomTags mainDicomTags;
+  final PatientMainDicomTags mainDicomTags;
   @override
-  @JsonKey(name: "ParentPatient")
   final String parentPatient;
   @override
-  @JsonKey(name: "Type")
   final String type;
-  final List<String> _Series;
+  final List<String> _series;
   @override
-  @JsonKey(name: "Series")
-  List<String> get Series {
+  List<String> get series {
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_Series);
+    return EqualUnmodifiableListView(_series);
   }
 
   @override
@@ -294,14 +260,14 @@ class _$_AllSeriesResponse extends _AllSeriesResponse {
 
   @override
   String toString() {
-    return 'AllStudiesResponse(id: $id, isStable: $isStable, lastUpdate: $lastUpdate, mainDicomTags: $mainDicomTags, parentPatient: $parentPatient, type: $type, Series: $Series, patientMainDicomTags: $patientMainDicomTags)';
+    return 'Study(id: $id, isStable: $isStable, lastUpdate: $lastUpdate, mainDicomTags: $mainDicomTags, parentPatient: $parentPatient, type: $type, series: $series, patientMainDicomTags: $patientMainDicomTags)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AllSeriesResponse &&
+            other is _$_Study &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.isStable, isStable) ||
                 other.isStable == isStable) &&
@@ -312,7 +278,7 @@ class _$_AllSeriesResponse extends _AllSeriesResponse {
             (identical(other.parentPatient, parentPatient) ||
                 other.parentPatient == parentPatient) &&
             (identical(other.type, type) || other.type == type) &&
-            const DeepCollectionEquality().equals(other._Series, _Series) &&
+            const DeepCollectionEquality().equals(other._series, _series) &&
             (identical(other.patientMainDicomTags, patientMainDicomTags) ||
                 other.patientMainDicomTags == patientMainDicomTags));
   }
@@ -327,74 +293,59 @@ class _$_AllSeriesResponse extends _AllSeriesResponse {
       mainDicomTags,
       parentPatient,
       type,
-      const DeepCollectionEquality().hash(_Series),
+      const DeepCollectionEquality().hash(_series),
       patientMainDicomTags);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AllSeriesResponseCopyWith<_$_AllSeriesResponse> get copyWith =>
-      __$$_AllSeriesResponseCopyWithImpl<_$_AllSeriesResponse>(
-          this, _$identity);
+  _$$_StudyCopyWith<_$_Study> get copyWith =>
+      __$$_StudyCopyWithImpl<_$_Study>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AllSeriesResponseToJson(
+    return _$$_StudyToJson(
       this,
     );
   }
 }
 
-abstract class _AllSeriesResponse extends Study {
-  const factory _AllSeriesResponse(
-          {@JsonKey(name: "ID")
-              required final String id,
-          @JsonKey(name: "IsStable")
-              required final bool isStable,
-          @JsonKey(name: "LastUpdate")
-              required final String lastUpdate,
-          @JsonKey(name: "MainDicomTags")
-              required final MainDicomTags mainDicomTags,
-          @JsonKey(name: "ParentPatient")
-              required final String parentPatient,
-          @JsonKey(name: "Type")
-              required final String type,
-          @JsonKey(name: "Series")
-              required final List<String> Series,
-          @JsonKey(name: "PatientMainDicomTags")
-              required final PatientMainDicomTags patientMainDicomTags}) =
-      _$_AllSeriesResponse;
-  const _AllSeriesResponse._() : super._();
+abstract class _Study extends Study {
+  const factory _Study(
+      {@JsonKey(name: "ID")
+          required final String id,
+      required final bool isStable,
+      required final String lastUpdate,
+      required final PatientMainDicomTags mainDicomTags,
+      required final String parentPatient,
+      required final String type,
+      required final List<String> series,
+      @JsonKey(name: "PatientMainDicomTags")
+          required final PatientMainDicomTags patientMainDicomTags}) = _$_Study;
+  const _Study._() : super._();
 
-  factory _AllSeriesResponse.fromJson(Map<String, dynamic> json) =
-      _$_AllSeriesResponse.fromJson;
+  factory _Study.fromJson(Map<String, dynamic> json) = _$_Study.fromJson;
 
   @override
   @JsonKey(name: "ID")
   String get id;
   @override
-  @JsonKey(name: "IsStable")
   bool get isStable;
   @override
-  @JsonKey(name: "LastUpdate")
   String get lastUpdate;
   @override
-  @JsonKey(name: "MainDicomTags")
-  MainDicomTags get mainDicomTags;
+  PatientMainDicomTags get mainDicomTags;
   @override
-  @JsonKey(name: "ParentPatient")
   String get parentPatient;
   @override
-  @JsonKey(name: "Type")
   String get type;
   @override
-  @JsonKey(name: "Series")
-  List<String> get Series;
+  List<String> get series;
   @override
   @JsonKey(name: "PatientMainDicomTags")
   PatientMainDicomTags get patientMainDicomTags;
   @override
   @JsonKey(ignore: true)
-  _$$_AllSeriesResponseCopyWith<_$_AllSeriesResponse> get copyWith =>
+  _$$_StudyCopyWith<_$_Study> get copyWith =>
       throw _privateConstructorUsedError;
 }

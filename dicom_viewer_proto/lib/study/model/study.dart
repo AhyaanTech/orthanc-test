@@ -3,23 +3,24 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'main_dicom_tags.dart';
 
-part 'all_series_response.freezed.dart';
-part 'all_series_response.g.dart';
+part 'study.freezed.dart';
+part 'study.g.dart';
 
 @freezed
 class Study with _$Study {
   const Study._();
+  @JsonSerializable(fieldRename: FieldRename.pascal)
   const factory Study({
     @JsonKey(name: "ID") required String id,
-    @JsonKey(name: "IsStable") required bool isStable,
-    @JsonKey(name: "LastUpdate") required String lastUpdate,
-    @JsonKey(name: "MainDicomTags") required MainDicomTags mainDicomTags,
-    @JsonKey(name: "ParentPatient") required String parentPatient,
-    @JsonKey(name: "Type") required String type,
-    @JsonKey(name: "Series") required List<String> Series,
+    required bool isStable,
+    required String lastUpdate,
+    required PatientMainDicomTags mainDicomTags,
+    required String parentPatient,
+    required String type,
+    required List<String> series,
     @JsonKey(name: "PatientMainDicomTags")
         required PatientMainDicomTags patientMainDicomTags,
-  }) = _AllSeriesResponse;
+  }) = _Study;
 
   factory Study.fromJson(Map<String, dynamic> json) => _$StudyFromJson(json);
 }

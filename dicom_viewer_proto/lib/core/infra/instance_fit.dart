@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:dicom_viewer_proto/instance/model/instance_details_dto.dart';
 import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
 
@@ -11,7 +12,7 @@ abstract class InstanceClient {
   factory InstanceClient(Dio dio, {String baseUrl}) = _InstanceClient;
 
   @GET("/instances/{id}")
-  Future<String> getInstanceDetails(@Path("id") String id);
+  Future<InstanceDetailsDto> getInstanceDetails(@Path("id") String id);
 
   @GET("/instances/{id}/rendered")
   @Headers(<String, String>{"Accept": "image/jpeg"})

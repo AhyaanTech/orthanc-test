@@ -8,20 +8,33 @@ part of 'main_dicom_tags.dart';
 
 _$_MainDicomTags _$$_MainDicomTagsFromJson(Map<String, dynamic> json) =>
     _$_MainDicomTags(
-      AccessionNumber: json['AccessionNumber'] as String?,
-      referringPhysicianName: json['ReferringPhysicianName'] as String?,
-      studyDate: json['StudyDate'] as String?,
-      studyID: json['StudyId'] as String?,
-      studyInstanceUID: json['StudyInstanceId'] as String?,
-      studyTime: json['StudyTime'] as String?,
+      accessionNumber: Option<String>.fromJson(json['AccessionNumber']),
+      referringPhysicianName:
+          Option<String>.fromJson(json['ReferringPhysicianName']),
+      studyDate: Option<String>.fromJson(json['StudyDate']),
+      studyID: Option<String>.fromJson(json['StudyID']),
+      studyInstanceUID: Option<String>.fromJson(json['StudyInstanceUID']),
+      studyTime: Option<String>.fromJson(json['StudyTime']),
     );
 
 Map<String, dynamic> _$$_MainDicomTagsToJson(_$_MainDicomTags instance) =>
     <String, dynamic>{
-      'AccessionNumber': instance.AccessionNumber,
-      'ReferringPhysicianName': instance.referringPhysicianName,
-      'StudyDate': instance.studyDate,
-      'StudyId': instance.studyID,
-      'StudyInstanceId': instance.studyInstanceUID,
-      'StudyTime': instance.studyTime,
+      'AccessionNumber': instance.accessionNumber.toJson(
+        (value) => value,
+      ),
+      'ReferringPhysicianName': instance.referringPhysicianName.toJson(
+        (value) => value,
+      ),
+      'StudyDate': instance.studyDate.toJson(
+        (value) => value,
+      ),
+      'StudyID': instance.studyID.toJson(
+        (value) => value,
+      ),
+      'StudyInstanceUID': instance.studyInstanceUID.toJson(
+        (value) => value,
+      ),
+      'StudyTime': instance.studyTime.toJson(
+        (value) => value,
+      ),
     };

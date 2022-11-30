@@ -9,7 +9,7 @@ part 'series.g.dart';
 class Series with _$Series {
   const Series._();
   const factory Series({
-    @JsonKey(name: "MainDicomTags") required MainDicomTags mainDicomTags,
+    @JsonKey(name: "MainDicomTags") required SeriesMainDicomTags mainDicomTags,
     @JsonKey(name: "ExpectedNumberOfInstances") int? expectedNumberOfInstances,
     @JsonKey(name: "ID") String? id,
     @JsonKey(name: "Instances") List<String>? instances,
