@@ -20,9 +20,16 @@ InstanceDetailsDto _$InstanceDetailsDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$InstanceDetailsDto {
-  Option<String> get contentName => throw _privateConstructorUsedError;
-  Option<String> get fileSize => throw _privateConstructorUsedError;
-  Option<String> get id => throw _privateConstructorUsedError;
+  int get fileSize => throw _privateConstructorUsedError;
+  String get fileUuid => throw _privateConstructorUsedError;
+  @JsonKey(name: "ID")
+  String get id => throw _privateConstructorUsedError;
+  String get parentSeries => throw _privateConstructorUsedError;
+  @JsonKey(name: "Type")
+  String get dicomOrthancType => throw _privateConstructorUsedError;
+  @JsonKey(name: "MainDicomTags")
+  InstanceMainDicomTagsDto get instanceMainDicomTags =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,7 +44,17 @@ abstract class $InstanceDetailsDtoCopyWith<$Res> {
       _$InstanceDetailsDtoCopyWithImpl<$Res, InstanceDetailsDto>;
   @useResult
   $Res call(
-      {Option<String> contentName, Option<String> fileSize, Option<String> id});
+      {int fileSize,
+      String fileUuid,
+      @JsonKey(name: "ID")
+          String id,
+      String parentSeries,
+      @JsonKey(name: "Type")
+          String dicomOrthancType,
+      @JsonKey(name: "MainDicomTags")
+          InstanceMainDicomTagsDto instanceMainDicomTags});
+
+  $InstanceMainDicomTagsDtoCopyWith<$Res> get instanceMainDicomTags;
 }
 
 /// @nodoc
@@ -53,24 +70,48 @@ class _$InstanceDetailsDtoCopyWithImpl<$Res, $Val extends InstanceDetailsDto>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? contentName = null,
     Object? fileSize = null,
+    Object? fileUuid = null,
     Object? id = null,
+    Object? parentSeries = null,
+    Object? dicomOrthancType = null,
+    Object? instanceMainDicomTags = null,
   }) {
     return _then(_value.copyWith(
-      contentName: null == contentName
-          ? _value.contentName
-          : contentName // ignore: cast_nullable_to_non_nullable
-              as Option<String>,
       fileSize: null == fileSize
           ? _value.fileSize
           : fileSize // ignore: cast_nullable_to_non_nullable
-              as Option<String>,
+              as int,
+      fileUuid: null == fileUuid
+          ? _value.fileUuid
+          : fileUuid // ignore: cast_nullable_to_non_nullable
+              as String,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as Option<String>,
+              as String,
+      parentSeries: null == parentSeries
+          ? _value.parentSeries
+          : parentSeries // ignore: cast_nullable_to_non_nullable
+              as String,
+      dicomOrthancType: null == dicomOrthancType
+          ? _value.dicomOrthancType
+          : dicomOrthancType // ignore: cast_nullable_to_non_nullable
+              as String,
+      instanceMainDicomTags: null == instanceMainDicomTags
+          ? _value.instanceMainDicomTags
+          : instanceMainDicomTags // ignore: cast_nullable_to_non_nullable
+              as InstanceMainDicomTagsDto,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $InstanceMainDicomTagsDtoCopyWith<$Res> get instanceMainDicomTags {
+    return $InstanceMainDicomTagsDtoCopyWith<$Res>(_value.instanceMainDicomTags,
+        (value) {
+      return _then(_value.copyWith(instanceMainDicomTags: value) as $Val);
+    });
   }
 }
 
@@ -83,7 +124,18 @@ abstract class _$$_InstanceDtailsDtoCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Option<String> contentName, Option<String> fileSize, Option<String> id});
+      {int fileSize,
+      String fileUuid,
+      @JsonKey(name: "ID")
+          String id,
+      String parentSeries,
+      @JsonKey(name: "Type")
+          String dicomOrthancType,
+      @JsonKey(name: "MainDicomTags")
+          InstanceMainDicomTagsDto instanceMainDicomTags});
+
+  @override
+  $InstanceMainDicomTagsDtoCopyWith<$Res> get instanceMainDicomTags;
 }
 
 /// @nodoc
@@ -97,23 +149,38 @@ class __$$_InstanceDtailsDtoCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? contentName = null,
     Object? fileSize = null,
+    Object? fileUuid = null,
     Object? id = null,
+    Object? parentSeries = null,
+    Object? dicomOrthancType = null,
+    Object? instanceMainDicomTags = null,
   }) {
     return _then(_$_InstanceDtailsDto(
-      contentName: null == contentName
-          ? _value.contentName
-          : contentName // ignore: cast_nullable_to_non_nullable
-              as Option<String>,
       fileSize: null == fileSize
           ? _value.fileSize
           : fileSize // ignore: cast_nullable_to_non_nullable
-              as Option<String>,
+              as int,
+      fileUuid: null == fileUuid
+          ? _value.fileUuid
+          : fileUuid // ignore: cast_nullable_to_non_nullable
+              as String,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as Option<String>,
+              as String,
+      parentSeries: null == parentSeries
+          ? _value.parentSeries
+          : parentSeries // ignore: cast_nullable_to_non_nullable
+              as String,
+      dicomOrthancType: null == dicomOrthancType
+          ? _value.dicomOrthancType
+          : dicomOrthancType // ignore: cast_nullable_to_non_nullable
+              as String,
+      instanceMainDicomTags: null == instanceMainDicomTags
+          ? _value.instanceMainDicomTags
+          : instanceMainDicomTags // ignore: cast_nullable_to_non_nullable
+              as InstanceMainDicomTagsDto,
     ));
   }
 }
@@ -123,22 +190,36 @@ class __$$_InstanceDtailsDtoCopyWithImpl<$Res>
 @JsonSerializable(fieldRename: FieldRename.pascal)
 class _$_InstanceDtailsDto extends _InstanceDtailsDto {
   const _$_InstanceDtailsDto(
-      {required this.contentName, required this.fileSize, required this.id})
+      {required this.fileSize,
+      required this.fileUuid,
+      @JsonKey(name: "ID") required this.id,
+      required this.parentSeries,
+      @JsonKey(name: "Type") required this.dicomOrthancType,
+      @JsonKey(name: "MainDicomTags") required this.instanceMainDicomTags})
       : super._();
 
   factory _$_InstanceDtailsDto.fromJson(Map<String, dynamic> json) =>
       _$$_InstanceDtailsDtoFromJson(json);
 
   @override
-  final Option<String> contentName;
+  final int fileSize;
   @override
-  final Option<String> fileSize;
+  final String fileUuid;
   @override
-  final Option<String> id;
+  @JsonKey(name: "ID")
+  final String id;
+  @override
+  final String parentSeries;
+  @override
+  @JsonKey(name: "Type")
+  final String dicomOrthancType;
+  @override
+  @JsonKey(name: "MainDicomTags")
+  final InstanceMainDicomTagsDto instanceMainDicomTags;
 
   @override
   String toString() {
-    return 'InstanceDetailsDto(contentName: $contentName, fileSize: $fileSize, id: $id)';
+    return 'InstanceDetailsDto(fileSize: $fileSize, fileUuid: $fileUuid, id: $id, parentSeries: $parentSeries, dicomOrthancType: $dicomOrthancType, instanceMainDicomTags: $instanceMainDicomTags)';
   }
 
   @override
@@ -146,16 +227,23 @@ class _$_InstanceDtailsDto extends _InstanceDtailsDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_InstanceDtailsDto &&
-            (identical(other.contentName, contentName) ||
-                other.contentName == contentName) &&
             (identical(other.fileSize, fileSize) ||
                 other.fileSize == fileSize) &&
-            (identical(other.id, id) || other.id == id));
+            (identical(other.fileUuid, fileUuid) ||
+                other.fileUuid == fileUuid) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.parentSeries, parentSeries) ||
+                other.parentSeries == parentSeries) &&
+            (identical(other.dicomOrthancType, dicomOrthancType) ||
+                other.dicomOrthancType == dicomOrthancType) &&
+            (identical(other.instanceMainDicomTags, instanceMainDicomTags) ||
+                other.instanceMainDicomTags == instanceMainDicomTags));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, contentName, fileSize, id);
+  int get hashCode => Object.hash(runtimeType, fileSize, fileUuid, id,
+      parentSeries, dicomOrthancType, instanceMainDicomTags);
 
   @JsonKey(ignore: true)
   @override
@@ -174,20 +262,36 @@ class _$_InstanceDtailsDto extends _InstanceDtailsDto {
 
 abstract class _InstanceDtailsDto extends InstanceDetailsDto {
   const factory _InstanceDtailsDto(
-      {required final Option<String> contentName,
-      required final Option<String> fileSize,
-      required final Option<String> id}) = _$_InstanceDtailsDto;
+          {required final int fileSize,
+          required final String fileUuid,
+          @JsonKey(name: "ID")
+              required final String id,
+          required final String parentSeries,
+          @JsonKey(name: "Type")
+              required final String dicomOrthancType,
+          @JsonKey(name: "MainDicomTags")
+              required final InstanceMainDicomTagsDto instanceMainDicomTags}) =
+      _$_InstanceDtailsDto;
   const _InstanceDtailsDto._() : super._();
 
   factory _InstanceDtailsDto.fromJson(Map<String, dynamic> json) =
       _$_InstanceDtailsDto.fromJson;
 
   @override
-  Option<String> get contentName;
+  int get fileSize;
   @override
-  Option<String> get fileSize;
+  String get fileUuid;
   @override
-  Option<String> get id;
+  @JsonKey(name: "ID")
+  String get id;
+  @override
+  String get parentSeries;
+  @override
+  @JsonKey(name: "Type")
+  String get dicomOrthancType;
+  @override
+  @JsonKey(name: "MainDicomTags")
+  InstanceMainDicomTagsDto get instanceMainDicomTags;
   @override
   @JsonKey(ignore: true)
   _$$_InstanceDtailsDtoCopyWith<_$_InstanceDtailsDto> get copyWith =>

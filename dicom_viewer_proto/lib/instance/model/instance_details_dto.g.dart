@@ -8,21 +8,22 @@ part of 'instance_details_dto.dart';
 
 _$_InstanceDtailsDto _$$_InstanceDtailsDtoFromJson(Map<String, dynamic> json) =>
     _$_InstanceDtailsDto(
-      contentName: Option<String>.fromJson(json['ContentName']),
-      fileSize: Option<String>.fromJson(json['FileSize']),
-      id: Option<String>.fromJson(json['Id']),
+      fileSize: json['FileSize'] as int,
+      fileUuid: json['FileUuid'] as String,
+      id: json['ID'] as String,
+      parentSeries: json['ParentSeries'] as String,
+      dicomOrthancType: json['Type'] as String,
+      instanceMainDicomTags: InstanceMainDicomTagsDto.fromJson(
+          json['MainDicomTags'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_InstanceDtailsDtoToJson(
         _$_InstanceDtailsDto instance) =>
     <String, dynamic>{
-      'ContentName': instance.contentName.toJson(
-        (value) => value,
-      ),
-      'FileSize': instance.fileSize.toJson(
-        (value) => value,
-      ),
-      'Id': instance.id.toJson(
-        (value) => value,
-      ),
+      'FileSize': instance.fileSize,
+      'FileUuid': instance.fileUuid,
+      'ID': instance.id,
+      'ParentSeries': instance.parentSeries,
+      'Type': instance.dicomOrthancType,
+      'MainDicomTags': instance.instanceMainDicomTags,
     };

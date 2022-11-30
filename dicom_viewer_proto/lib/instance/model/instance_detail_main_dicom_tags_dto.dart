@@ -5,9 +5,10 @@ part 'instance_detail_main_dicom_tags_dto.freezed.dart';
 part 'instance_detail_main_dicom_tags_dto.g.dart';
 
 @freezed
-class InstanceDetailMainDicomTagsDto with _$InstanceDetailMainDicomTagsDto {
-  const InstanceDetailMainDicomTagsDto._();
-  const factory InstanceDetailMainDicomTagsDto({
+class InstanceMainDicomTagsDto with _$InstanceMainDicomTagsDto {
+  const InstanceMainDicomTagsDto._();
+  @JsonSerializable(fieldRename: FieldRename.pascal)
+  const factory InstanceMainDicomTagsDto({
     required Option<String> acquisitionNumber,
     required Option<String> bitsAllocated,
     required Option<String> bitsStored,
@@ -32,8 +33,8 @@ class InstanceDetailMainDicomTagsDto with _$InstanceDetailMainDicomTagsDto {
     required Option<String> specificCharacterSet,
     required Option<String> windowCenter,
     required Option<String> windowWidth,
-  }) = _InstanceDetailMainDicomTagsDto;
+  }) = _InstanceMainDicomTagsDto;
 
-  factory InstanceDetailMainDicomTagsDto.fromJson(Map<String, dynamic> json) =>
-      _$InstanceDetailMainDicomTagsDtoFromJson(json);
+  factory InstanceMainDicomTagsDto.fromJson(Map<String, dynamic> json) =>
+      _$InstanceMainDicomTagsDtoFromJson(json);
 }

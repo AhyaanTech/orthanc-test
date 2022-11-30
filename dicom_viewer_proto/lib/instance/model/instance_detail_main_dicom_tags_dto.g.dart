@@ -6,114 +6,114 @@ part of 'instance_detail_main_dicom_tags_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_InstanceDetailMainDicomTagsDto _$$_InstanceDetailMainDicomTagsDtoFromJson(
+_$_InstanceMainDicomTagsDto _$$_InstanceMainDicomTagsDtoFromJson(
         Map<String, dynamic> json) =>
-    _$_InstanceDetailMainDicomTagsDto(
-      acquisitionNumber: Option<String>.fromJson(json['acquisitionNumber']),
-      bitsAllocated: Option<String>.fromJson(json['bitsAllocated']),
-      bitsStored: Option<String>.fromJson(json['bitsStored']),
-      columns: Option<String>.fromJson(json['columns']),
-      contentDate: Option<String>.fromJson(json['contentDate']),
-      contentTime: Option<String>.fromJson(json['contentTime']),
+    _$_InstanceMainDicomTagsDto(
+      acquisitionNumber: Option<String>.fromJson(json['AcquisitionNumber']),
+      bitsAllocated: Option<String>.fromJson(json['BitsAllocated']),
+      bitsStored: Option<String>.fromJson(json['BitsStored']),
+      columns: Option<String>.fromJson(json['Columns']),
+      contentDate: Option<String>.fromJson(json['ContentDate']),
+      contentTime: Option<String>.fromJson(json['ContentTime']),
       imageOrientationPatient:
-          Option<String>.fromJson(json['imageOrientationPatient']),
+          Option<String>.fromJson(json['ImageOrientationPatient']),
       imagePositionPatient:
-          Option<String>.fromJson(json['imagePositionPatient']),
-      imageType: Option<String>.fromJson(json['imageType']),
+          Option<String>.fromJson(json['ImagePositionPatient']),
+      imageType: Option<String>.fromJson(json['ImageType']),
       instanceCreationDate:
-          Option<String>.fromJson(json['instanceCreationDate']),
+          Option<String>.fromJson(json['InstanceCreationDate']),
       instanceCreationTime:
-          Option<String>.fromJson(json['instanceCreationTime']),
-      instanceNumber: Option<String>.fromJson(json['instanceNumber']),
+          Option<String>.fromJson(json['InstanceCreationTime']),
+      instanceNumber: Option<String>.fromJson(json['InstanceNumber']),
       photometricInterpretation:
-          Option<String>.fromJson(json['photometricInterpretation']),
-      pixelRepresentation: Option<String>.fromJson(json['pixelRepresentation']),
-      pixelSpacing: Option<String>.fromJson(json['pixelSpacing']),
-      rescaleIntercept: Option<String>.fromJson(json['rescaleIntercept']),
-      rescaleSlope: Option<String>.fromJson(json['rescaleSlope']),
-      rows: Option<String>.fromJson(json['rows']),
-      sOPClassUID: Option<String>.fromJson(json['sOPClassUID']),
-      sOPInstanceUID: Option<String>.fromJson(json['sOPInstanceUID']),
-      sliceThickness: Option<String>.fromJson(json['sliceThickness']),
+          Option<String>.fromJson(json['PhotometricInterpretation']),
+      pixelRepresentation: Option<String>.fromJson(json['PixelRepresentation']),
+      pixelSpacing: Option<String>.fromJson(json['PixelSpacing']),
+      rescaleIntercept: Option<String>.fromJson(json['RescaleIntercept']),
+      rescaleSlope: Option<String>.fromJson(json['RescaleSlope']),
+      rows: Option<String>.fromJson(json['Rows']),
+      sOPClassUID: Option<String>.fromJson(json['SOPClassUID']),
+      sOPInstanceUID: Option<String>.fromJson(json['SOPInstanceUID']),
+      sliceThickness: Option<String>.fromJson(json['SliceThickness']),
       specificCharacterSet:
-          Option<String>.fromJson(json['specificCharacterSet']),
-      windowCenter: Option<String>.fromJson(json['windowCenter']),
-      windowWidth: Option<String>.fromJson(json['windowWidth']),
+          Option<String>.fromJson(json['SpecificCharacterSet']),
+      windowCenter: Option<String>.fromJson(json['WindowCenter']),
+      windowWidth: Option<String>.fromJson(json['WindowWidth']),
     );
 
-Map<String, dynamic> _$$_InstanceDetailMainDicomTagsDtoToJson(
-        _$_InstanceDetailMainDicomTagsDto instance) =>
+Map<String, dynamic> _$$_InstanceMainDicomTagsDtoToJson(
+        _$_InstanceMainDicomTagsDto instance) =>
     <String, dynamic>{
-      'acquisitionNumber': instance.acquisitionNumber.toJson(
+      'AcquisitionNumber': instance.acquisitionNumber.toJson(
         (value) => value,
       ),
-      'bitsAllocated': instance.bitsAllocated.toJson(
+      'BitsAllocated': instance.bitsAllocated.toJson(
         (value) => value,
       ),
-      'bitsStored': instance.bitsStored.toJson(
+      'BitsStored': instance.bitsStored.toJson(
         (value) => value,
       ),
-      'columns': instance.columns.toJson(
+      'Columns': instance.columns.toJson(
         (value) => value,
       ),
-      'contentDate': instance.contentDate.toJson(
+      'ContentDate': instance.contentDate.toJson(
         (value) => value,
       ),
-      'contentTime': instance.contentTime.toJson(
+      'ContentTime': instance.contentTime.toJson(
         (value) => value,
       ),
-      'imageOrientationPatient': instance.imageOrientationPatient.toJson(
+      'ImageOrientationPatient': instance.imageOrientationPatient.toJson(
         (value) => value,
       ),
-      'imagePositionPatient': instance.imagePositionPatient.toJson(
+      'ImagePositionPatient': instance.imagePositionPatient.toJson(
         (value) => value,
       ),
-      'imageType': instance.imageType.toJson(
+      'ImageType': instance.imageType.toJson(
         (value) => value,
       ),
-      'instanceCreationDate': instance.instanceCreationDate.toJson(
+      'InstanceCreationDate': instance.instanceCreationDate.toJson(
         (value) => value,
       ),
-      'instanceCreationTime': instance.instanceCreationTime.toJson(
+      'InstanceCreationTime': instance.instanceCreationTime.toJson(
         (value) => value,
       ),
-      'instanceNumber': instance.instanceNumber.toJson(
+      'InstanceNumber': instance.instanceNumber.toJson(
         (value) => value,
       ),
-      'photometricInterpretation': instance.photometricInterpretation.toJson(
+      'PhotometricInterpretation': instance.photometricInterpretation.toJson(
         (value) => value,
       ),
-      'pixelRepresentation': instance.pixelRepresentation.toJson(
+      'PixelRepresentation': instance.pixelRepresentation.toJson(
         (value) => value,
       ),
-      'pixelSpacing': instance.pixelSpacing.toJson(
+      'PixelSpacing': instance.pixelSpacing.toJson(
         (value) => value,
       ),
-      'rescaleIntercept': instance.rescaleIntercept.toJson(
+      'RescaleIntercept': instance.rescaleIntercept.toJson(
         (value) => value,
       ),
-      'rescaleSlope': instance.rescaleSlope.toJson(
+      'RescaleSlope': instance.rescaleSlope.toJson(
         (value) => value,
       ),
-      'rows': instance.rows.toJson(
+      'Rows': instance.rows.toJson(
         (value) => value,
       ),
-      'sOPClassUID': instance.sOPClassUID.toJson(
+      'SOPClassUID': instance.sOPClassUID.toJson(
         (value) => value,
       ),
-      'sOPInstanceUID': instance.sOPInstanceUID.toJson(
+      'SOPInstanceUID': instance.sOPInstanceUID.toJson(
         (value) => value,
       ),
-      'sliceThickness': instance.sliceThickness.toJson(
+      'SliceThickness': instance.sliceThickness.toJson(
         (value) => value,
       ),
-      'specificCharacterSet': instance.specificCharacterSet.toJson(
+      'SpecificCharacterSet': instance.specificCharacterSet.toJson(
         (value) => value,
       ),
-      'windowCenter': instance.windowCenter.toJson(
+      'WindowCenter': instance.windowCenter.toJson(
         (value) => value,
       ),
-      'windowWidth': instance.windowWidth.toJson(
+      'WindowWidth': instance.windowWidth.toJson(
         (value) => value,
       ),
     };

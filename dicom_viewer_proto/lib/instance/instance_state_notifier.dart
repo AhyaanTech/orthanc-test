@@ -1,9 +1,10 @@
 import 'package:dicom_viewer_proto/core/clients.dart';
 import 'package:dicom_viewer_proto/core/infra/instance_fit.dart';
 import 'package:dicom_viewer_proto/instance/contrast/image_contrast_changer.dart';
-import 'package:dicom_viewer_proto/instance/model/instance_window_data.dart';
+import 'package:dicom_viewer_proto/instance/model/instance_details_dto.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:logger/logger.dart';
 import 'package:image/image.dart' as imglib;
 
@@ -21,6 +22,7 @@ class InstanceViewStateNotifier extends StateNotifier<AsyncValue<Uint8List>> {
   final Logger _logger = Logger();
   late Uint8List imageData;
   late List<int> rawImageData;
+  late InstanceDetailsDto instanceDetails;
 
   final Ref ref;
 
@@ -28,6 +30,11 @@ class InstanceViewStateNotifier extends StateNotifier<AsyncValue<Uint8List>> {
     this.ref, {
     required this.instanceClient,
   }) : super(const AsyncLoading());
+
+  Future<Unit> getInstanceDetails({required String instanceId}) async {
+    instanceDetails = await instanceClient.getInstanceDetails(instanceId);
+    return unit;
+  }
 
   Future<void> getImageAsync({required String instanceId}) async {
     state = const AsyncLoading();

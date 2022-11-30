@@ -33,10 +33,14 @@ class InstanceListView extends ConsumerWidget {
             ),
           ),
           onTap: () {
-            _logger.d(data.instances![index]);
+            var instanceId = data.instances![index];
+            _logger.d(instanceId);
             ref
                 .read(instanceViewStateNotifierProvider.notifier)
-                .getImageAsync(instanceId: data.instances![index]);
+                .getInstanceDetails(instanceId: instanceId);
+            ref
+                .read(instanceViewStateNotifierProvider.notifier)
+                .getImageAsync(instanceId: instanceId);
           },
         );
       },

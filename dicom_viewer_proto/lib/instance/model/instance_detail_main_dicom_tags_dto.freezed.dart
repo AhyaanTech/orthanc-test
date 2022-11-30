@@ -14,13 +14,13 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-InstanceDetailMainDicomTagsDto _$InstanceDetailMainDicomTagsDtoFromJson(
+InstanceMainDicomTagsDto _$InstanceMainDicomTagsDtoFromJson(
     Map<String, dynamic> json) {
-  return _InstanceDetailMainDicomTagsDto.fromJson(json);
+  return _InstanceMainDicomTagsDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$InstanceDetailMainDicomTagsDto {
+mixin _$InstanceMainDicomTagsDto {
   Option<String> get acquisitionNumber => throw _privateConstructorUsedError;
   Option<String> get bitsAllocated => throw _privateConstructorUsedError;
   Option<String> get bitsStored => throw _privateConstructorUsedError;
@@ -50,17 +50,15 @@ mixin _$InstanceDetailMainDicomTagsDto {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $InstanceDetailMainDicomTagsDtoCopyWith<InstanceDetailMainDicomTagsDto>
-      get copyWith => throw _privateConstructorUsedError;
+  $InstanceMainDicomTagsDtoCopyWith<InstanceMainDicomTagsDto> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $InstanceDetailMainDicomTagsDtoCopyWith<$Res> {
-  factory $InstanceDetailMainDicomTagsDtoCopyWith(
-          InstanceDetailMainDicomTagsDto value,
-          $Res Function(InstanceDetailMainDicomTagsDto) then) =
-      _$InstanceDetailMainDicomTagsDtoCopyWithImpl<$Res,
-          InstanceDetailMainDicomTagsDto>;
+abstract class $InstanceMainDicomTagsDtoCopyWith<$Res> {
+  factory $InstanceMainDicomTagsDtoCopyWith(InstanceMainDicomTagsDto value,
+          $Res Function(InstanceMainDicomTagsDto) then) =
+      _$InstanceMainDicomTagsDtoCopyWithImpl<$Res, InstanceMainDicomTagsDto>;
   @useResult
   $Res call(
       {Option<String> acquisitionNumber,
@@ -90,10 +88,10 @@ abstract class $InstanceDetailMainDicomTagsDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$InstanceDetailMainDicomTagsDtoCopyWithImpl<$Res,
-        $Val extends InstanceDetailMainDicomTagsDto>
-    implements $InstanceDetailMainDicomTagsDtoCopyWith<$Res> {
-  _$InstanceDetailMainDicomTagsDtoCopyWithImpl(this._value, this._then);
+class _$InstanceMainDicomTagsDtoCopyWithImpl<$Res,
+        $Val extends InstanceMainDicomTagsDto>
+    implements $InstanceMainDicomTagsDtoCopyWith<$Res> {
+  _$InstanceMainDicomTagsDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -230,12 +228,12 @@ class _$InstanceDetailMainDicomTagsDtoCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_InstanceDetailMainDicomTagsDtoCopyWith<$Res>
-    implements $InstanceDetailMainDicomTagsDtoCopyWith<$Res> {
-  factory _$$_InstanceDetailMainDicomTagsDtoCopyWith(
-          _$_InstanceDetailMainDicomTagsDto value,
-          $Res Function(_$_InstanceDetailMainDicomTagsDto) then) =
-      __$$_InstanceDetailMainDicomTagsDtoCopyWithImpl<$Res>;
+abstract class _$$_InstanceMainDicomTagsDtoCopyWith<$Res>
+    implements $InstanceMainDicomTagsDtoCopyWith<$Res> {
+  factory _$$_InstanceMainDicomTagsDtoCopyWith(
+          _$_InstanceMainDicomTagsDto value,
+          $Res Function(_$_InstanceMainDicomTagsDto) then) =
+      __$$_InstanceMainDicomTagsDtoCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -266,13 +264,12 @@ abstract class _$$_InstanceDetailMainDicomTagsDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_InstanceDetailMainDicomTagsDtoCopyWithImpl<$Res>
-    extends _$InstanceDetailMainDicomTagsDtoCopyWithImpl<$Res,
-        _$_InstanceDetailMainDicomTagsDto>
-    implements _$$_InstanceDetailMainDicomTagsDtoCopyWith<$Res> {
-  __$$_InstanceDetailMainDicomTagsDtoCopyWithImpl(
-      _$_InstanceDetailMainDicomTagsDto _value,
-      $Res Function(_$_InstanceDetailMainDicomTagsDto) _then)
+class __$$_InstanceMainDicomTagsDtoCopyWithImpl<$Res>
+    extends _$InstanceMainDicomTagsDtoCopyWithImpl<$Res,
+        _$_InstanceMainDicomTagsDto>
+    implements _$$_InstanceMainDicomTagsDtoCopyWith<$Res> {
+  __$$_InstanceMainDicomTagsDtoCopyWithImpl(_$_InstanceMainDicomTagsDto _value,
+      $Res Function(_$_InstanceMainDicomTagsDto) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -303,7 +300,7 @@ class __$$_InstanceDetailMainDicomTagsDtoCopyWithImpl<$Res>
     Object? windowCenter = null,
     Object? windowWidth = null,
   }) {
-    return _then(_$_InstanceDetailMainDicomTagsDto(
+    return _then(_$_InstanceMainDicomTagsDto(
       acquisitionNumber: null == acquisitionNumber
           ? _value.acquisitionNumber
           : acquisitionNumber // ignore: cast_nullable_to_non_nullable
@@ -405,10 +402,10 @@ class __$$_InstanceDetailMainDicomTagsDtoCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$_InstanceDetailMainDicomTagsDto
-    extends _InstanceDetailMainDicomTagsDto {
-  const _$_InstanceDetailMainDicomTagsDto(
+
+@JsonSerializable(fieldRename: FieldRename.pascal)
+class _$_InstanceMainDicomTagsDto extends _InstanceMainDicomTagsDto {
+  const _$_InstanceMainDicomTagsDto(
       {required this.acquisitionNumber,
       required this.bitsAllocated,
       required this.bitsStored,
@@ -435,9 +432,8 @@ class _$_InstanceDetailMainDicomTagsDto
       required this.windowWidth})
       : super._();
 
-  factory _$_InstanceDetailMainDicomTagsDto.fromJson(
-          Map<String, dynamic> json) =>
-      _$$_InstanceDetailMainDicomTagsDtoFromJson(json);
+  factory _$_InstanceMainDicomTagsDto.fromJson(Map<String, dynamic> json) =>
+      _$$_InstanceMainDicomTagsDtoFromJson(json);
 
   @override
   final Option<String> acquisitionNumber;
@@ -490,14 +486,14 @@ class _$_InstanceDetailMainDicomTagsDto
 
   @override
   String toString() {
-    return 'InstanceDetailMainDicomTagsDto(acquisitionNumber: $acquisitionNumber, bitsAllocated: $bitsAllocated, bitsStored: $bitsStored, columns: $columns, contentDate: $contentDate, contentTime: $contentTime, imageOrientationPatient: $imageOrientationPatient, imagePositionPatient: $imagePositionPatient, imageType: $imageType, instanceCreationDate: $instanceCreationDate, instanceCreationTime: $instanceCreationTime, instanceNumber: $instanceNumber, photometricInterpretation: $photometricInterpretation, pixelRepresentation: $pixelRepresentation, pixelSpacing: $pixelSpacing, rescaleIntercept: $rescaleIntercept, rescaleSlope: $rescaleSlope, rows: $rows, sOPClassUID: $sOPClassUID, sOPInstanceUID: $sOPInstanceUID, sliceThickness: $sliceThickness, specificCharacterSet: $specificCharacterSet, windowCenter: $windowCenter, windowWidth: $windowWidth)';
+    return 'InstanceMainDicomTagsDto(acquisitionNumber: $acquisitionNumber, bitsAllocated: $bitsAllocated, bitsStored: $bitsStored, columns: $columns, contentDate: $contentDate, contentTime: $contentTime, imageOrientationPatient: $imageOrientationPatient, imagePositionPatient: $imagePositionPatient, imageType: $imageType, instanceCreationDate: $instanceCreationDate, instanceCreationTime: $instanceCreationTime, instanceNumber: $instanceNumber, photometricInterpretation: $photometricInterpretation, pixelRepresentation: $pixelRepresentation, pixelSpacing: $pixelSpacing, rescaleIntercept: $rescaleIntercept, rescaleSlope: $rescaleSlope, rows: $rows, sOPClassUID: $sOPClassUID, sOPInstanceUID: $sOPInstanceUID, sliceThickness: $sliceThickness, specificCharacterSet: $specificCharacterSet, windowCenter: $windowCenter, windowWidth: $windowWidth)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_InstanceDetailMainDicomTagsDto &&
+            other is _$_InstanceMainDicomTagsDto &&
             (identical(other.acquisitionNumber, acquisitionNumber) ||
                 other.acquisitionNumber == acquisitionNumber) &&
             (identical(other.bitsAllocated, bitsAllocated) ||
@@ -581,50 +577,48 @@ class _$_InstanceDetailMainDicomTagsDto
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InstanceDetailMainDicomTagsDtoCopyWith<_$_InstanceDetailMainDicomTagsDto>
-      get copyWith => __$$_InstanceDetailMainDicomTagsDtoCopyWithImpl<
-          _$_InstanceDetailMainDicomTagsDto>(this, _$identity);
+  _$$_InstanceMainDicomTagsDtoCopyWith<_$_InstanceMainDicomTagsDto>
+      get copyWith => __$$_InstanceMainDicomTagsDtoCopyWithImpl<
+          _$_InstanceMainDicomTagsDto>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_InstanceDetailMainDicomTagsDtoToJson(
+    return _$$_InstanceMainDicomTagsDtoToJson(
       this,
     );
   }
 }
 
-abstract class _InstanceDetailMainDicomTagsDto
-    extends InstanceDetailMainDicomTagsDto {
-  const factory _InstanceDetailMainDicomTagsDto(
-          {required final Option<String> acquisitionNumber,
-          required final Option<String> bitsAllocated,
-          required final Option<String> bitsStored,
-          required final Option<String> columns,
-          required final Option<String> contentDate,
-          required final Option<String> contentTime,
-          required final Option<String> imageOrientationPatient,
-          required final Option<String> imagePositionPatient,
-          required final Option<String> imageType,
-          required final Option<String> instanceCreationDate,
-          required final Option<String> instanceCreationTime,
-          required final Option<String> instanceNumber,
-          required final Option<String> photometricInterpretation,
-          required final Option<String> pixelRepresentation,
-          required final Option<String> pixelSpacing,
-          required final Option<String> rescaleIntercept,
-          required final Option<String> rescaleSlope,
-          required final Option<String> rows,
-          required final Option<String> sOPClassUID,
-          required final Option<String> sOPInstanceUID,
-          required final Option<String> sliceThickness,
-          required final Option<String> specificCharacterSet,
-          required final Option<String> windowCenter,
-          required final Option<String> windowWidth}) =
-      _$_InstanceDetailMainDicomTagsDto;
-  const _InstanceDetailMainDicomTagsDto._() : super._();
+abstract class _InstanceMainDicomTagsDto extends InstanceMainDicomTagsDto {
+  const factory _InstanceMainDicomTagsDto(
+      {required final Option<String> acquisitionNumber,
+      required final Option<String> bitsAllocated,
+      required final Option<String> bitsStored,
+      required final Option<String> columns,
+      required final Option<String> contentDate,
+      required final Option<String> contentTime,
+      required final Option<String> imageOrientationPatient,
+      required final Option<String> imagePositionPatient,
+      required final Option<String> imageType,
+      required final Option<String> instanceCreationDate,
+      required final Option<String> instanceCreationTime,
+      required final Option<String> instanceNumber,
+      required final Option<String> photometricInterpretation,
+      required final Option<String> pixelRepresentation,
+      required final Option<String> pixelSpacing,
+      required final Option<String> rescaleIntercept,
+      required final Option<String> rescaleSlope,
+      required final Option<String> rows,
+      required final Option<String> sOPClassUID,
+      required final Option<String> sOPInstanceUID,
+      required final Option<String> sliceThickness,
+      required final Option<String> specificCharacterSet,
+      required final Option<String> windowCenter,
+      required final Option<String> windowWidth}) = _$_InstanceMainDicomTagsDto;
+  const _InstanceMainDicomTagsDto._() : super._();
 
-  factory _InstanceDetailMainDicomTagsDto.fromJson(Map<String, dynamic> json) =
-      _$_InstanceDetailMainDicomTagsDto.fromJson;
+  factory _InstanceMainDicomTagsDto.fromJson(Map<String, dynamic> json) =
+      _$_InstanceMainDicomTagsDto.fromJson;
 
   @override
   Option<String> get acquisitionNumber;
@@ -676,6 +670,6 @@ abstract class _InstanceDetailMainDicomTagsDto
   Option<String> get windowWidth;
   @override
   @JsonKey(ignore: true)
-  _$$_InstanceDetailMainDicomTagsDtoCopyWith<_$_InstanceDetailMainDicomTagsDto>
+  _$$_InstanceMainDicomTagsDtoCopyWith<_$_InstanceMainDicomTagsDto>
       get copyWith => throw _privateConstructorUsedError;
 }
