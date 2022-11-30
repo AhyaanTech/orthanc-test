@@ -673,3 +673,144 @@ abstract class _InstanceMainDicomTagsDto extends InstanceMainDicomTagsDto {
   _$$_InstanceMainDicomTagsDtoCopyWith<_$_InstanceMainDicomTagsDto>
       get copyWith => throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+mixin _$InstanceDicomTags {
+  int get windowWidth => throw _privateConstructorUsedError;
+  int get windowCenter => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $InstanceDicomTagsCopyWith<InstanceDicomTags> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $InstanceDicomTagsCopyWith<$Res> {
+  factory $InstanceDicomTagsCopyWith(
+          InstanceDicomTags value, $Res Function(InstanceDicomTags) then) =
+      _$InstanceDicomTagsCopyWithImpl<$Res, InstanceDicomTags>;
+  @useResult
+  $Res call({int windowWidth, int windowCenter});
+}
+
+/// @nodoc
+class _$InstanceDicomTagsCopyWithImpl<$Res, $Val extends InstanceDicomTags>
+    implements $InstanceDicomTagsCopyWith<$Res> {
+  _$InstanceDicomTagsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? windowWidth = null,
+    Object? windowCenter = null,
+  }) {
+    return _then(_value.copyWith(
+      windowWidth: null == windowWidth
+          ? _value.windowWidth
+          : windowWidth // ignore: cast_nullable_to_non_nullable
+              as int,
+      windowCenter: null == windowCenter
+          ? _value.windowCenter
+          : windowCenter // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_InstanceDicomTagsCopyWith<$Res>
+    implements $InstanceDicomTagsCopyWith<$Res> {
+  factory _$$_InstanceDicomTagsCopyWith(_$_InstanceDicomTags value,
+          $Res Function(_$_InstanceDicomTags) then) =
+      __$$_InstanceDicomTagsCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int windowWidth, int windowCenter});
+}
+
+/// @nodoc
+class __$$_InstanceDicomTagsCopyWithImpl<$Res>
+    extends _$InstanceDicomTagsCopyWithImpl<$Res, _$_InstanceDicomTags>
+    implements _$$_InstanceDicomTagsCopyWith<$Res> {
+  __$$_InstanceDicomTagsCopyWithImpl(
+      _$_InstanceDicomTags _value, $Res Function(_$_InstanceDicomTags) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? windowWidth = null,
+    Object? windowCenter = null,
+  }) {
+    return _then(_$_InstanceDicomTags(
+      windowWidth: null == windowWidth
+          ? _value.windowWidth
+          : windowWidth // ignore: cast_nullable_to_non_nullable
+              as int,
+      windowCenter: null == windowCenter
+          ? _value.windowCenter
+          : windowCenter // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_InstanceDicomTags extends _InstanceDicomTags {
+  const _$_InstanceDicomTags(
+      {required this.windowWidth, required this.windowCenter})
+      : super._();
+
+  @override
+  final int windowWidth;
+  @override
+  final int windowCenter;
+
+  @override
+  String toString() {
+    return 'InstanceDicomTags(windowWidth: $windowWidth, windowCenter: $windowCenter)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_InstanceDicomTags &&
+            (identical(other.windowWidth, windowWidth) ||
+                other.windowWidth == windowWidth) &&
+            (identical(other.windowCenter, windowCenter) ||
+                other.windowCenter == windowCenter));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, windowWidth, windowCenter);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_InstanceDicomTagsCopyWith<_$_InstanceDicomTags> get copyWith =>
+      __$$_InstanceDicomTagsCopyWithImpl<_$_InstanceDicomTags>(
+          this, _$identity);
+}
+
+abstract class _InstanceDicomTags extends InstanceDicomTags {
+  const factory _InstanceDicomTags(
+      {required final int windowWidth,
+      required final int windowCenter}) = _$_InstanceDicomTags;
+  const _InstanceDicomTags._() : super._();
+
+  @override
+  int get windowWidth;
+  @override
+  int get windowCenter;
+  @override
+  @JsonKey(ignore: true)
+  _$$_InstanceDicomTagsCopyWith<_$_InstanceDicomTags> get copyWith =>
+      throw _privateConstructorUsedError;
+}
