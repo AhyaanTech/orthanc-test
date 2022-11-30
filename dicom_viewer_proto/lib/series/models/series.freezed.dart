@@ -22,19 +22,13 @@ Series _$SeriesFromJson(Map<String, dynamic> json) {
 mixin _$Series {
   @JsonKey(name: "MainDicomTags")
   SeriesMainDicomTags get mainDicomTags => throw _privateConstructorUsedError;
-  @JsonKey(name: "ExpectedNumberOfInstances")
   int? get expectedNumberOfInstances => throw _privateConstructorUsedError;
   @JsonKey(name: "ID")
   String? get id => throw _privateConstructorUsedError;
-  @JsonKey(name: "Instances")
   List<String>? get instances => throw _privateConstructorUsedError;
-  @JsonKey(name: "IsStable")
   bool? get isStable => throw _privateConstructorUsedError;
-  @JsonKey(name: "LastUpdate")
   DateTime? get lastUpdate => throw _privateConstructorUsedError;
-  @JsonKey(name: "ParentStudy")
   String? get parentStudy => throw _privateConstructorUsedError;
-  @JsonKey(name: "Status")
   String? get status => throw _privateConstructorUsedError;
   @JsonKey(name: "Type")
   String? get instanceType => throw _privateConstructorUsedError;
@@ -50,24 +44,15 @@ abstract class $SeriesCopyWith<$Res> {
       _$SeriesCopyWithImpl<$Res, Series>;
   @useResult
   $Res call(
-      {@JsonKey(name: "MainDicomTags")
-          SeriesMainDicomTags mainDicomTags,
-      @JsonKey(name: "ExpectedNumberOfInstances")
-          int? expectedNumberOfInstances,
-      @JsonKey(name: "ID")
-          String? id,
-      @JsonKey(name: "Instances")
-          List<String>? instances,
-      @JsonKey(name: "IsStable")
-          bool? isStable,
-      @JsonKey(name: "LastUpdate")
-          DateTime? lastUpdate,
-      @JsonKey(name: "ParentStudy")
-          String? parentStudy,
-      @JsonKey(name: "Status")
-          String? status,
-      @JsonKey(name: "Type")
-          String? instanceType});
+      {@JsonKey(name: "MainDicomTags") SeriesMainDicomTags mainDicomTags,
+      int? expectedNumberOfInstances,
+      @JsonKey(name: "ID") String? id,
+      List<String>? instances,
+      bool? isStable,
+      DateTime? lastUpdate,
+      String? parentStudy,
+      String? status,
+      @JsonKey(name: "Type") String? instanceType});
 
   $SeriesMainDicomTagsCopyWith<$Res> get mainDicomTags;
 }
@@ -151,24 +136,15 @@ abstract class _$$_SeriesCopyWith<$Res> implements $SeriesCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "MainDicomTags")
-          SeriesMainDicomTags mainDicomTags,
-      @JsonKey(name: "ExpectedNumberOfInstances")
-          int? expectedNumberOfInstances,
-      @JsonKey(name: "ID")
-          String? id,
-      @JsonKey(name: "Instances")
-          List<String>? instances,
-      @JsonKey(name: "IsStable")
-          bool? isStable,
-      @JsonKey(name: "LastUpdate")
-          DateTime? lastUpdate,
-      @JsonKey(name: "ParentStudy")
-          String? parentStudy,
-      @JsonKey(name: "Status")
-          String? status,
-      @JsonKey(name: "Type")
-          String? instanceType});
+      {@JsonKey(name: "MainDicomTags") SeriesMainDicomTags mainDicomTags,
+      int? expectedNumberOfInstances,
+      @JsonKey(name: "ID") String? id,
+      List<String>? instances,
+      bool? isStable,
+      DateTime? lastUpdate,
+      String? parentStudy,
+      String? status,
+      @JsonKey(name: "Type") String? instanceType});
 
   @override
   $SeriesMainDicomTagsCopyWith<$Res> get mainDicomTags;
@@ -236,27 +212,19 @@ class __$$_SeriesCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(fieldRename: FieldRename.pascal)
 class _$_Series extends _Series {
   const _$_Series(
-      {@JsonKey(name: "MainDicomTags")
-          required this.mainDicomTags,
-      @JsonKey(name: "ExpectedNumberOfInstances")
-          this.expectedNumberOfInstances,
-      @JsonKey(name: "ID")
-          this.id,
-      @JsonKey(name: "Instances")
-          final List<String>? instances,
-      @JsonKey(name: "IsStable")
-          this.isStable,
-      @JsonKey(name: "LastUpdate")
-          this.lastUpdate,
-      @JsonKey(name: "ParentStudy")
-          this.parentStudy,
-      @JsonKey(name: "Status")
-          this.status,
-      @JsonKey(name: "Type")
-          this.instanceType})
+      {@JsonKey(name: "MainDicomTags") required this.mainDicomTags,
+      this.expectedNumberOfInstances,
+      @JsonKey(name: "ID") this.id,
+      final List<String>? instances,
+      this.isStable,
+      this.lastUpdate,
+      this.parentStudy,
+      this.status,
+      @JsonKey(name: "Type") this.instanceType})
       : _instances = instances,
         super._();
 
@@ -267,14 +235,12 @@ class _$_Series extends _Series {
   @JsonKey(name: "MainDicomTags")
   final SeriesMainDicomTags mainDicomTags;
   @override
-  @JsonKey(name: "ExpectedNumberOfInstances")
   final int? expectedNumberOfInstances;
   @override
   @JsonKey(name: "ID")
   final String? id;
   final List<String>? _instances;
   @override
-  @JsonKey(name: "Instances")
   List<String>? get instances {
     final value = _instances;
     if (value == null) return null;
@@ -283,16 +249,12 @@ class _$_Series extends _Series {
   }
 
   @override
-  @JsonKey(name: "IsStable")
   final bool? isStable;
   @override
-  @JsonKey(name: "LastUpdate")
   final DateTime? lastUpdate;
   @override
-  @JsonKey(name: "ParentStudy")
   final String? parentStudy;
   @override
-  @JsonKey(name: "Status")
   final String? status;
   @override
   @JsonKey(name: "Type")
@@ -359,20 +321,14 @@ abstract class _Series extends Series {
   const factory _Series(
       {@JsonKey(name: "MainDicomTags")
           required final SeriesMainDicomTags mainDicomTags,
-      @JsonKey(name: "ExpectedNumberOfInstances")
-          final int? expectedNumberOfInstances,
+      final int? expectedNumberOfInstances,
       @JsonKey(name: "ID")
           final String? id,
-      @JsonKey(name: "Instances")
-          final List<String>? instances,
-      @JsonKey(name: "IsStable")
-          final bool? isStable,
-      @JsonKey(name: "LastUpdate")
-          final DateTime? lastUpdate,
-      @JsonKey(name: "ParentStudy")
-          final String? parentStudy,
-      @JsonKey(name: "Status")
-          final String? status,
+      final List<String>? instances,
+      final bool? isStable,
+      final DateTime? lastUpdate,
+      final String? parentStudy,
+      final String? status,
       @JsonKey(name: "Type")
           final String? instanceType}) = _$_Series;
   const _Series._() : super._();
@@ -383,25 +339,19 @@ abstract class _Series extends Series {
   @JsonKey(name: "MainDicomTags")
   SeriesMainDicomTags get mainDicomTags;
   @override
-  @JsonKey(name: "ExpectedNumberOfInstances")
   int? get expectedNumberOfInstances;
   @override
   @JsonKey(name: "ID")
   String? get id;
   @override
-  @JsonKey(name: "Instances")
   List<String>? get instances;
   @override
-  @JsonKey(name: "IsStable")
   bool? get isStable;
   @override
-  @JsonKey(name: "LastUpdate")
   DateTime? get lastUpdate;
   @override
-  @JsonKey(name: "ParentStudy")
   String? get parentStudy;
   @override
-  @JsonKey(name: "Status")
   String? get status;
   @override
   @JsonKey(name: "Type")

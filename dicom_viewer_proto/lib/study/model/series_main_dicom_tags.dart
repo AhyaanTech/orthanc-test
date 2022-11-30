@@ -3,8 +3,8 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'main_dicom_tags.freezed.dart';
-part 'main_dicom_tags.g.dart';
+part 'series_main_dicom_tags.freezed.dart';
+part 'series_main_dicom_tags.g.dart';
 
 @freezed
 class SeriesMainDicomTags with _$SeriesMainDicomTags {
@@ -17,7 +17,7 @@ class SeriesMainDicomTags with _$SeriesMainDicomTags {
     required Option<String> studyID,
     required Option<String> studyInstanceUID,
     required Option<String> studyTime,
-  }) = _MainDicomTags;
+  }) = _SeriesMainDicomTags;
 
   factory SeriesMainDicomTags.fromJson(Map<String, dynamic> json) =>
       _$SeriesMainDicomTagsFromJson(json);

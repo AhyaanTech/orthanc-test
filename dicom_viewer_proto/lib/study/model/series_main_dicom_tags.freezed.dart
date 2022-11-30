@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'main_dicom_tags.dart';
+part of 'series_main_dicom_tags.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 SeriesMainDicomTags _$SeriesMainDicomTagsFromJson(Map<String, dynamic> json) {
-  return _MainDicomTags.fromJson(json);
+  return _SeriesMainDicomTags.fromJson(json);
 }
 
 /// @nodoc
@@ -99,11 +99,11 @@ class _$SeriesMainDicomTagsCopyWithImpl<$Res, $Val extends SeriesMainDicomTags>
 }
 
 /// @nodoc
-abstract class _$$_MainDicomTagsCopyWith<$Res>
+abstract class _$$_SeriesMainDicomTagsCopyWith<$Res>
     implements $SeriesMainDicomTagsCopyWith<$Res> {
-  factory _$$_MainDicomTagsCopyWith(
-          _$_MainDicomTags value, $Res Function(_$_MainDicomTags) then) =
-      __$$_MainDicomTagsCopyWithImpl<$Res>;
+  factory _$$_SeriesMainDicomTagsCopyWith(_$_SeriesMainDicomTags value,
+          $Res Function(_$_SeriesMainDicomTags) then) =
+      __$$_SeriesMainDicomTagsCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -116,11 +116,11 @@ abstract class _$$_MainDicomTagsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_MainDicomTagsCopyWithImpl<$Res>
-    extends _$SeriesMainDicomTagsCopyWithImpl<$Res, _$_MainDicomTags>
-    implements _$$_MainDicomTagsCopyWith<$Res> {
-  __$$_MainDicomTagsCopyWithImpl(
-      _$_MainDicomTags _value, $Res Function(_$_MainDicomTags) _then)
+class __$$_SeriesMainDicomTagsCopyWithImpl<$Res>
+    extends _$SeriesMainDicomTagsCopyWithImpl<$Res, _$_SeriesMainDicomTags>
+    implements _$$_SeriesMainDicomTagsCopyWith<$Res> {
+  __$$_SeriesMainDicomTagsCopyWithImpl(_$_SeriesMainDicomTags _value,
+      $Res Function(_$_SeriesMainDicomTags) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -133,7 +133,7 @@ class __$$_MainDicomTagsCopyWithImpl<$Res>
     Object? studyInstanceUID = null,
     Object? studyTime = null,
   }) {
-    return _then(_$_MainDicomTags(
+    return _then(_$_SeriesMainDicomTags(
       accessionNumber: null == accessionNumber
           ? _value.accessionNumber
           : accessionNumber // ignore: cast_nullable_to_non_nullable
@@ -165,8 +165,8 @@ class __$$_MainDicomTagsCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
-class _$_MainDicomTags extends _MainDicomTags {
-  const _$_MainDicomTags(
+class _$_SeriesMainDicomTags extends _SeriesMainDicomTags {
+  const _$_SeriesMainDicomTags(
       {required this.accessionNumber,
       required this.referringPhysicianName,
       required this.studyDate,
@@ -175,8 +175,8 @@ class _$_MainDicomTags extends _MainDicomTags {
       required this.studyTime})
       : super._();
 
-  factory _$_MainDicomTags.fromJson(Map<String, dynamic> json) =>
-      _$$_MainDicomTagsFromJson(json);
+  factory _$_SeriesMainDicomTags.fromJson(Map<String, dynamic> json) =>
+      _$$_SeriesMainDicomTagsFromJson(json);
 
   @override
   final Option<String> accessionNumber;
@@ -200,7 +200,7 @@ class _$_MainDicomTags extends _MainDicomTags {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MainDicomTags &&
+            other is _$_SeriesMainDicomTags &&
             (identical(other.accessionNumber, accessionNumber) ||
                 other.accessionNumber == accessionNumber) &&
             (identical(other.referringPhysicianName, referringPhysicianName) ||
@@ -222,29 +222,30 @@ class _$_MainDicomTags extends _MainDicomTags {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MainDicomTagsCopyWith<_$_MainDicomTags> get copyWith =>
-      __$$_MainDicomTagsCopyWithImpl<_$_MainDicomTags>(this, _$identity);
+  _$$_SeriesMainDicomTagsCopyWith<_$_SeriesMainDicomTags> get copyWith =>
+      __$$_SeriesMainDicomTagsCopyWithImpl<_$_SeriesMainDicomTags>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MainDicomTagsToJson(
+    return _$$_SeriesMainDicomTagsToJson(
       this,
     );
   }
 }
 
-abstract class _MainDicomTags extends SeriesMainDicomTags {
-  const factory _MainDicomTags(
+abstract class _SeriesMainDicomTags extends SeriesMainDicomTags {
+  const factory _SeriesMainDicomTags(
       {required final Option<String> accessionNumber,
       required final Option<String> referringPhysicianName,
       required final Option<String> studyDate,
       required final Option<String> studyID,
       required final Option<String> studyInstanceUID,
-      required final Option<String> studyTime}) = _$_MainDicomTags;
-  const _MainDicomTags._() : super._();
+      required final Option<String> studyTime}) = _$_SeriesMainDicomTags;
+  const _SeriesMainDicomTags._() : super._();
 
-  factory _MainDicomTags.fromJson(Map<String, dynamic> json) =
-      _$_MainDicomTags.fromJson;
+  factory _SeriesMainDicomTags.fromJson(Map<String, dynamic> json) =
+      _$_SeriesMainDicomTags.fromJson;
 
   @override
   Option<String> get accessionNumber;
@@ -260,6 +261,6 @@ abstract class _MainDicomTags extends SeriesMainDicomTags {
   Option<String> get studyTime;
   @override
   @JsonKey(ignore: true)
-  _$$_MainDicomTagsCopyWith<_$_MainDicomTags> get copyWith =>
+  _$$_SeriesMainDicomTagsCopyWith<_$_SeriesMainDicomTags> get copyWith =>
       throw _privateConstructorUsedError;
 }

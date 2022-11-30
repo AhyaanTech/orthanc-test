@@ -1,7 +1,7 @@
 import 'package:dicom_viewer_proto/study/model/patient_main_dicom_tags.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'main_dicom_tags.dart';
+import 'series_main_dicom_tags.dart';
 
 part 'study.freezed.dart';
 part 'study.g.dart';

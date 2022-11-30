@@ -1,13 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'main_dicom_tags.dart';
+part of 'series_main_dicom_tags.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_MainDicomTags _$$_MainDicomTagsFromJson(Map<String, dynamic> json) =>
-    _$_MainDicomTags(
+_$_SeriesMainDicomTags _$$_SeriesMainDicomTagsFromJson(
+        Map<String, dynamic> json) =>
+    _$_SeriesMainDicomTags(
       accessionNumber: Option<String>.fromJson(json['AccessionNumber']),
       referringPhysicianName:
           Option<String>.fromJson(json['ReferringPhysicianName']),
@@ -17,7 +18,8 @@ _$_MainDicomTags _$$_MainDicomTagsFromJson(Map<String, dynamic> json) =>
       studyTime: Option<String>.fromJson(json['StudyTime']),
     );
 
-Map<String, dynamic> _$$_MainDicomTagsToJson(_$_MainDicomTags instance) =>
+Map<String, dynamic> _$$_SeriesMainDicomTagsToJson(
+        _$_SeriesMainDicomTags instance) =>
     <String, dynamic>{
       'AccessionNumber': instance.accessionNumber.toJson(
         (value) => value,
