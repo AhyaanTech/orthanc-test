@@ -8,10 +8,9 @@ part 'instance_view_state.freezed.dart';
 class InstanceViewState with _$InstanceViewState {
   const InstanceViewState._();
   const factory InstanceViewState.fetching() = _Fetching;
-  const factory InstanceViewState.rendering(InstanceViewState instanceState) =
-      _Rendering;
-  const factory InstanceViewState.rendered(InstanceViewState instanceState) =
-      _Rendered;
+  const factory InstanceViewState.rendered(
+      InstanceViewStateData instanceState) = _Rendered;
+  const factory InstanceViewState.error(String error) = _Error;
 }
 
 @freezed

@@ -19,44 +19,44 @@ mixin _$InstanceViewState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetching,
-    required TResult Function(InstanceViewState instanceState) rendering,
-    required TResult Function(InstanceViewState instanceState) rendered,
+    required TResult Function(InstanceViewStateData instanceState) rendered,
+    required TResult Function(String error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetching,
-    TResult? Function(InstanceViewState instanceState)? rendering,
-    TResult? Function(InstanceViewState instanceState)? rendered,
+    TResult? Function(InstanceViewStateData instanceState)? rendered,
+    TResult? Function(String error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetching,
-    TResult Function(InstanceViewState instanceState)? rendering,
-    TResult Function(InstanceViewState instanceState)? rendered,
+    TResult Function(InstanceViewStateData instanceState)? rendered,
+    TResult Function(String error)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Fetching value) fetching,
-    required TResult Function(_Rendering value) rendering,
     required TResult Function(_Rendered value) rendered,
+    required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Fetching value)? fetching,
-    TResult? Function(_Rendering value)? rendering,
     TResult? Function(_Rendered value)? rendered,
+    TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Fetching value)? fetching,
-    TResult Function(_Rendering value)? rendering,
     TResult Function(_Rendered value)? rendered,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -125,8 +125,8 @@ class _$_Fetching extends _Fetching with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetching,
-    required TResult Function(InstanceViewState instanceState) rendering,
-    required TResult Function(InstanceViewState instanceState) rendered,
+    required TResult Function(InstanceViewStateData instanceState) rendered,
+    required TResult Function(String error) error,
   }) {
     return fetching();
   }
@@ -135,8 +135,8 @@ class _$_Fetching extends _Fetching with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetching,
-    TResult? Function(InstanceViewState instanceState)? rendering,
-    TResult? Function(InstanceViewState instanceState)? rendered,
+    TResult? Function(InstanceViewStateData instanceState)? rendered,
+    TResult? Function(String error)? error,
   }) {
     return fetching?.call();
   }
@@ -145,8 +145,8 @@ class _$_Fetching extends _Fetching with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetching,
-    TResult Function(InstanceViewState instanceState)? rendering,
-    TResult Function(InstanceViewState instanceState)? rendered,
+    TResult Function(InstanceViewStateData instanceState)? rendered,
+    TResult Function(String error)? error,
     required TResult orElse(),
   }) {
     if (fetching != null) {
@@ -159,8 +159,8 @@ class _$_Fetching extends _Fetching with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Fetching value) fetching,
-    required TResult Function(_Rendering value) rendering,
     required TResult Function(_Rendered value) rendered,
+    required TResult Function(_Error value) error,
   }) {
     return fetching(this);
   }
@@ -169,8 +169,8 @@ class _$_Fetching extends _Fetching with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Fetching value)? fetching,
-    TResult? Function(_Rendering value)? rendering,
     TResult? Function(_Rendered value)? rendered,
+    TResult? Function(_Error value)? error,
   }) {
     return fetching?.call(this);
   }
@@ -179,8 +179,8 @@ class _$_Fetching extends _Fetching with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Fetching value)? fetching,
-    TResult Function(_Rendering value)? rendering,
     TResult Function(_Rendered value)? rendered,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
     if (fetching != null) {
@@ -196,174 +196,14 @@ abstract class _Fetching extends InstanceViewState {
 }
 
 /// @nodoc
-abstract class _$$_RenderingCopyWith<$Res> {
-  factory _$$_RenderingCopyWith(
-          _$_Rendering value, $Res Function(_$_Rendering) then) =
-      __$$_RenderingCopyWithImpl<$Res>;
-  @useResult
-  $Res call({InstanceViewState instanceState});
-
-  $InstanceViewStateCopyWith<$Res> get instanceState;
-}
-
-/// @nodoc
-class __$$_RenderingCopyWithImpl<$Res>
-    extends _$InstanceViewStateCopyWithImpl<$Res, _$_Rendering>
-    implements _$$_RenderingCopyWith<$Res> {
-  __$$_RenderingCopyWithImpl(
-      _$_Rendering _value, $Res Function(_$_Rendering) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? instanceState = null,
-  }) {
-    return _then(_$_Rendering(
-      null == instanceState
-          ? _value.instanceState
-          : instanceState // ignore: cast_nullable_to_non_nullable
-              as InstanceViewState,
-    ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $InstanceViewStateCopyWith<$Res> get instanceState {
-    return $InstanceViewStateCopyWith<$Res>(_value.instanceState, (value) {
-      return _then(_value.copyWith(instanceState: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$_Rendering extends _Rendering with DiagnosticableTreeMixin {
-  const _$_Rendering(this.instanceState) : super._();
-
-  @override
-  final InstanceViewState instanceState;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'InstanceViewState.rendering(instanceState: $instanceState)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'InstanceViewState.rendering'))
-      ..add(DiagnosticsProperty('instanceState', instanceState));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_Rendering &&
-            (identical(other.instanceState, instanceState) ||
-                other.instanceState == instanceState));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, instanceState);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_RenderingCopyWith<_$_Rendering> get copyWith =>
-      __$$_RenderingCopyWithImpl<_$_Rendering>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() fetching,
-    required TResult Function(InstanceViewState instanceState) rendering,
-    required TResult Function(InstanceViewState instanceState) rendered,
-  }) {
-    return rendering(instanceState);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? fetching,
-    TResult? Function(InstanceViewState instanceState)? rendering,
-    TResult? Function(InstanceViewState instanceState)? rendered,
-  }) {
-    return rendering?.call(instanceState);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetching,
-    TResult Function(InstanceViewState instanceState)? rendering,
-    TResult Function(InstanceViewState instanceState)? rendered,
-    required TResult orElse(),
-  }) {
-    if (rendering != null) {
-      return rendering(instanceState);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Fetching value) fetching,
-    required TResult Function(_Rendering value) rendering,
-    required TResult Function(_Rendered value) rendered,
-  }) {
-    return rendering(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Fetching value)? fetching,
-    TResult? Function(_Rendering value)? rendering,
-    TResult? Function(_Rendered value)? rendered,
-  }) {
-    return rendering?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Fetching value)? fetching,
-    TResult Function(_Rendering value)? rendering,
-    TResult Function(_Rendered value)? rendered,
-    required TResult orElse(),
-  }) {
-    if (rendering != null) {
-      return rendering(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Rendering extends InstanceViewState {
-  const factory _Rendering(final InstanceViewState instanceState) =
-      _$_Rendering;
-  const _Rendering._() : super._();
-
-  InstanceViewState get instanceState;
-  @JsonKey(ignore: true)
-  _$$_RenderingCopyWith<_$_Rendering> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
 abstract class _$$_RenderedCopyWith<$Res> {
   factory _$$_RenderedCopyWith(
           _$_Rendered value, $Res Function(_$_Rendered) then) =
       __$$_RenderedCopyWithImpl<$Res>;
   @useResult
-  $Res call({InstanceViewState instanceState});
+  $Res call({InstanceViewStateData instanceState});
 
-  $InstanceViewStateCopyWith<$Res> get instanceState;
+  $InstanceViewStateDataCopyWith<$Res> get instanceState;
 }
 
 /// @nodoc
@@ -383,14 +223,14 @@ class __$$_RenderedCopyWithImpl<$Res>
       null == instanceState
           ? _value.instanceState
           : instanceState // ignore: cast_nullable_to_non_nullable
-              as InstanceViewState,
+              as InstanceViewStateData,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $InstanceViewStateCopyWith<$Res> get instanceState {
-    return $InstanceViewStateCopyWith<$Res>(_value.instanceState, (value) {
+  $InstanceViewStateDataCopyWith<$Res> get instanceState {
+    return $InstanceViewStateDataCopyWith<$Res>(_value.instanceState, (value) {
       return _then(_value.copyWith(instanceState: value));
     });
   }
@@ -402,7 +242,7 @@ class _$_Rendered extends _Rendered with DiagnosticableTreeMixin {
   const _$_Rendered(this.instanceState) : super._();
 
   @override
-  final InstanceViewState instanceState;
+  final InstanceViewStateData instanceState;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -439,8 +279,8 @@ class _$_Rendered extends _Rendered with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetching,
-    required TResult Function(InstanceViewState instanceState) rendering,
-    required TResult Function(InstanceViewState instanceState) rendered,
+    required TResult Function(InstanceViewStateData instanceState) rendered,
+    required TResult Function(String error) error,
   }) {
     return rendered(instanceState);
   }
@@ -449,8 +289,8 @@ class _$_Rendered extends _Rendered with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetching,
-    TResult? Function(InstanceViewState instanceState)? rendering,
-    TResult? Function(InstanceViewState instanceState)? rendered,
+    TResult? Function(InstanceViewStateData instanceState)? rendered,
+    TResult? Function(String error)? error,
   }) {
     return rendered?.call(instanceState);
   }
@@ -459,8 +299,8 @@ class _$_Rendered extends _Rendered with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetching,
-    TResult Function(InstanceViewState instanceState)? rendering,
-    TResult Function(InstanceViewState instanceState)? rendered,
+    TResult Function(InstanceViewStateData instanceState)? rendered,
+    TResult Function(String error)? error,
     required TResult orElse(),
   }) {
     if (rendered != null) {
@@ -473,8 +313,8 @@ class _$_Rendered extends _Rendered with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Fetching value) fetching,
-    required TResult Function(_Rendering value) rendering,
     required TResult Function(_Rendered value) rendered,
+    required TResult Function(_Error value) error,
   }) {
     return rendered(this);
   }
@@ -483,8 +323,8 @@ class _$_Rendered extends _Rendered with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Fetching value)? fetching,
-    TResult? Function(_Rendering value)? rendering,
     TResult? Function(_Rendered value)? rendered,
+    TResult? Function(_Error value)? error,
   }) {
     return rendered?.call(this);
   }
@@ -493,8 +333,8 @@ class _$_Rendered extends _Rendered with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Fetching value)? fetching,
-    TResult Function(_Rendering value)? rendering,
     TResult Function(_Rendered value)? rendered,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
     if (rendered != null) {
@@ -505,12 +345,159 @@ class _$_Rendered extends _Rendered with DiagnosticableTreeMixin {
 }
 
 abstract class _Rendered extends InstanceViewState {
-  const factory _Rendered(final InstanceViewState instanceState) = _$_Rendered;
+  const factory _Rendered(final InstanceViewStateData instanceState) =
+      _$_Rendered;
   const _Rendered._() : super._();
 
-  InstanceViewState get instanceState;
+  InstanceViewStateData get instanceState;
   @JsonKey(ignore: true)
   _$$_RenderedCopyWith<_$_Rendered> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_ErrorCopyWith<$Res> {
+  factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
+      __$$_ErrorCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String error});
+}
+
+/// @nodoc
+class __$$_ErrorCopyWithImpl<$Res>
+    extends _$InstanceViewStateCopyWithImpl<$Res, _$_Error>
+    implements _$$_ErrorCopyWith<$Res> {
+  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = null,
+  }) {
+    return _then(_$_Error(
+      null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_Error extends _Error with DiagnosticableTreeMixin {
+  const _$_Error(this.error) : super._();
+
+  @override
+  final String error;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'InstanceViewState.error(error: $error)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'InstanceViewState.error'))
+      ..add(DiagnosticsProperty('error', error));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Error &&
+            (identical(other.error, error) || other.error == error));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, error);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ErrorCopyWith<_$_Error> get copyWith =>
+      __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetching,
+    required TResult Function(InstanceViewStateData instanceState) rendered,
+    required TResult Function(String error) error,
+  }) {
+    return error(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetching,
+    TResult? Function(InstanceViewStateData instanceState)? rendered,
+    TResult? Function(String error)? error,
+  }) {
+    return error?.call(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetching,
+    TResult Function(InstanceViewStateData instanceState)? rendered,
+    TResult Function(String error)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this.error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Fetching value) fetching,
+    required TResult Function(_Rendered value) rendered,
+    required TResult Function(_Error value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Fetching value)? fetching,
+    TResult? Function(_Rendered value)? rendered,
+    TResult? Function(_Error value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Fetching value)? fetching,
+    TResult Function(_Rendered value)? rendered,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Error extends InstanceViewState {
+  const factory _Error(final String error) = _$_Error;
+  const _Error._() : super._();
+
+  String get error;
+  @JsonKey(ignore: true)
+  _$$_ErrorCopyWith<_$_Error> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

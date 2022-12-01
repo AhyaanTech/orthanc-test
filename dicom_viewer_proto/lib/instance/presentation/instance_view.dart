@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 import 'package:dicom_viewer_proto/instance/application/instance_state_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -7,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class InstanceView extends ConsumerStatefulWidget {
   final String instanceId;
 
-  InstanceView(this.instanceId);
+  const InstanceView(this.instanceId);
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _InstanceViewState();
 }
@@ -23,10 +21,12 @@ class _InstanceViewState extends ConsumerState<InstanceView> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: ref.watch(instanceViewStateNotifierProvider).when(
-            data: (data) => Image.memory(Uint8List.fromList(data)),
-            error: (error, stackTrace) => const Text("Something went wrong"),
-            loading: () => const CircularProgressIndicator()));
+    return SizedBox(
+      width: 300,
+      child: ref.watch(instanceViewStateNotifierProvider).when(
+          fetching: () => const CircularProgressIndicator(),
+          rendered: (rendered) => Image.memory(rendered.imageData),
+          error: (error) => Center(child: Text(error))),
+    );
   }
 }

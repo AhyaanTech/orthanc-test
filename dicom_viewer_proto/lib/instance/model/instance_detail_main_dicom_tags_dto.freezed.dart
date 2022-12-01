@@ -678,6 +678,8 @@ abstract class _InstanceMainDicomTagsDto extends InstanceMainDicomTagsDto {
 mixin _$InstanceDicomTags {
   int get windowWidth => throw _privateConstructorUsedError;
   int get windowCenter => throw _privateConstructorUsedError;
+  int get rescaleSlope => throw _privateConstructorUsedError;
+  int get rescaleIntercept => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $InstanceDicomTagsCopyWith<InstanceDicomTags> get copyWith =>
@@ -690,7 +692,11 @@ abstract class $InstanceDicomTagsCopyWith<$Res> {
           InstanceDicomTags value, $Res Function(InstanceDicomTags) then) =
       _$InstanceDicomTagsCopyWithImpl<$Res, InstanceDicomTags>;
   @useResult
-  $Res call({int windowWidth, int windowCenter});
+  $Res call(
+      {int windowWidth,
+      int windowCenter,
+      int rescaleSlope,
+      int rescaleIntercept});
 }
 
 /// @nodoc
@@ -708,6 +714,8 @@ class _$InstanceDicomTagsCopyWithImpl<$Res, $Val extends InstanceDicomTags>
   $Res call({
     Object? windowWidth = null,
     Object? windowCenter = null,
+    Object? rescaleSlope = null,
+    Object? rescaleIntercept = null,
   }) {
     return _then(_value.copyWith(
       windowWidth: null == windowWidth
@@ -717,6 +725,14 @@ class _$InstanceDicomTagsCopyWithImpl<$Res, $Val extends InstanceDicomTags>
       windowCenter: null == windowCenter
           ? _value.windowCenter
           : windowCenter // ignore: cast_nullable_to_non_nullable
+              as int,
+      rescaleSlope: null == rescaleSlope
+          ? _value.rescaleSlope
+          : rescaleSlope // ignore: cast_nullable_to_non_nullable
+              as int,
+      rescaleIntercept: null == rescaleIntercept
+          ? _value.rescaleIntercept
+          : rescaleIntercept // ignore: cast_nullable_to_non_nullable
               as int,
     ) as $Val);
   }
@@ -730,7 +746,11 @@ abstract class _$$_InstanceDicomTagsCopyWith<$Res>
       __$$_InstanceDicomTagsCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int windowWidth, int windowCenter});
+  $Res call(
+      {int windowWidth,
+      int windowCenter,
+      int rescaleSlope,
+      int rescaleIntercept});
 }
 
 /// @nodoc
@@ -746,6 +766,8 @@ class __$$_InstanceDicomTagsCopyWithImpl<$Res>
   $Res call({
     Object? windowWidth = null,
     Object? windowCenter = null,
+    Object? rescaleSlope = null,
+    Object? rescaleIntercept = null,
   }) {
     return _then(_$_InstanceDicomTags(
       windowWidth: null == windowWidth
@@ -756,6 +778,14 @@ class __$$_InstanceDicomTagsCopyWithImpl<$Res>
           ? _value.windowCenter
           : windowCenter // ignore: cast_nullable_to_non_nullable
               as int,
+      rescaleSlope: null == rescaleSlope
+          ? _value.rescaleSlope
+          : rescaleSlope // ignore: cast_nullable_to_non_nullable
+              as int,
+      rescaleIntercept: null == rescaleIntercept
+          ? _value.rescaleIntercept
+          : rescaleIntercept // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -764,17 +794,24 @@ class __$$_InstanceDicomTagsCopyWithImpl<$Res>
 
 class _$_InstanceDicomTags extends _InstanceDicomTags {
   const _$_InstanceDicomTags(
-      {required this.windowWidth, required this.windowCenter})
+      {required this.windowWidth,
+      required this.windowCenter,
+      required this.rescaleSlope,
+      required this.rescaleIntercept})
       : super._();
 
   @override
   final int windowWidth;
   @override
   final int windowCenter;
+  @override
+  final int rescaleSlope;
+  @override
+  final int rescaleIntercept;
 
   @override
   String toString() {
-    return 'InstanceDicomTags(windowWidth: $windowWidth, windowCenter: $windowCenter)';
+    return 'InstanceDicomTags(windowWidth: $windowWidth, windowCenter: $windowCenter, rescaleSlope: $rescaleSlope, rescaleIntercept: $rescaleIntercept)';
   }
 
   @override
@@ -785,11 +822,16 @@ class _$_InstanceDicomTags extends _InstanceDicomTags {
             (identical(other.windowWidth, windowWidth) ||
                 other.windowWidth == windowWidth) &&
             (identical(other.windowCenter, windowCenter) ||
-                other.windowCenter == windowCenter));
+                other.windowCenter == windowCenter) &&
+            (identical(other.rescaleSlope, rescaleSlope) ||
+                other.rescaleSlope == rescaleSlope) &&
+            (identical(other.rescaleIntercept, rescaleIntercept) ||
+                other.rescaleIntercept == rescaleIntercept));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, windowWidth, windowCenter);
+  int get hashCode => Object.hash(
+      runtimeType, windowWidth, windowCenter, rescaleSlope, rescaleIntercept);
 
   @JsonKey(ignore: true)
   @override
@@ -802,13 +844,19 @@ class _$_InstanceDicomTags extends _InstanceDicomTags {
 abstract class _InstanceDicomTags extends InstanceDicomTags {
   const factory _InstanceDicomTags(
       {required final int windowWidth,
-      required final int windowCenter}) = _$_InstanceDicomTags;
+      required final int windowCenter,
+      required final int rescaleSlope,
+      required final int rescaleIntercept}) = _$_InstanceDicomTags;
   const _InstanceDicomTags._() : super._();
 
   @override
   int get windowWidth;
   @override
   int get windowCenter;
+  @override
+  int get rescaleSlope;
+  @override
+  int get rescaleIntercept;
   @override
   @JsonKey(ignore: true)
   _$$_InstanceDicomTagsCopyWith<_$_InstanceDicomTags> get copyWith =>

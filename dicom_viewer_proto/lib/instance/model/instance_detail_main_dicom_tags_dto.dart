@@ -38,10 +38,13 @@ class InstanceMainDicomTagsDto with _$InstanceMainDicomTagsDto {
   factory InstanceMainDicomTagsDto.fromJson(Map<String, dynamic> json) =>
       _$InstanceMainDicomTagsDtoFromJson(json);
 
-  InstanceDicomTags toDomain(InstanceMainDicomTagsDto _) {
+  InstanceDicomTags toDomain() {
     return InstanceDicomTags(
-        windowCenter: int.parse(_.windowCenter.getOrElse(() => "20")),
-        windowWidth: int.parse(_.windowWidth.getOrElse(() => "200")));
+      windowCenter: int.parse(windowCenter.getOrElse(() => "20")),
+      windowWidth: int.parse(windowWidth.getOrElse(() => "200")),
+      rescaleIntercept: int.parse(rescaleIntercept.getOrElse(() => "-1024")),
+      rescaleSlope: int.parse(rescaleSlope.getOrElse(() => "1")),
+    );
   }
 }
 
@@ -51,5 +54,7 @@ class InstanceDicomTags with _$InstanceDicomTags {
   const factory InstanceDicomTags({
     required int windowWidth,
     required int windowCenter,
+    required int rescaleSlope,
+    required int rescaleIntercept,
   }) = _InstanceDicomTags;
 }
