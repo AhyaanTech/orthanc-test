@@ -8,15 +8,12 @@ part 'patient_main_dicom_tags.g.dart';
 @freezed
 class PatientMainDicomTags with _$PatientMainDicomTags {
   const PatientMainDicomTags._();
+  @JsonSerializable(fieldRename: FieldRename.pascal)
   const factory PatientMainDicomTags({
-    @JsonKey(name: "PatientBirthDate")
-    @Default("Not Found")
-        String? patientBirthDate,
-    @JsonKey(name: "PatientID")
-    @Default("Patient Id not found")
-        String? patientID,
-    @JsonKey(name: "PatientName") @Default("John Smith") String? patientName,
-    @JsonKey(name: "PatientSex") @Default("Not Mentioned") String? patientSex,
+    @Default("Not Found") String? patientBirthDate,
+    @Default("Patient Id not found") String? patientID,
+    @Default("John Smith") String? patientName,
+    @Default("Not Mentioned") String? patientSex,
   }) = _PatientMainDicomTags;
 
   factory PatientMainDicomTags.fromJson(Map<String, dynamic> json) =>

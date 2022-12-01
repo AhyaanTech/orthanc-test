@@ -1,5 +1,5 @@
 import 'package:another_xlider/another_xlider.dart';
-import 'package:dicom_viewer_proto/instance/instance_state_notifier.dart';
+import 'package:dicom_viewer_proto/instance/application/instance_state_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -10,32 +10,42 @@ class ImageContrastChanger extends ConsumerWidget {
     return SizedBox(
         child: ref
             .watch(instanceViewStateNotifierProvider)
-            .whenData((value) => Column(
-                  children: [
-                    ElevatedButton(
-                        onPressed: () {
-                          ref
-                              .read(contrastProvider.notifier)
-                              .update((state) => state + 0.1);
-                          ref
-                              .read(instanceViewStateNotifierProvider.notifier)
-                              .changeContrast();
-                        },
-                        child: Text("+")),
-                    Divider(),
-                    ElevatedButton(
-                        onPressed: () {
-                          ref
-                              .read(contrastProvider.notifier)
-                              .update((state) => state - 0.1);
-                          ref
-                              .read(instanceViewStateNotifierProvider.notifier)
-                              .changeContrast();
-                        },
-                        child: Text("-"))
-                  ],
-                ))
-            .value);
+            .maybeWhen(orElse: () => const ContrastButtons()));
+  }
+}
+
+class ContrastButtons extends ConsumerWidget {
+  const ContrastButtons({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Column(
+      children: [
+        ElevatedButton(
+            onPressed: () {
+              ref
+                  .read(contrastProvider.notifier)
+                  .update((state) => state + 0.1);
+              ref
+                  .read(instanceViewStateNotifierProvider.notifier)
+                  .changeContrast();
+            },
+            child: Text("+")),
+        const Divider(),
+        ElevatedButton(
+            onPressed: () {
+              ref
+                  .read(contrastProvider.notifier)
+                  .update((state) => state - 0.1);
+              ref
+                  .read(instanceViewStateNotifierProvider.notifier)
+                  .changeContrast();
+            },
+            child: Text("-"))
+      ],
+    );
   }
 }
 

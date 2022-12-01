@@ -20,13 +20,9 @@ PatientMainDicomTags _$PatientMainDicomTagsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PatientMainDicomTags {
-  @JsonKey(name: "PatientBirthDate")
   String? get patientBirthDate => throw _privateConstructorUsedError;
-  @JsonKey(name: "PatientID")
   String? get patientID => throw _privateConstructorUsedError;
-  @JsonKey(name: "PatientName")
   String? get patientName => throw _privateConstructorUsedError;
-  @JsonKey(name: "PatientSex")
   String? get patientSex => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -42,10 +38,10 @@ abstract class $PatientMainDicomTagsCopyWith<$Res> {
       _$PatientMainDicomTagsCopyWithImpl<$Res, PatientMainDicomTags>;
   @useResult
   $Res call(
-      {@JsonKey(name: "PatientBirthDate") String? patientBirthDate,
-      @JsonKey(name: "PatientID") String? patientID,
-      @JsonKey(name: "PatientName") String? patientName,
-      @JsonKey(name: "PatientSex") String? patientSex});
+      {String? patientBirthDate,
+      String? patientID,
+      String? patientName,
+      String? patientSex});
 }
 
 /// @nodoc
@@ -97,10 +93,10 @@ abstract class _$$_PatientMainDicomTagsCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "PatientBirthDate") String? patientBirthDate,
-      @JsonKey(name: "PatientID") String? patientID,
-      @JsonKey(name: "PatientName") String? patientName,
-      @JsonKey(name: "PatientSex") String? patientSex});
+      {String? patientBirthDate,
+      String? patientID,
+      String? patientName,
+      String? patientSex});
 }
 
 /// @nodoc
@@ -141,29 +137,30 @@ class __$$_PatientMainDicomTagsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(fieldRename: FieldRename.pascal)
 class _$_PatientMainDicomTags extends _PatientMainDicomTags {
   const _$_PatientMainDicomTags(
-      {@JsonKey(name: "PatientBirthDate") this.patientBirthDate = "Not Found",
-      @JsonKey(name: "PatientID") this.patientID = "Patient Id not found",
-      @JsonKey(name: "PatientName") this.patientName = "John Smith",
-      @JsonKey(name: "PatientSex") this.patientSex = "Not Mentioned"})
+      {this.patientBirthDate = "Not Found",
+      this.patientID = "Patient Id not found",
+      this.patientName = "John Smith",
+      this.patientSex = "Not Mentioned"})
       : super._();
 
   factory _$_PatientMainDicomTags.fromJson(Map<String, dynamic> json) =>
       _$$_PatientMainDicomTagsFromJson(json);
 
   @override
-  @JsonKey(name: "PatientBirthDate")
+  @JsonKey()
   final String? patientBirthDate;
   @override
-  @JsonKey(name: "PatientID")
+  @JsonKey()
   final String? patientID;
   @override
-  @JsonKey(name: "PatientName")
+  @JsonKey()
   final String? patientName;
   @override
-  @JsonKey(name: "PatientSex")
+  @JsonKey()
   final String? patientSex;
 
   @override
@@ -208,27 +205,22 @@ class _$_PatientMainDicomTags extends _PatientMainDicomTags {
 
 abstract class _PatientMainDicomTags extends PatientMainDicomTags {
   const factory _PatientMainDicomTags(
-          {@JsonKey(name: "PatientBirthDate") final String? patientBirthDate,
-          @JsonKey(name: "PatientID") final String? patientID,
-          @JsonKey(name: "PatientName") final String? patientName,
-          @JsonKey(name: "PatientSex") final String? patientSex}) =
-      _$_PatientMainDicomTags;
+      {final String? patientBirthDate,
+      final String? patientID,
+      final String? patientName,
+      final String? patientSex}) = _$_PatientMainDicomTags;
   const _PatientMainDicomTags._() : super._();
 
   factory _PatientMainDicomTags.fromJson(Map<String, dynamic> json) =
       _$_PatientMainDicomTags.fromJson;
 
   @override
-  @JsonKey(name: "PatientBirthDate")
   String? get patientBirthDate;
   @override
-  @JsonKey(name: "PatientID")
   String? get patientID;
   @override
-  @JsonKey(name: "PatientName")
   String? get patientName;
   @override
-  @JsonKey(name: "PatientSex")
   String? get patientSex;
   @override
   @JsonKey(ignore: true)
