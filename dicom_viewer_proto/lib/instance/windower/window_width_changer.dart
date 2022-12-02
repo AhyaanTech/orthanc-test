@@ -20,34 +20,20 @@ class WindowWidthButtons extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Column(
-      children: [
-        ElevatedButton(
-            onPressed: () {
-              ref
-                  .read(windowWidthProvider.notifier)
-                  .update((state) => state + 1);
-              ref
-                  .read(instanceViewStateNotifierProvider.notifier)
-                  .changeContrast();
-            },
-            child: const Text("+")),
-        const Divider(),
-        ElevatedButton(
-            onPressed: () {
-              ref
-                  .read(windowWidthProvider.notifier)
-                  .update((state) => state - 1);
-              ref
-                  .read(instanceViewStateNotifierProvider.notifier)
-                  .changeContrast();
-            },
-            child: const Text("-"))
-      ],
+    return SizedBox(
+      width: 100,
+      child: TextField(
+        onChanged: (value) => ref
+            .read(windowWidthProvider.notifier)
+            .update((state) => state = int.tryParse(value) ?? state + 1),
+        onSubmitted: (value) => ref
+            .read(instanceViewStateNotifierProvider.notifier)
+            .changeWindowing(),
+      ),
     );
   }
 }
 
 final windowWidthProvider = StateProvider<int>((ref) {
-  return 500;
+  return 2500;
 });

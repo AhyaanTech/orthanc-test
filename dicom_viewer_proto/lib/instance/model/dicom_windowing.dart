@@ -43,13 +43,13 @@ class DicomWindowing with _$DicomWindowing {
         int blue = decodedBytes[y * decodedImage.width * 3 + x * 3 + 2];
 
         var redProcessed = multiplySlopeAndAddIntercept(red)
-            .flatMap((a) => calculateColor(a, windowCenter, windowCenter))
+            .flatMap((a) => calculateColor(a, windowCenter, windowWidth))
             .run();
         var greenProcessed = multiplySlopeAndAddIntercept(green)
-            .flatMap((a) => calculateColor(a, windowCenter, windowCenter))
+            .flatMap((a) => calculateColor(a, windowCenter, windowWidth))
             .run();
         var blueProcessed = multiplySlopeAndAddIntercept(blue)
-            .flatMap((a) => calculateColor(a, windowCenter, windowCenter))
+            .flatMap((a) => calculateColor(a, windowCenter, windowWidth))
             .run();
 
         decodedImage.setPixelRgba(
@@ -69,8 +69,9 @@ class DicomWindowing with _$DicomWindowing {
   }
 
   IO<int> multiplySlopeAndAddIntercept(int imageByte) {
-    return IO.of(
-        imageByte * slope.getOrElse(() => 0) + intercept.getOrElse(() => 0));
+    // return IO.of(
+    // (slope.getOrElse(() => 0) * imageByte) + intercept.getOrElse(() => 0));
+    return IO.of(imageByte);
   }
 
   IO<int> calculateColor(int c, int winCenter, int winWidth) {

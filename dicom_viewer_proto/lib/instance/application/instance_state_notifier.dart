@@ -39,6 +39,19 @@ class InstanceViewStateNotifier extends StateNotifier<InstanceViewState> {
     state = const InstanceViewState.fetching();
 
     instanceDetails = await instanceClient.getInstanceDetails(instanceId);
+    _logger.i(instanceDetails.instanceMainDicomTags.toJson());
+    var windowCenterParsed = int.parse(
+      instanceDetails.instanceMainDicomTags.windowCenter.getOrElse(() => "500"),
+    );
+    var windowWidthParsed = int.parse(
+      instanceDetails.instanceMainDicomTags.windowWidth.getOrElse(() => "2500"),
+    );
+    ref
+        .read(windowCenterProvider.notifier)
+        .update((state) => state = windowCenterParsed);
+    ref
+        .read(windowWidthProvider.notifier)
+        .update((state) => state = windowWidthParsed);
     dicomWindowing = DicomWindowing(
       intercept: some(
         int.parse(
@@ -52,14 +65,8 @@ class InstanceViewStateNotifier extends StateNotifier<InstanceViewState> {
               .getOrElse(() => "0"),
         ),
       ),
-      windowCenter: int.parse(
-        instanceDetails.instanceMainDicomTags.windowCenter
-            .getOrElse(() => "500"),
-      ),
-      windowWidth: int.parse(
-        instanceDetails.instanceMainDicomTags.windowWidth
-            .getOrElse(() => "2500"),
-      ),
+      windowCenter: windowCenterParsed,
+      windowWidth: windowWidthParsed,
     );
 
     state = InstanceViewState.rendered(InstanceViewStateData(

@@ -21,6 +21,7 @@ class WindowCenterButtons extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         ElevatedButton(
             onPressed: () {
