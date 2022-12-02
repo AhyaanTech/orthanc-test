@@ -34,15 +34,29 @@ class DicomWindowing with _$DicomWindowing {
     required Option<int> intercept,
   }) = _DicomWindowing;
 
-  void processImageLevelingAndCentering(Image decodedImage) {
+  IO<Image> processImageLevelingAndCentering(Image decodedImage) {
     var decodedBytes = decodedImage.getBytes(format: Format.rgba);
     for (var y = 0; y < decodedImage.width; y++) {
       for (var x = 0; x < decodedImage.height; x++) {
         int red = decodedBytes[y * decodedImage.width * 3 + x * 3];
         int green = decodedBytes[y * decodedImage.width * 3 + x * 3 + 1];
         int blue = decodedBytes[y * decodedImage.width * 3 + x * 3 + 2];
+
+        var redProcessed = multiplySlopeAndAddIntercept(red)
+            .flatMap((a) => calculateColor(a, windowCenter, windowCenter))
+            .run();
+        var greenProcessed = multiplySlopeAndAddIntercept(green)
+            .flatMap((a) => calculateColor(a, windowCenter, windowCenter))
+            .run();
+        var blueProcessed = multiplySlopeAndAddIntercept(blue)
+            .flatMap((a) => calculateColor(a, windowCenter, windowCenter))
+            .run();
+
+        decodedImage.setPixelRgba(
+            x, y, redProcessed, greenProcessed, blueProcessed);
       }
     }
+    return IO.of(decodedImage);
   }
 
   double get wMin {
@@ -54,17 +68,19 @@ class DicomWindowing with _$DicomWindowing {
     return wMax;
   }
 
-  int multiplySlopeAndAddIntercept(int imageByte, int slope, int intercept) {
-    return imageByte * slope + intercept;
+  IO<int> multiplySlopeAndAddIntercept(int imageByte) {
+    return IO.of(
+        imageByte * slope.getOrElse(() => 0) + intercept.getOrElse(() => 0));
   }
 
-  int calculateColor(int c, double winCenter, double winWidth) {
+  IO<int> calculateColor(int c, int winCenter, int winWidth) {
     if (c <= wMin) {
-      return 0;
+      return IO.of(0);
     } else if (c > wMax) {
-      return 255;
+      return IO.of(255);
     } else {
-      return (((c - (winCenter - 0.5)) / (winWidth - 1) + 0.5) * 255).toInt();
+      return IO
+          .of((((c - (winCenter - 0.5)) / (winWidth - 1) + 0.5) * 255).toInt());
     }
   }
 }
