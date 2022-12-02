@@ -4,6 +4,8 @@ import 'package:dicom_viewer_proto/instance/application/instance_view_state.dart
 import 'package:dicom_viewer_proto/instance/contrast/image_contrast_changer.dart';
 import 'package:dicom_viewer_proto/instance/model/dicom_windowing.dart';
 import 'package:dicom_viewer_proto/instance/model/instance_details_dto.dart';
+import 'package:dicom_viewer_proto/instance/windower/window_center_changer.dart';
+import 'package:dicom_viewer_proto/instance/windower/window_width_changer.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fpdart/fpdart.dart';
@@ -24,6 +26,7 @@ class InstanceViewStateNotifier extends StateNotifier<InstanceViewState> {
   Uint8List imageData = Uint8List.fromList([]);
   List<int> rawImageData = List<int>.filled(1, 0, growable: true);
   late InstanceDetailsDto instanceDetails;
+  late DicomWindowing dicomWindowing;
 
   final Ref ref;
 
@@ -36,6 +39,28 @@ class InstanceViewStateNotifier extends StateNotifier<InstanceViewState> {
     state = const InstanceViewState.fetching();
 
     instanceDetails = await instanceClient.getInstanceDetails(instanceId);
+    dicomWindowing = DicomWindowing(
+      intercept: some(
+        int.parse(
+          instanceDetails.instanceMainDicomTags.rescaleIntercept
+              .getOrElse(() => "0"),
+        ),
+      ),
+      slope: some(
+        int.parse(
+          instanceDetails.instanceMainDicomTags.rescaleSlope
+              .getOrElse(() => "0"),
+        ),
+      ),
+      windowCenter: int.parse(
+        instanceDetails.instanceMainDicomTags.windowCenter
+            .getOrElse(() => "500"),
+      ),
+      windowWidth: int.parse(
+        instanceDetails.instanceMainDicomTags.windowWidth
+            .getOrElse(() => "2500"),
+      ),
+    );
 
     state = InstanceViewState.rendered(InstanceViewStateData(
         imageData: imageData,
@@ -91,32 +116,17 @@ class InstanceViewStateNotifier extends StateNotifier<InstanceViewState> {
   }
 
   Future<void> changeWindowing() async {
-    DicomWindowing dicomWindowing = DicomWindowing(
-      intercept: some(
-        int.parse(
-          instanceDetails.instanceMainDicomTags.rescaleIntercept
-              .getOrElse(() => "0"),
-        ),
-      ),
-      slope: some(
-        int.parse(
-          instanceDetails.instanceMainDicomTags.rescaleSlope
-              .getOrElse(() => "0"),
-        ),
-      ),
-      windowCenter: int.parse(
-        instanceDetails.instanceMainDicomTags.windowCenter
-            .getOrElse(() => "500"),
-      ),
-      windowWidth: int.parse(
-        instanceDetails.instanceMainDicomTags.windowWidth
-            .getOrElse(() => "2500"),
-      ),
-    );
+    dicomWindowing =
+        dicomWindowing.copyWith(windowCenter: ref.read(windowCenterProvider));
+    dicomWindowing =
+        dicomWindowing.copyWith(windowWidth: ref.read(windowWidthProvider));
     Uint8List windowedProcessedImage = await dicomWindowing
         .processImageLevelingAndCentering(imglib.decodeImage(rawImageData)!)
         .flatMapTask((a) => convertParallelTask(data: imglib.encodeJpg(a)))
         .run();
+    state.whenOrNull(
+        rendered: (instanceState) => state = InstanceViewState.rendered(
+            instanceState.copyWith(imageData: windowedProcessedImage)));
   }
 
   Task<Uint8List> convertParallelTask({required List<int> data}) {
