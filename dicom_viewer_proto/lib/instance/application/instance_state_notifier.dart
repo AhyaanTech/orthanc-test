@@ -128,7 +128,7 @@ class InstanceViewStateNotifier extends StateNotifier<InstanceViewState> {
     dicomWindowing =
         dicomWindowing.copyWith(windowWidth: ref.read(windowWidthProvider));
     Uint8List windowedProcessedImage = await dicomWindowing
-        .processImageLevelingAndCentering(imglib.decodeImage(rawImageData)!)
+        .processImageLevelingAndCentering(imglib.decodeJpg(rawImageData)!)
         .flatMapTask((a) => convertParallelTask(data: imglib.encodeJpg(a)))
         .run();
     state.whenOrNull(

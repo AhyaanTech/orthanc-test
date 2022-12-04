@@ -1,6 +1,8 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:image/image.dart';
+import 'package:logger/logger.dart';
+import 'dart:io';
 
 part 'dicom_windowing.freezed.dart';
 
@@ -36,8 +38,10 @@ class DicomWindowing with _$DicomWindowing {
 
   IO<Image> processImageLevelingAndCentering(Image decodedImage) {
     var decodedBytes = decodedImage.getBytes(format: Format.rgba);
-    for (var y = 0; y < decodedImage.width; y++) {
-      for (var x = 0; x < decodedImage.height; x++) {
+    for (var x = 0; x < decodedImage.width; x++) {
+      for (var y = 0; y < decodedImage.height; y++) {
+        // var data = decodedImage.getPixel(x, y);
+        // print(data);
         int red = decodedBytes[y * decodedImage.width * 3 + x * 3];
         int green = decodedBytes[y * decodedImage.width * 3 + x * 3 + 1];
         int blue = decodedBytes[y * decodedImage.width * 3 + x * 3 + 2];
@@ -52,9 +56,11 @@ class DicomWindowing with _$DicomWindowing {
             .flatMap((a) => calculateColor(a, windowCenter, windowWidth))
             .run();
 
+        // stdout.write("$red$green$blue");
         decodedImage.setPixelRgba(
             x, y, redProcessed, greenProcessed, blueProcessed);
       }
+      // stdout.write("\n");
     }
     return IO.of(decodedImage);
   }
@@ -69,12 +75,13 @@ class DicomWindowing with _$DicomWindowing {
   }
 
   IO<int> multiplySlopeAndAddIntercept(int imageByte) {
-    // return IO.of(
-    // (slope.getOrElse(() => 0) * imageByte) + intercept.getOrElse(() => 0));
-    return IO.of(imageByte);
+    return IO.of(
+        (slope.getOrElse(() => 0) * imageByte) + intercept.getOrElse(() => 0));
+    // return IO.of(imageByte);
   }
 
   IO<int> calculateColor(int c, int winCenter, int winWidth) {
+    print(c);
     if (c <= wMin) {
       return IO.of(0);
     } else if (c > wMax) {
