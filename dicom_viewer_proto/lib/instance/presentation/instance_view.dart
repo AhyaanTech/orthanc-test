@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class InstanceView extends ConsumerStatefulWidget {
   final String instanceId;
 
-  const InstanceView(this.instanceId);
+  const InstanceView(this.instanceId, {super.key});
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _InstanceViewState();
 }
