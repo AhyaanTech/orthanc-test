@@ -1,0 +1,12 @@
+flutter_rust_bridge_codegen --rust-input native/src/api.rs --dart-output lib/bridge_generated.dart --c-output ios/Runner/bridge_generated.h --c-output macos/Runner/bridge_generated.h --dart-decl-output lib/bridge_definitions.dart --wasm
+
+flutter_rust_bridge_codegen --rust-input "$env:REPO_DIR/native/src/api.rs" --dart-output "$env:REPO_DIR/lib/bridge_generated.dart" --c-output "$env:REPO_DIR/ios/Runner/bridge_generated.h" --dart-decl-output "$env:REPO_DIR/lib/bridge_definitions.dart"
+
+
+flutter_rust_bridge_codegen --rust-input C:/Coding/orthanc-test/dicom_viewer_proto/native/src/api.rs --dart-output C:/Coding/orthanc-test/dicom_viewer_proto/lib/bridge_generated.dart --c-output C:/Coding/orthanc-test/dicom_viewer_proto/ios/Runner/bridge_generated.h --dart-decl-output C:/Coding/orthanc-test/dicom_viewer_proto/lib/bridge_definitions.dart
+
+
+
+
+
+flutter_rust_bridge_codegen --rust-input $REPO_DIR/native/src/api.rs --dart-output $REPO_DIR/lib/bridge_generated.dart --c-output $REPO_DIR/ios/Classes/bridge_generated.h
