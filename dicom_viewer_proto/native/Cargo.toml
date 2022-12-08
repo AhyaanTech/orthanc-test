@@ -9,6 +9,16 @@ edition = "2021"
 flutter_rust_bridge = "1.51.1"
 dicom-object = "0.5.3"
 dicom-pixeldata = "0.1.4"
+tempfile = "3.3.0"
+tokio = { version = "1.23.0", features = ["rt", "macros", "rt-multi-thread"] }
+# lazy_static = "*"
+tokio-stream = "0.1.11"
+derive_builder = "*"
+serde = "*"
+anyhow = "1.0.66"
+thiserror = "1.0.37"
+orthanc = "0.8.0"
+reqwest = "0.11.13"
 
 [lib]
 crate-type = ["cdylib", "staticlib"]

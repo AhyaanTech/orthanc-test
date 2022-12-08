@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:dicom_viewer_proto/bridge_definitions.dart';
 import 'package:dicom_viewer_proto/core/clients.dart';
+import 'package:dicom_viewer_proto/core/dio.dart';
 import 'package:dicom_viewer_proto/core/infra/instance_fit.dart';
 import 'package:dicom_viewer_proto/ffi.dart';
 import 'package:dicom_viewer_proto/instance/application/instance_view_state.dart';
@@ -10,6 +11,7 @@ import 'package:dicom_viewer_proto/instance/model/dicom_windowing.dart';
 import 'package:dicom_viewer_proto/instance/model/instance_details_dto.dart';
 import 'package:dicom_viewer_proto/instance/windower/window_center_changer.dart';
 import 'package:dicom_viewer_proto/instance/windower/window_width_changer.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fpdart/fpdart.dart';
@@ -18,11 +20,10 @@ import 'package:image/image.dart' as imglib;
 
 final instanceViewStateNotifierProvider =
     StateNotifierProvider<InstanceViewStateNotifier, InstanceViewState>((ref) {
-  return InstanceViewStateNotifier(
-    ref,
-    instanceClient: ref.watch(instanceFitClientProvider),
-    api: ref.watch(nativeApiProvider),
-  );
+  return InstanceViewStateNotifier(ref,
+      instanceClient: ref.watch(instanceFitClientProvider),
+      api: ref.watch(nativeApiProvider),
+      dio: ref.watch(dioProvider));
 });
 
 class InstanceViewStateNotifier extends StateNotifier<InstanceViewState> {
@@ -33,11 +34,13 @@ class InstanceViewStateNotifier extends StateNotifier<InstanceViewState> {
   late InstanceDetailsDto instanceDetails;
   late DicomWindowing dicomWindowing;
   final Native api;
+  final Dio dio;
 
   final Ref ref;
 
   InstanceViewStateNotifier(
     this.ref, {
+    required this.dio,
     required this.api,
     required this.instanceClient,
   }) : super(const InstanceViewState.fetching());
@@ -152,10 +155,19 @@ class InstanceViewStateNotifier extends StateNotifier<InstanceViewState> {
   }
 
   Future<void> downloadDicom() async {
-    var data = await instanceClient
-        .getFileForInstance("48f2e528-dd6f8afa-99fddc72-1b733a81-4b2cbdd8");
-    var native_response =
-        await api.setDcmData(path: await convertParallelTask(data: data).run());
-    print(native_response);
+    // var data = await instanceClient
+    //     .getFileForInstance("13453196-874ea965-25cbb181-dd776e98-26fdb174");
+    var response = await dio.download(
+        "http://localhost:8042/instances/13453196-874ea965-25cbb181-dd776e98-26fdb174/file",
+        (Headers headers) {
+      // Extra info: redirect counts
+      print(headers.value('redirects'));
+      // Extra info: real uri
+      print(headers.value('uri'));
+      return "...";
+    });
+    // var nativeResponse =
+    //     await api.setDcmData(path: await convertParallelTask(data: data).run());
+    // print(nativeResponse);
   }
 }

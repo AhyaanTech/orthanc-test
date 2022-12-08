@@ -7,7 +7,7 @@ import 'dart:async';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 
 abstract class Native {
-  Future<String> setDcmData({required Uint8List path, dynamic hint});
+  Future<void> setDcmData({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSetDcmDataConstMeta;
 }
