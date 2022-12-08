@@ -10,6 +10,7 @@ class StudyDetailStateNotifier extends StateNotifier<AsyncValue<Study>> {
       : super(const AsyncLoading());
 
   Future<void> getStudyDetail(String id) async {
+    print("called");
     Study studyDetail = await client.getStudyDetail(id: id, full: true);
     logger.i(studyDetail.toJson());
     state = AsyncData(studyDetail);

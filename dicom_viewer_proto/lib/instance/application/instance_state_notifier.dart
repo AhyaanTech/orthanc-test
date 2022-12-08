@@ -1,5 +1,9 @@
+import 'dart:io';
+
+import 'package:dicom_viewer_proto/bridge_definitions.dart';
 import 'package:dicom_viewer_proto/core/clients.dart';
 import 'package:dicom_viewer_proto/core/infra/instance_fit.dart';
+import 'package:dicom_viewer_proto/ffi.dart';
 import 'package:dicom_viewer_proto/instance/application/instance_view_state.dart';
 import 'package:dicom_viewer_proto/instance/contrast/image_contrast_changer.dart';
 import 'package:dicom_viewer_proto/instance/model/dicom_windowing.dart';
@@ -17,6 +21,7 @@ final instanceViewStateNotifierProvider =
   return InstanceViewStateNotifier(
     ref,
     instanceClient: ref.watch(instanceFitClientProvider),
+    api: ref.watch(nativeApiProvider),
   );
 });
 
@@ -27,11 +32,13 @@ class InstanceViewStateNotifier extends StateNotifier<InstanceViewState> {
   List<int> rawImageData = List<int>.filled(1, 0, growable: true);
   late InstanceDetailsDto instanceDetails;
   late DicomWindowing dicomWindowing;
+  final Native api;
 
   final Ref ref;
 
   InstanceViewStateNotifier(
     this.ref, {
+    required this.api,
     required this.instanceClient,
   }) : super(const InstanceViewState.fetching());
 
@@ -142,5 +149,13 @@ class InstanceViewStateNotifier extends StateNotifier<InstanceViewState> {
 
   Future<Uint8List> convertParallel({required List<int> data}) {
     return compute(Uint8List.fromList, data);
+  }
+
+  Future<void> downloadDicom() async {
+    var data = await instanceClient
+        .getFileForInstance("48f2e528-dd6f8afa-99fddc72-1b733a81-4b2cbdd8");
+    var native_response =
+        await api.setDcmData(path: await convertParallelTask(data: data).run());
+    print(native_response);
   }
 }

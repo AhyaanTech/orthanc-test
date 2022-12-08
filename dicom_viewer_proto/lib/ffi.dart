@@ -3,6 +3,8 @@
 
 import 'dart:ffi';
 
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'bridge_generated.dart';
 import 'bridge_definitions.dart';
 export 'bridge_definitions.dart';
@@ -20,3 +22,9 @@ final _dylib = io.Platform.isWindows ? '$_base.dll' : 'lib$_base.so';
 final Native api = NativeImpl(io.Platform.isIOS || io.Platform.isMacOS
     ? DynamicLibrary.executable()
     : DynamicLibrary.open(_dylib));
+
+final nativeApiProvider = Provider<Native>((ref) {
+  return NativeImpl(io.Platform.isIOS || io.Platform.isMacOS
+      ? DynamicLibrary.executable()
+      : DynamicLibrary.open(_dylib));
+});
