@@ -8,3 +8,7 @@ GET http://localhost:8042/instances/48f2e528-dd6f8afa-99fddc72-1b733a81-4b2cbdd8
 ###
 
 GET http://localhost:8042/instances/48f2e528-dd6f8afa-99fddc72-1b733a81-4b2cbdd8/tags
+###
+
+GET http://localhost:8042/instances/48f2e528-dd6f8afa-99fddc72-1b733a81-4b2cbdd8/file
+Content-Type: application/dicom+json
