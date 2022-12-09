@@ -5,9 +5,10 @@ use dicom_pixeldata::{
     image::{write_buffer_with_format, DynamicImage, ImageOutputFormat},
     *,
 };
+use flutter_rust_bridge::ZeroCopyBuffer;
 use viuer::{print, Config};
 
-pub fn set_dcm_data() -> anyhow::Result<Vec<u8>> {
+pub fn set_dcm_data() -> anyhow::Result<ZeroCopyBuffer<Vec<u8>>> {
     let obj = open_file(r"C:\Users\jawad\Downloads\response.dcm");
     let binding = obj?;
     let name = binding.element_by_name("PatientName")?.to_str();
@@ -30,7 +31,7 @@ pub fn set_dcm_data() -> anyhow::Result<Vec<u8>> {
     // let img = image::load_from_memory(&w.clone().into_inner()).unwrap();
 
     // print(&img, &Config::default()).expect("Image printing failed.");
-    Ok(w.into_inner())
+    Ok(flutter_rust_bridge::ZeroCopyBuffer(w.into_inner()))
 }
 
 #[test]
