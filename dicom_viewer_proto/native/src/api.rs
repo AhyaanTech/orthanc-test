@@ -1,28 +1,35 @@
-use std::{
-    fs::{self, File},
-    io::copy,
+use std::io::{Cursor, Read};
+
+use dicom_object::open_file;
+use dicom_pixeldata::{
+    image::{write_buffer_with_format, DynamicImage, ImageOutputFormat},
+    *,
 };
+use viuer::{print, Config};
 
-use dicom_object::{from_reader, open_file};
-use orthanc::Client;
-use tempfile::{tempfile, Builder, NamedTempFile};
-
-#[tokio::main(flavor = "current_thread")]
-pub async fn set_dcm_data() -> anyhow::Result<()> {
-    // let file = NamedTempFile::new()?;
-    // let file2 = file.reopen().unwrap();
-
-    // let _fname = "13453196-874ea965-25cbb181-dd776e98-26fdb174.dcm";
-    // let instance_id = "13453196-874ea965-25cbb181-dd776e98-26fdb174";
-
-    // let client = Client::new("http://localhost:8042");
-
-    // client.instance_dicom(instance_id, file).unwrap();
-
+pub fn set_dcm_data() -> anyhow::Result<()> {
     let obj = open_file(r"C:\Users\jawad\Downloads\response.dcm");
     let binding = obj?;
     let name = binding.element_by_name("PatientName")?.to_str();
     println!("{name:?}");
+
+    let image = binding.decode_pixel_data().unwrap();
+    let options = ConvertOptions::new().with_voi_lut(VoiLutOption::Custom(WindowLevel {
+        width: 330_f64,
+        center: 30_f64,
+    }));
+    let dynamic_image = image.to_dynamic_image_with_options(0, &options).unwrap();
+
+    let mut w = Cursor::new(Vec::new());
+
+    dynamic_image
+        .to_luma8()
+        .write_to(&mut w, ImageOutputFormat::Jpeg(1))
+        .unwrap();
+
+    let img = image::load_from_memory(&w.into_inner()).unwrap();
+
+    print(&img, &Config::default()).expect("Image printing failed.");
     Ok(())
 }
 

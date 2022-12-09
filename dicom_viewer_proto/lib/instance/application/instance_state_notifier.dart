@@ -155,19 +155,12 @@ class InstanceViewStateNotifier extends StateNotifier<InstanceViewState> {
   }
 
   Future<void> downloadDicom() async {
-    // var data = await instanceClient
-    //     .getFileForInstance("13453196-874ea965-25cbb181-dd776e98-26fdb174");
-    var response = await dio.download(
-        "http://localhost:8042/instances/13453196-874ea965-25cbb181-dd776e98-26fdb174/file",
-        (Headers headers) {
-      // Extra info: redirect counts
-      print(headers.value('redirects'));
-      // Extra info: real uri
-      print(headers.value('uri'));
-      return "...";
-    });
-    // var nativeResponse =
-    //     await api.setDcmData(path: await convertParallelTask(data: data).run());
-    // print(nativeResponse);
+    var nativeResponse = await api.setDcmData();
+    print(nativeResponse.length);
+    // var processNativeResponse =
+    //     await convertParallelTask(data: nativeResponse).run();
+    state.whenOrNull(
+        rendered: (instanceState) => state = InstanceViewState.rendered(
+            instanceState.copyWith(imageData: nativeResponse)));
   }
 }

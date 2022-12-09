@@ -23,10 +23,10 @@ class NativeImpl implements Native {
   factory NativeImpl.wasm(FutureOr<WasmModule> module) =>
       NativeImpl(module as ExternalLibrary);
   NativeImpl.raw(this._platform);
-  Future<void> setDcmData({dynamic hint}) {
+  Future<Uint8List> setDcmData({dynamic hint}) {
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_set_dcm_data(port_),
-      parseSuccessData: _wire2api_unit,
+      parseSuccessData: _wire2api_uint_8_list,
       constMeta: kSetDcmDataConstMeta,
       argValues: [],
       hint: hint,
@@ -41,8 +41,12 @@ class NativeImpl implements Native {
 
 // Section: wire2api
 
-  void _wire2api_unit(dynamic raw) {
-    return;
+  int _wire2api_u8(dynamic raw) {
+    return raw as int;
+  }
+
+  Uint8List _wire2api_uint_8_list(dynamic raw) {
+    return raw as Uint8List;
   }
 }
 
