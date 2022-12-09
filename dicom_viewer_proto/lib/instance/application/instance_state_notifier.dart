@@ -156,6 +156,7 @@ class InstanceViewStateNotifier extends StateNotifier<InstanceViewState> {
 
   Future<void> downloadDicom() async {
     var nativeResponse = await api.setDcmData();
+
     print(nativeResponse.length);
     // var processNativeResponse =
     //     await convertParallelTask(data: nativeResponse).run();

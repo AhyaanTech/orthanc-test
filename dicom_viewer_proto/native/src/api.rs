@@ -7,7 +7,7 @@ use dicom_pixeldata::{
 };
 use viuer::{print, Config};
 
-pub fn set_dcm_data() -> anyhow::Result<()> {
+pub fn set_dcm_data() -> anyhow::Result<Vec<u8>> {
     let obj = open_file(r"C:\Users\jawad\Downloads\response.dcm");
     let binding = obj?;
     let name = binding.element_by_name("PatientName")?.to_str();
@@ -23,14 +23,14 @@ pub fn set_dcm_data() -> anyhow::Result<()> {
     let mut w = Cursor::new(Vec::new());
 
     dynamic_image
-        .to_luma8()
-        .write_to(&mut w, ImageOutputFormat::Jpeg(1))
+        .into_rgba8()
+        .write_to(&mut w, ImageOutputFormat::Jpeg(100))
         .unwrap();
 
-    let img = image::load_from_memory(&w.into_inner()).unwrap();
+    // let img = image::load_from_memory(&w.clone().into_inner()).unwrap();
 
-    print(&img, &Config::default()).expect("Image printing failed.");
-    Ok(())
+    // print(&img, &Config::default()).expect("Image printing failed.");
+    Ok(w.into_inner())
 }
 
 #[test]
