@@ -16,7 +16,7 @@ pub fn set_dcm_data() -> anyhow::Result<ZeroCopyBuffer<Vec<u8>>> {
 
     let image = binding.decode_pixel_data().unwrap();
     let options = ConvertOptions::new().with_voi_lut(VoiLutOption::Custom(WindowLevel {
-        width: 330_f64,
+        width: 2823_f64,
         center: 30_f64,
     }));
     let dynamic_image = image.to_dynamic_image_with_options(0, &options).unwrap();
