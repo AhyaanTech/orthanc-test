@@ -105,30 +105,6 @@ class _InstanceClient implements InstanceClient {
     return value;
   }
 
-  @override
-  Future<List<int>> getFileForInstance(id) async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    final _result =
-        await _dio.fetch<List<dynamic>>(_setStreamType<List<int>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-      responseType: ResponseType.bytes,
-    )
-            .compose(
-              _dio.options,
-              '/instances/${id}/file',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = _result.data!.cast<int>();
-    return value;
-  }
-
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
         !(requestOptions.responseType == ResponseType.bytes ||

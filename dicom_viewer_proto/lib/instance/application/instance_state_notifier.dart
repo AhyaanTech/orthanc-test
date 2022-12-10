@@ -18,6 +18,7 @@ import 'package:fpdart/fpdart.dart';
 import 'package:logger/logger.dart';
 import 'package:image/image.dart' as imglib;
 import 'dart:ui' as ui;
+import 'package:path_provider/path_provider.dart';
 
 final instanceViewStateNotifierProvider =
     StateNotifierProvider<InstanceViewStateNotifier, InstanceViewState>((ref) {
@@ -156,26 +157,28 @@ class InstanceViewStateNotifier extends StateNotifier<InstanceViewState> {
   }
 
   Future<void> downloadDicom() async {
-    var nativeResponse = await api.setDcmData();
+    var nativeResponse = await api.processImage();
 
-    print(nativeResponse.length);
-    // var processNativeResponse = await imgImageToUiImage(nativeResponse).run();
     state.whenOrNull(
-        rendered: (instanceState) => state = InstanceViewState.rendered(
-            instanceState.copyWith(imageData: nativeResponse)));
+      rendered: (instanceState) => state = InstanceViewState.rendered(
+        instanceState.copyWith(imageData: nativeResponse),
+      ),
+    );
+
+    await setDicomData();
   }
 
-  Task<ui.Image> imgImageToUiImage(Uint8List image) => Task(() async {
-        {
-          ui.ImmutableBuffer buffer =
-              await ui.ImmutableBuffer.fromUint8List(image);
-          ui.ImageDescriptor id = ui.ImageDescriptor.raw(buffer,
-              height: 900, width: 300, pixelFormat: ui.PixelFormat.rgba8888);
-          ui.Codec codec =
-              await id.instantiateCodec(targetHeight: 900, targetWidth: 300);
-          ui.FrameInfo fi = await codec.getNextFrame();
-          ui.Image uiImage = fi.image;
-          return uiImage;
-        }
-      });
+  Future<void> setDicomData() async {
+    String dir =
+        '${(await getTemporaryDirectory()).path}/dicom/${instanceDetails.id}.dcm';
+    File temp = File(dir);
+    await dio.download(
+        "http://localhost:8042/instances/13453196-874ea965-25cbb181-dd776e98-26fdb174/file",
+        temp.path);
+    await api.setDcmImage(data: temp.path);
+    // temp.deleteSync(recursive: true);
+
+    // Directory dirs = await getTemporaryDirectory();
+    // dirs.deleteSync(recursive: true);
+  }
 }

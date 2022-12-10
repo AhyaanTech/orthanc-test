@@ -21,14 +21,27 @@ use std::sync::Arc;
 
 // Section: wire functions
 
-fn wire_set_dcm_data_impl(port_: MessagePort) {
+fn wire_process_image_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
-            debug_name: "set_dcm_data",
+            debug_name: "process_image",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| set_dcm_data(),
+        move || move |task_callback| process_image(),
+    )
+}
+fn wire_set_dcm_image_impl(port_: MessagePort, data: impl Wire2Api<String> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "set_dcm_image",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_data = data.wire2api();
+            move |task_callback| set_dcm_image(api_data)
+        },
     )
 }
 // Section: wrapper structs
@@ -53,6 +66,13 @@ where
         (!self.is_null()).then(|| self.wire2api())
     }
 }
+
+impl Wire2Api<u8> for u8 {
+    fn wire2api(self) -> u8 {
+        self
+    }
+}
+
 // Section: impl IntoDart
 
 // Section: executor
