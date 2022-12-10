@@ -1,3 +1,4 @@
+import 'package:dicom_viewer_proto/instance/application/instance_state_notifier.dart';
 import 'package:dicom_viewer_proto/instance/contrast/image_contrast_changer.dart';
 import 'package:dicom_viewer_proto/instance/presentation/instance_view.dart';
 import 'package:dicom_viewer_proto/instance/windower/window_center_changer.dart';
@@ -56,15 +57,23 @@ class _SeriesDetailPageState extends ConsumerState<SeriesDetailPage> {
             const SizedBox(width: 15),
             const ImageContrastChanger(),
             const SizedBox(width: 15),
-            Text(ref.watch(contrastProvider).toString()),
-            const SizedBox(width: 15),
-            const WindowCenterChanger(),
-            const SizedBox(width: 15),
-            Text(ref.watch(windowCenterProvider).toString()),
-            const SizedBox(width: 15),
-            const WindowWidthChanger(),
-            const SizedBox(width: 15),
-            Text(ref.watch(windowWidthProvider).toString()),
+            // Text(ref.watch(contrastProvider).toString()),
+            // const SizedBox(width: 15),
+            // const WindowCenterChanger(),
+            // const SizedBox(width: 15),
+            // Text(ref.watch(windowCenterProvider).toString()),
+            // const SizedBox(width: 15),
+            // const WindowWidthChanger(),
+            // const SizedBox(width: 15),
+            // Text(ref.watch(windowWidthProvider).toString()),
+            ElevatedButton(
+              child: Text("Download Image"),
+              onPressed: () {
+                ref
+                    .read(instanceViewStateNotifierProvider.notifier)
+                    .downloadDicom();
+              },
+            )
           ],
         ),
       ),

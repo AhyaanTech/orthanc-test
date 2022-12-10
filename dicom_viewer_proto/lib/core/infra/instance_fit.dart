@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:dicom_viewer_proto/instance/model/instance_details_dto.dart';
 import 'package:dio/dio.dart' hide Headers;
@@ -30,6 +31,12 @@ abstract class InstanceClient {
 
   @GET("/instances/{id}/frames")
   Future<List<int>> getInstanceFramesCount(
+    @Path("id") String id,
+  );
+
+  @GET("/instances/{id}/file")
+  @DioResponseType(ResponseType.bytes)
+  Future<List<int>> getFileForInstance(
     @Path("id") String id,
   );
 }

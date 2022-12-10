@@ -21,6 +21,7 @@ mixin _$InstanceViewState {
     required TResult Function() fetching,
     required TResult Function(InstanceViewStateData instanceState) rendered,
     required TResult Function(String error) error,
+    required TResult Function(ui.Image image) rawUi,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$InstanceViewState {
     TResult? Function()? fetching,
     TResult? Function(InstanceViewStateData instanceState)? rendered,
     TResult? Function(String error)? error,
+    TResult? Function(ui.Image image)? rawUi,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$InstanceViewState {
     TResult Function()? fetching,
     TResult Function(InstanceViewStateData instanceState)? rendered,
     TResult Function(String error)? error,
+    TResult Function(ui.Image image)? rawUi,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$InstanceViewState {
     required TResult Function(_Fetching value) fetching,
     required TResult Function(_Rendered value) rendered,
     required TResult Function(_Error value) error,
+    required TResult Function(_RawUi value) rawUi,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$InstanceViewState {
     TResult? Function(_Fetching value)? fetching,
     TResult? Function(_Rendered value)? rendered,
     TResult? Function(_Error value)? error,
+    TResult? Function(_RawUi value)? rawUi,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$InstanceViewState {
     TResult Function(_Fetching value)? fetching,
     TResult Function(_Rendered value)? rendered,
     TResult Function(_Error value)? error,
+    TResult Function(_RawUi value)? rawUi,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -127,6 +133,7 @@ class _$_Fetching extends _Fetching with DiagnosticableTreeMixin {
     required TResult Function() fetching,
     required TResult Function(InstanceViewStateData instanceState) rendered,
     required TResult Function(String error) error,
+    required TResult Function(ui.Image image) rawUi,
   }) {
     return fetching();
   }
@@ -137,6 +144,7 @@ class _$_Fetching extends _Fetching with DiagnosticableTreeMixin {
     TResult? Function()? fetching,
     TResult? Function(InstanceViewStateData instanceState)? rendered,
     TResult? Function(String error)? error,
+    TResult? Function(ui.Image image)? rawUi,
   }) {
     return fetching?.call();
   }
@@ -147,6 +155,7 @@ class _$_Fetching extends _Fetching with DiagnosticableTreeMixin {
     TResult Function()? fetching,
     TResult Function(InstanceViewStateData instanceState)? rendered,
     TResult Function(String error)? error,
+    TResult Function(ui.Image image)? rawUi,
     required TResult orElse(),
   }) {
     if (fetching != null) {
@@ -161,6 +170,7 @@ class _$_Fetching extends _Fetching with DiagnosticableTreeMixin {
     required TResult Function(_Fetching value) fetching,
     required TResult Function(_Rendered value) rendered,
     required TResult Function(_Error value) error,
+    required TResult Function(_RawUi value) rawUi,
   }) {
     return fetching(this);
   }
@@ -171,6 +181,7 @@ class _$_Fetching extends _Fetching with DiagnosticableTreeMixin {
     TResult? Function(_Fetching value)? fetching,
     TResult? Function(_Rendered value)? rendered,
     TResult? Function(_Error value)? error,
+    TResult? Function(_RawUi value)? rawUi,
   }) {
     return fetching?.call(this);
   }
@@ -181,6 +192,7 @@ class _$_Fetching extends _Fetching with DiagnosticableTreeMixin {
     TResult Function(_Fetching value)? fetching,
     TResult Function(_Rendered value)? rendered,
     TResult Function(_Error value)? error,
+    TResult Function(_RawUi value)? rawUi,
     required TResult orElse(),
   }) {
     if (fetching != null) {
@@ -281,6 +293,7 @@ class _$_Rendered extends _Rendered with DiagnosticableTreeMixin {
     required TResult Function() fetching,
     required TResult Function(InstanceViewStateData instanceState) rendered,
     required TResult Function(String error) error,
+    required TResult Function(ui.Image image) rawUi,
   }) {
     return rendered(instanceState);
   }
@@ -291,6 +304,7 @@ class _$_Rendered extends _Rendered with DiagnosticableTreeMixin {
     TResult? Function()? fetching,
     TResult? Function(InstanceViewStateData instanceState)? rendered,
     TResult? Function(String error)? error,
+    TResult? Function(ui.Image image)? rawUi,
   }) {
     return rendered?.call(instanceState);
   }
@@ -301,6 +315,7 @@ class _$_Rendered extends _Rendered with DiagnosticableTreeMixin {
     TResult Function()? fetching,
     TResult Function(InstanceViewStateData instanceState)? rendered,
     TResult Function(String error)? error,
+    TResult Function(ui.Image image)? rawUi,
     required TResult orElse(),
   }) {
     if (rendered != null) {
@@ -315,6 +330,7 @@ class _$_Rendered extends _Rendered with DiagnosticableTreeMixin {
     required TResult Function(_Fetching value) fetching,
     required TResult Function(_Rendered value) rendered,
     required TResult Function(_Error value) error,
+    required TResult Function(_RawUi value) rawUi,
   }) {
     return rendered(this);
   }
@@ -325,6 +341,7 @@ class _$_Rendered extends _Rendered with DiagnosticableTreeMixin {
     TResult? Function(_Fetching value)? fetching,
     TResult? Function(_Rendered value)? rendered,
     TResult? Function(_Error value)? error,
+    TResult? Function(_RawUi value)? rawUi,
   }) {
     return rendered?.call(this);
   }
@@ -335,6 +352,7 @@ class _$_Rendered extends _Rendered with DiagnosticableTreeMixin {
     TResult Function(_Fetching value)? fetching,
     TResult Function(_Rendered value)? rendered,
     TResult Function(_Error value)? error,
+    TResult Function(_RawUi value)? rawUi,
     required TResult orElse(),
   }) {
     if (rendered != null) {
@@ -428,6 +446,7 @@ class _$_Error extends _Error with DiagnosticableTreeMixin {
     required TResult Function() fetching,
     required TResult Function(InstanceViewStateData instanceState) rendered,
     required TResult Function(String error) error,
+    required TResult Function(ui.Image image) rawUi,
   }) {
     return error(this.error);
   }
@@ -438,6 +457,7 @@ class _$_Error extends _Error with DiagnosticableTreeMixin {
     TResult? Function()? fetching,
     TResult? Function(InstanceViewStateData instanceState)? rendered,
     TResult? Function(String error)? error,
+    TResult? Function(ui.Image image)? rawUi,
   }) {
     return error?.call(this.error);
   }
@@ -448,6 +468,7 @@ class _$_Error extends _Error with DiagnosticableTreeMixin {
     TResult Function()? fetching,
     TResult Function(InstanceViewStateData instanceState)? rendered,
     TResult Function(String error)? error,
+    TResult Function(ui.Image image)? rawUi,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -462,6 +483,7 @@ class _$_Error extends _Error with DiagnosticableTreeMixin {
     required TResult Function(_Fetching value) fetching,
     required TResult Function(_Rendered value) rendered,
     required TResult Function(_Error value) error,
+    required TResult Function(_RawUi value) rawUi,
   }) {
     return error(this);
   }
@@ -472,6 +494,7 @@ class _$_Error extends _Error with DiagnosticableTreeMixin {
     TResult? Function(_Fetching value)? fetching,
     TResult? Function(_Rendered value)? rendered,
     TResult? Function(_Error value)? error,
+    TResult? Function(_RawUi value)? rawUi,
   }) {
     return error?.call(this);
   }
@@ -482,6 +505,7 @@ class _$_Error extends _Error with DiagnosticableTreeMixin {
     TResult Function(_Fetching value)? fetching,
     TResult Function(_Rendered value)? rendered,
     TResult Function(_Error value)? error,
+    TResult Function(_RawUi value)? rawUi,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -498,6 +522,158 @@ abstract class _Error extends InstanceViewState {
   String get error;
   @JsonKey(ignore: true)
   _$$_ErrorCopyWith<_$_Error> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_RawUiCopyWith<$Res> {
+  factory _$$_RawUiCopyWith(_$_RawUi value, $Res Function(_$_RawUi) then) =
+      __$$_RawUiCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ui.Image image});
+}
+
+/// @nodoc
+class __$$_RawUiCopyWithImpl<$Res>
+    extends _$InstanceViewStateCopyWithImpl<$Res, _$_RawUi>
+    implements _$$_RawUiCopyWith<$Res> {
+  __$$_RawUiCopyWithImpl(_$_RawUi _value, $Res Function(_$_RawUi) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? image = null,
+  }) {
+    return _then(_$_RawUi(
+      null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as ui.Image,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_RawUi extends _RawUi with DiagnosticableTreeMixin {
+  const _$_RawUi(this.image) : super._();
+
+  @override
+  final ui.Image image;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'InstanceViewState.rawUi(image: $image)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'InstanceViewState.rawUi'))
+      ..add(DiagnosticsProperty('image', image));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_RawUi &&
+            (identical(other.image, image) || other.image == image));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, image);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_RawUiCopyWith<_$_RawUi> get copyWith =>
+      __$$_RawUiCopyWithImpl<_$_RawUi>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetching,
+    required TResult Function(InstanceViewStateData instanceState) rendered,
+    required TResult Function(String error) error,
+    required TResult Function(ui.Image image) rawUi,
+  }) {
+    return rawUi(image);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetching,
+    TResult? Function(InstanceViewStateData instanceState)? rendered,
+    TResult? Function(String error)? error,
+    TResult? Function(ui.Image image)? rawUi,
+  }) {
+    return rawUi?.call(image);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetching,
+    TResult Function(InstanceViewStateData instanceState)? rendered,
+    TResult Function(String error)? error,
+    TResult Function(ui.Image image)? rawUi,
+    required TResult orElse(),
+  }) {
+    if (rawUi != null) {
+      return rawUi(image);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Fetching value) fetching,
+    required TResult Function(_Rendered value) rendered,
+    required TResult Function(_Error value) error,
+    required TResult Function(_RawUi value) rawUi,
+  }) {
+    return rawUi(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Fetching value)? fetching,
+    TResult? Function(_Rendered value)? rendered,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_RawUi value)? rawUi,
+  }) {
+    return rawUi?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Fetching value)? fetching,
+    TResult Function(_Rendered value)? rendered,
+    TResult Function(_Error value)? error,
+    TResult Function(_RawUi value)? rawUi,
+    required TResult orElse(),
+  }) {
+    if (rawUi != null) {
+      return rawUi(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RawUi extends InstanceViewState {
+  const factory _RawUi(final ui.Image image) = _$_RawUi;
+  const _RawUi._() : super._();
+
+  ui.Image get image;
+  @JsonKey(ignore: true)
+  _$$_RawUiCopyWith<_$_RawUi> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

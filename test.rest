@@ -1,4 +1,4 @@
-GET http://localhost:8042/instances/12849c1b-ba8e56f2-f0f8aa83-d4fa929e-e56dc8a4/rendered
+GET http://localhost:8042/instances/13453196-874ea965-25cbb181-dd776e98-26fdb174/rendered
 Accept: image/jpeg
 
 ###
@@ -8,3 +8,7 @@ GET http://localhost:8042/instances/48f2e528-dd6f8afa-99fddc72-1b733a81-4b2cbdd8
 ###
 
 GET http://localhost:8042/instances/48f2e528-dd6f8afa-99fddc72-1b733a81-4b2cbdd8/tags
+###
+
+GET http://localhost:8042/instances/13453196-874ea965-25cbb181-dd776e98-26fdb174/file
+Content-Type: application/dicom+json

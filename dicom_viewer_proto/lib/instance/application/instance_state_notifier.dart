@@ -1,23 +1,30 @@
+import 'dart:io';
+
+import 'package:dicom_viewer_proto/bridge_definitions.dart';
 import 'package:dicom_viewer_proto/core/clients.dart';
+import 'package:dicom_viewer_proto/core/dio.dart';
 import 'package:dicom_viewer_proto/core/infra/instance_fit.dart';
+import 'package:dicom_viewer_proto/ffi.dart';
 import 'package:dicom_viewer_proto/instance/application/instance_view_state.dart';
 import 'package:dicom_viewer_proto/instance/contrast/image_contrast_changer.dart';
 import 'package:dicom_viewer_proto/instance/model/dicom_windowing.dart';
 import 'package:dicom_viewer_proto/instance/model/instance_details_dto.dart';
 import 'package:dicom_viewer_proto/instance/windower/window_center_changer.dart';
 import 'package:dicom_viewer_proto/instance/windower/window_width_changer.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:logger/logger.dart';
 import 'package:image/image.dart' as imglib;
+import 'dart:ui' as ui;
 
 final instanceViewStateNotifierProvider =
     StateNotifierProvider<InstanceViewStateNotifier, InstanceViewState>((ref) {
-  return InstanceViewStateNotifier(
-    ref,
-    instanceClient: ref.watch(instanceFitClientProvider),
-  );
+  return InstanceViewStateNotifier(ref,
+      instanceClient: ref.watch(instanceFitClientProvider),
+      api: ref.watch(nativeApiProvider),
+      dio: ref.watch(dioProvider));
 });
 
 class InstanceViewStateNotifier extends StateNotifier<InstanceViewState> {
@@ -27,11 +34,15 @@ class InstanceViewStateNotifier extends StateNotifier<InstanceViewState> {
   List<int> rawImageData = List<int>.filled(1, 0, growable: true);
   late InstanceDetailsDto instanceDetails;
   late DicomWindowing dicomWindowing;
+  final Native api;
+  final Dio dio;
 
   final Ref ref;
 
   InstanceViewStateNotifier(
     this.ref, {
+    required this.dio,
+    required this.api,
     required this.instanceClient,
   }) : super(const InstanceViewState.fetching());
 
@@ -143,4 +154,28 @@ class InstanceViewStateNotifier extends StateNotifier<InstanceViewState> {
   Future<Uint8List> convertParallel({required List<int> data}) {
     return compute(Uint8List.fromList, data);
   }
+
+  Future<void> downloadDicom() async {
+    var nativeResponse = await api.setDcmData();
+
+    print(nativeResponse.length);
+    // var processNativeResponse = await imgImageToUiImage(nativeResponse).run();
+    state.whenOrNull(
+        rendered: (instanceState) => state = InstanceViewState.rendered(
+            instanceState.copyWith(imageData: nativeResponse)));
+  }
+
+  Task<ui.Image> imgImageToUiImage(Uint8List image) => Task(() async {
+        {
+          ui.ImmutableBuffer buffer =
+              await ui.ImmutableBuffer.fromUint8List(image);
+          ui.ImageDescriptor id = ui.ImageDescriptor.raw(buffer,
+              height: 900, width: 300, pixelFormat: ui.PixelFormat.rgba8888);
+          ui.Codec codec =
+              await id.instantiateCodec(targetHeight: 900, targetWidth: 300);
+          ui.FrameInfo fi = await codec.getNextFrame();
+          ui.Image uiImage = fi.image;
+          return uiImage;
+        }
+      });
 }
