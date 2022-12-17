@@ -23,23 +23,44 @@ class NativeImpl implements Native {
   factory NativeImpl.wasm(FutureOr<WasmModule> module) =>
       NativeImpl(module as ExternalLibrary);
   NativeImpl.raw(this._platform);
-  Future<Uint8List> setDcmData({dynamic hint}) {
+  Future<Uint8List> processImage({dynamic hint}) {
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_set_dcm_data(port_),
-      parseSuccessData: _wire2api_uint_8_list,
-      constMeta: kSetDcmDataConstMeta,
+      callFfi: (port_) => _platform.inner.wire_process_image(port_),
+      parseSuccessData: _wire2api_ZeroCopyBuffer_Uint8List,
+      constMeta: kProcessImageConstMeta,
       argValues: [],
       hint: hint,
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kSetDcmDataConstMeta =>
+  FlutterRustBridgeTaskConstMeta get kProcessImageConstMeta =>
       const FlutterRustBridgeTaskConstMeta(
-        debugName: "set_dcm_data",
+        debugName: "process_image",
         argNames: [],
       );
 
+  Future<void> setDcmImage({required String data, dynamic hint}) {
+    var arg0 = _platform.api2wire_String(data);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_set_dcm_image(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      constMeta: kSetDcmImageConstMeta,
+      argValues: [data],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kSetDcmImageConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "set_dcm_image",
+        argNames: ["data"],
+      );
+
 // Section: wire2api
+
+  Uint8List _wire2api_ZeroCopyBuffer_Uint8List(dynamic raw) {
+    return raw as Uint8List;
+  }
 
   int _wire2api_u8(dynamic raw) {
     return raw as int;
@@ -48,9 +69,18 @@ class NativeImpl implements Native {
   Uint8List _wire2api_uint_8_list(dynamic raw) {
     return raw as Uint8List;
   }
+
+  void _wire2api_unit(dynamic raw) {
+    return;
+  }
 }
 
 // Section: api2wire
+
+@protected
+int api2wire_u8(int raw) {
+  return raw;
+}
 
 // Section: finalizer
 
@@ -58,6 +88,17 @@ class NativePlatform extends FlutterRustBridgeBase<NativeWire> {
   NativePlatform(ffi.DynamicLibrary dylib) : super(NativeWire(dylib));
 // Section: api2wire
 
+  @protected
+  ffi.Pointer<wire_uint_8_list> api2wire_String(String raw) {
+    return api2wire_uint_8_list(utf8.encoder.convert(raw));
+  }
+
+  @protected
+  ffi.Pointer<wire_uint_8_list> api2wire_uint_8_list(Uint8List raw) {
+    final ans = inner.new_uint_8_list_0(raw.length);
+    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
+    return ans;
+  }
 // Section: finalizer
 
 // Section: api_fill_to_wire
@@ -100,19 +141,51 @@ class NativeWire implements FlutterRustBridgeWireBase {
   late final _store_dart_post_cobject = _store_dart_post_cobjectPtr
       .asFunction<void Function(DartPostCObjectFnType)>();
 
-  void wire_set_dcm_data(
+  void wire_process_image(
     int port_,
   ) {
-    return _wire_set_dcm_data(
+    return _wire_process_image(
       port_,
     );
   }
 
-  late final _wire_set_dcm_dataPtr =
+  late final _wire_process_imagePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_set_dcm_data');
-  late final _wire_set_dcm_data =
-      _wire_set_dcm_dataPtr.asFunction<void Function(int)>();
+          'wire_process_image');
+  late final _wire_process_image =
+      _wire_process_imagePtr.asFunction<void Function(int)>();
+
+  void wire_set_dcm_image(
+    int port_,
+    ffi.Pointer<wire_uint_8_list> data,
+  ) {
+    return _wire_set_dcm_image(
+      port_,
+      data,
+    );
+  }
+
+  late final _wire_set_dcm_imagePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>('wire_set_dcm_image');
+  late final _wire_set_dcm_image = _wire_set_dcm_imagePtr
+      .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+
+  ffi.Pointer<wire_uint_8_list> new_uint_8_list_0(
+    int len,
+  ) {
+    return _new_uint_8_list_0(
+      len,
+    );
+  }
+
+  late final _new_uint_8_list_0Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_uint_8_list> Function(
+              ffi.Int32)>>('new_uint_8_list_0');
+  late final _new_uint_8_list_0 = _new_uint_8_list_0Ptr
+      .asFunction<ffi.Pointer<wire_uint_8_list> Function(int)>();
 
   void free_WireSyncReturnStruct(
     WireSyncReturnStruct val,
@@ -127,6 +200,13 @@ class NativeWire implements FlutterRustBridgeWireBase {
           'free_WireSyncReturnStruct');
   late final _free_WireSyncReturnStruct = _free_WireSyncReturnStructPtr
       .asFunction<void Function(WireSyncReturnStruct)>();
+}
+
+class wire_uint_8_list extends ffi.Struct {
+  external ffi.Pointer<ffi.Uint8> ptr;
+
+  @ffi.Int32()
+  external int len;
 }
 
 typedef DartPostCObjectFnType = ffi.Pointer<
